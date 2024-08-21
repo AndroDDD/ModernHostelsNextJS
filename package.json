@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "pro": "next start -p 3033",
     "dev": "next dev",
     "ssl-dev": "node app/generalFunctions/runSSLServer.js",
     "build": "next build",
