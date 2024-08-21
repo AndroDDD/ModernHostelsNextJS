@@ -1,0 +1,124 @@
+#kst-list-property-page-how-it-works-section {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 140px 125px 140px;
+    width: 100%;
+    color: #fff;
+    border-bottom: 1px solid hsla(26, 33%, 96%, .1);
+
+    @media only screen and (max-width: 768px) {
+        padding: 5% 3%;
+    }
+
+    .kst-list-property-page-how-it-works-section-header {
+        display: flex;
+        margin-bottom: 45px;
+        font-size: 60px;
+        line-height: 70px;
+        letter-spacing: 1px;
+        text-align: center;
+
+        @media only screen and (max-width: 768px) {
+            font-size: 30px;
+            line-height: 30px;
+        }
+    }
+
+    .kst-list-property-page-how-it-works-section-steps {
+        display: flex;
+        flex-flow: column;
+
+        @media only screen and (max-width: 768px) {
+            width: 100%;
+        }
+
+        .kst-list-property-page-how-it-works-section-sub-title {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 15px;
+            letter-spacing: 1px;
+            width: 152px;
+            padding-right: 3px;
+            text-align: end;
+
+            @media only screen and (max-width: 768px) {
+                left: unset;
+                right: 0;
+            }
+        }
+
+        .kst-list-property-page-how-it-works-section-step {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 7px;
+            width: 767px;
+
+            @media only screen and (max-width: 768px) {
+                flex-flow: column;
+                width: 100%;
+            }
+
+            .kst-list-property-page-how-it-works-section-step-category {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                padding-right: 15px;
+                width: 152px;
+                font-weight: 300;
+                font-size: 16px;
+                line-height: 22px;
+                letter-spacing: 1px;
+                text-align: end;
+
+                @media only screen and (max-width: 768px) {
+                    width: 100%;
+                    justify-content: flex-start;
+                }
+            }
+
+            .kst-list-property-page-how-it-works-section-step-numbered-section {
+                display: flex;
+                flex-flow: column;
+                border-left: 7px solid green;
+
+                @media only screen and (max-width: 768px) {
+                    border-left-width: 0px;
+                    border-top: 7px solid green;
+                    width: 100%;
+                }
+
+                .kst-list-property-page-how-it-works-section-step-numbered {
+                    display: flex;
+                    margin: 20px 0;
+                    font-weight: 600;
+                    font-size: 22px;
+                    line-height: 24px;
+                    letter-spacing: 1px;
+
+                    @media only screen and (max-width: 768px) {
+                        line-height: 30px;
+                        margin-top: 5px;
+                        margin-bottom: 10px;
+                    }
+
+                    span {
+                        margin-right: 15px;
+                        margin-left: 20px;
+                        font-weight: 300;
+                        font-size: 16px;
+                        line-height: 22px;
+                        letter-spacing: 1px;
+                    }
+                }
+            }
+        }
+    }
+}

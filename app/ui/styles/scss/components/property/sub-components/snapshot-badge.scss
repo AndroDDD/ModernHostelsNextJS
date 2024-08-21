@@ -1,0 +1,47 @@
+.kst-snapshot-badge {
+    display: flex;
+    width: 295px;
+    height: auto;
+    padding-bottom: 25px;
+
+    .kst-snapshot-badge-icon {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 12px;
+        width: 30px;
+        height: 30px;
+        font-size: 28px;
+        object-fit: contain;
+        overflow: hidden;
+    }
+
+    .kst-snapshot-badge-title-summary {
+        display: flex;
+        flex-flow: column;
+        margin-left: 15px;
+        width: calc(100% - 30px);
+
+        .kst-snapshot-badge-title {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 12px 0;
+            width: 100%;
+            text-align: start;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 28px;
+        }
+
+        .kst-snapshot-badge-summary {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            max-width: 217px;
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 20px;
+        }
+    }
+}

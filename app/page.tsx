@@ -1,113 +1,208 @@
-import Image from "next/image";
+import { SimpleInformationDataArray } from "@/app/types/simpleInformationData";
+import { isMobileDevice } from "@/app/generalFunctions/isMobile";
+import { useDevOrigin } from "./generalFunctions/devToPro/useDevOrigin";
+import { useHttpProtocol } from "./generalFunctions/devToPro/useHttpProtocol";
+import { fetchHomePageSettings } from "@/app/generalFunctions/apiDataFetches/homeRoute/fetchHomePageSettings";
+import Header from "@/app/ui/headerAndFooter/header/header";
+import IntroSection from "@/app/ui/home/sections/introSection";
+import ListingsSection from "@/app/ui/home/sections/listingsSection";
+import VideoScrollSection from "@/app/ui/home/sections/videoScrollSection";
+import InformationCarouselSection from "@/app/ui/home/sections/informationCarouselSection";
+import HighlightSection from "@/app/ui/home/sections/highlightSection";
+import ImageCollageSection from "@/app/ui/home/sections/imageCollageSection";
+import CallToActionSection from "@/app/ui/home/sections/callToActionSection";
+import SingleItemSection from "@/app/ui/home/sections/singleItemSection";
+import TwoLinkCallToActionSection from "@/app/ui/home/sections/twoLinkCallToActionSection";
+import FooterSeparatorSection from "@/app/ui/sharedComponents/footerSeperatorSection";
+import Footer from "@/app/ui/headerAndFooter/footer/footer";
+import "@/app/ui/styles/scss/route-pages/home/home-component.scss";
 
-export default function Home() {
+export default async function Home() {
+  const isMobile = await isMobileDevice();
+  const homePageSettings = await fetchHomePageSettings(
+    `${useHttpProtocol}${useDevOrigin}wordpress/wp-json/kst/homepage-settings`
+  );
+
+  console.log({ homePageSettings });
+  const introSectionData = JSON.parse(
+    homePageSettings["homePageIntroSectionData"],
+    function (key, value) {
+      if (key === "background_image_url") {
+        this.backgroundImageUrl = value;
+      } else if (key === "hero_title") {
+        this.title = value;
+      } else if (key === "sub_text") {
+        this.subText = value;
+      } else if (key === "right_button_text") {
+        this.rightButtonTitle = value;
+      } else if (key === "menu_title") {
+        this.dropdownMenuTitle = value;
+      } else if (key === "menu_items") {
+        this.dropdownMenuItems = Object.values(
+          value as { name: string; slug: string }[]
+        )
+          .map((item: { name: string; slug: string }) => ({
+            name: item.name,
+            pageSlug: item.slug,
+          }))
+          .reverse();
+      } else {
+        return value;
+      }
+    }
+  );
+  const scrollVideo = homePageSettings["homePageScrollVideo"];
+  const simpleInformationCarouselData = Object.values(
+    JSON.parse(
+      homePageSettings["homePageInformationCarouselData"],
+      function (key, value) {
+        if (key === "img_url") {
+          this.imageUrl = value;
+        } else if (key === "summary") {
+          this.information = value;
+        } else {
+          return value;
+        }
+      }
+    )
+  ) as SimpleInformationDataArray;
+  const highlightsSectionData = JSON.parse(
+    homePageSettings["highlightsSectionData"],
+    function (key, value) {
+      if (key === "background_image") {
+        this.backgroundImageURL = value;
+      } else if (key === "header_title") {
+        this.headerTitle = value;
+      } else if (key === "highlights") {
+        return Object.values(value);
+      } else {
+        return value;
+      }
+    }
+  );
+  const imageCollageSectionData = JSON.parse(
+    homePageSettings["imageCollageSectionData"]
+  );
+  const callToActionSectionData = JSON.parse(
+    homePageSettings["callToActionSectionData"],
+    function (key, value) {
+      if (key === "link_text") {
+        this.linkText = value;
+      } else if (key === "background_image") {
+        this.backgroundImage = value;
+      } else {
+        return value;
+      }
+    }
+  ) as {
+    title: string;
+    link: string;
+    linkText: string;
+    backgroundImage: string;
+  };
+  const singleItemSectionOne = JSON.parse(
+    homePageSettings[`locationAndPropertyLinksSectionData0`],
+    function (key, value) {
+      if (key === "image_url") {
+        this.imageUrl = value;
+      } else if (key === "location_link") {
+        this.viewCollectionLink = {
+          text: "View Collection",
+          href: value,
+          color: "",
+        };
+      } else if (key === "property_link") {
+        this.viewItemLink = {
+          text: "View Property",
+          href: value,
+          color: "",
+        };
+      } else {
+        return value;
+      }
+    }
+  );
+  const singleItemSectionTwo = JSON.parse(
+    homePageSettings[`locationAndPropertyLinksSectionData0`],
+    function (key, value) {
+      if (key === "image_url") {
+        this.imageUrl = value;
+      } else if (key === "location_link") {
+        this.viewCollectionLink = {
+          text: "View Collection",
+          href: value,
+          color: "",
+        };
+      } else if (key === "property_link") {
+        this.viewItemLink = {
+          text: "View Property",
+          href: value,
+          color: "",
+        };
+      } else {
+        return value;
+      }
+    }
+  );
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+    <main id="kst-rc-home">
+      <Header key={"kst-home-header"} isMobile={isMobile} />
+      <IntroSection
+        key={"kst-home-intro-section"}
+        introSectionData={introSectionData}
+      />
+      <ListingsSection key={"kst-home-listings-section"} />
+      {/* {isMobile ? (
+        <></>
+      ) : (
+        <VideoScrollSection
+          key={"kst-home-scroll-video-section"}
+          scrollVideo={scrollVideo}
         />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      )} */}
+      <InformationCarouselSection
+        simpleInformationArray={simpleInformationCarouselData}
+        isMobile={isMobile}
+        key={"kst-home-information-carousel-section"}
+      />
+      <HighlightSection
+        key={"kst-home-highlights-section"}
+        highlightSectionData={highlightsSectionData}
+        isMobile={isMobile}
+      />
+      {isMobile ? (
+        <></>
+      ) : (
+        <ImageCollageSection
+          key={"kst-home-image-collage-section"}
+          imageCollageSectionData={imageCollageSectionData}
+        />
+      )}
+      <CallToActionSection
+        sectionData={callToActionSectionData}
+        key={"kst-home-call-to-action-section"}
+      />
+      <SingleItemSection
+        isMobile={isMobile}
+        itemData={singleItemSectionOne}
+        direction={"ltr"}
+        key={"kst-home-single-item-section-one"}
+      />
+      <SingleItemSection
+        isMobile={isMobile}
+        itemData={singleItemSectionTwo}
+        direction={"rtl"}
+        key={"kst-home-single-item-section-two"}
+      />
+      <TwoLinkCallToActionSection
+        key={"kst-home-two-link-call-to-action-section"}
+      />
+      <FooterSeparatorSection
+        isMobile={isMobile}
+        key={"kst-home-footer-seperator-section"}
+      />
+      <Footer key={"kst-home-footer"} />
     </main>
   );
 }

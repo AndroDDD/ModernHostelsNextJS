@@ -1,0 +1,19 @@
+#kst-blog-post-main-section {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 327px calc(100% - 400px);
+  column-gap: 72px;
+  padding: 0 5vw 24px;
+
+  .kst-blog-post-main-section-sidebar {
+    box-sizing: border-box;
+    display: grid;
+    grid-column: 1 / 2;
+  }
+
+  .kst-blog-post-main-section-content {
+    box-sizing: border-box;
+    display: grid;
+    grid-column: 2 / 3;
+  }
+}

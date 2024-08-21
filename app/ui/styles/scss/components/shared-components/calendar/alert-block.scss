@@ -1,0 +1,11 @@
+.kst-check-in-out-calendar-alert-block {
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: calc(100% - 30px);
+    font-size: 12px;
+    font-weight: 300;
+
+    &.compact {}
+}

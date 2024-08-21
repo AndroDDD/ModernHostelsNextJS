@@ -1,0 +1,101 @@
+.kst-blog-posts-display {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  flex-flow: column;
+  background: linear-gradient(
+    rgb(248, 244, 241) 0%,
+    rgba(248, 244, 241, 0.9) 52.79%,
+    #fff 87.17%
+  );
+  padding: 0 10px 0;
+
+  .kst-blog-posts-display-title {
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 70px;
+    color: #1d1919;
+    margin-bottom: 10px;
+  }
+
+  .kst-blog-posts-display-items {
+    box-sizing: border-box;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 33% 33% 33%;
+    column-gap: 0.5%;
+
+    .kst-blog-posts-display-item {
+      position: relative;
+      box-sizing: border-box;
+      display: flex;
+      align-self: center;
+      justify-self: center;
+      flex-flow: column;
+      width: calc(100% - 30px);
+      height: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 2px 3px #1d1919;
+      overflow: hidden;
+      background-color: #1d1919;
+      color: whitesmoke;
+
+      .kst-blog-posts-display-item-date {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        box-sizing: border-box;
+        display: flex;
+        border-radius: 5px;
+        background: black;
+        box-shadow: 0 0 3px 2px #1d1919;
+        padding: 3px;
+      }
+
+      .kst-blog-posts-display-item-image {
+        box-sizing: border-box;
+        position: relative;
+        display: flex;
+        padding-bottom: 50%;
+        width: 100%;
+
+        img {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .kst-blog-posts-display-item-text {
+        box-sizing: border-box;
+        display: flex;
+        width: 100%;
+        padding: 15px;
+        flex-flow: column;
+
+        .kst-blog-posts-display-item-text-1 {
+          box-sizing: border-box;
+          display: flex;
+          width: 100%;
+          margin-bottom: 15px;
+          font-size: 20px;
+          text-shadow: 1px 1px gray;
+          letter-spacing: 1px;
+        }
+
+        .kst-blog-posts-display-item-text-2 {
+          box-sizing: border-box;
+          display: flex;
+          width: 100%;
+          margin-bottom: 10px;
+          font-size: 16px;
+          letter-spacing: 0.5px;
+        }
+      }
+    }
+  }
+}

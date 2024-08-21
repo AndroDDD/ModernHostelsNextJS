@@ -1,0 +1,94 @@
+#kst-property-location-intro-section {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: #1d1919;
+    overflow: hidden;
+
+    @media only screen and (max-width: 768px) {
+        justify-content: flex-end;
+        height: 50vh;
+    }
+
+    .kst-property-location-intro-section-background-image {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+
+        @media only screen and (max-width: 768px) {
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+
+            @media only screen and (max-width: 768px) {
+                width: auto;
+                height: 100%;
+            }
+        }
+
+        .kst-property-location-intro-section-background-image-support {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(29, 25, 25, 0.6) 100%, rgb(29, 25, 25) 100%, rgb(29, 25, 25) 100%);
+        }
+
+    }
+
+    .kst-property-location-intro-section-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+        width: 100%;
+        height: auto;
+        color: #f8f4f1;
+        text-align: center;
+        font-size: 70px;
+        font-weight: 400;
+        line-height: 70px;
+
+        @media only screen and (max-width: 768px) {
+            font-size: 25px;
+            line-height: 25px;
+        }
+    }
+
+    .kst-property-location-intro-section-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 237px;
+        height: 50px;
+        background: #fff;
+        border: 2px solid #fff;
+        border-radius: 100px;
+        color: #1d1919;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        transition: all .2s linear;
+
+        &:hover {
+            background: #1d1919;
+            color: #fff;
+        }
+
+        @media only screen and (max-width: 768px) {
+            margin-bottom: 10vh;
+        }
+    }
+}

@@ -1,0 +1,398 @@
+@mixin standard-button-style {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 25px;
+    min-height: 35px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #000;
+    border-radius: 100px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#kst-map-page-filter-bar-section {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    column-gap: 40px;
+    width: 100%;
+    padding: 15px 2.25vw 2.75vh;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #859485;
+
+    @media only screen and (max-width: 768px) {
+        display: none;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, auto);
+        padding-bottom: 0px;
+        border-bottom-width: 0px;
+
+        &.open {
+            display: grid;
+        }
+    }
+
+    .kst-map-page-filter-bar-section-choose-market {
+        display: flex;
+        padding: 0;
+        min-width: 200px;
+        height: auto;
+
+        .kst-map-page-filter-bar-section-choose-market-menu-toggle {
+            @include standard-button-style;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            padding: 0 10px;
+            width: 100%;
+
+            @media only screen and (max-width: 768px) {
+                border-radius: unset;
+            }
+
+            .kst-map-page-filter-bar-section-choose-market-menu-toggle-text {
+                margin-right: 10px;
+
+                @media only screen and (max-width: 768px) {
+                    margin-right: unset;
+                }
+            }
+
+            .kst-map-page-filter-bar-section-choose-market-menu-toggle-icon {}
+        }
+
+        .kst-map-page-filter-bar-section-choose-market-menu-list {
+            position: absolute;
+            top: 40px;
+            display: flex;
+            flex-flow: column;
+            padding: 5px 0;
+            width: 100%;
+            background: #fff;
+            border: 1px solid #859485;
+            border-radius: 10px;
+            z-index: 500;
+            overflow: hidden;
+
+            .kst-map-page-filter-bar-section-choose-market-menu-list-item {
+                width: 100%;
+                padding: 10px 10px;
+                font-size: 14px;
+                transition: all 250ms ease-in;
+                cursor: pointer;
+
+                &:hover {
+                    background: rgba(102, 205, 171, 0.5);
+                }
+            }
+        }
+    }
+
+    .kst-map-page-filter-bar-section-choose-dates {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        column-gap: 10px;
+        justify-content: center;
+        align-items: center;
+
+        @media only screen and (max-width: 768px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, auto);
+            border: 1px solid #000;
+            border-top-width: 0px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .kst-map-page-filter-bar-section-choose-dates-start {
+            @include standard-button-style;
+
+            @media only screen and (max-width: 768px) {
+                border-width: 0px;
+                background-color: rgba(255, 255, 255, 0);
+                justify-content: flex-start;
+            }
+
+            .kst-map-page-filter-bar-section-choose-dates-start-calendar-toggle {}
+        }
+
+        .kst-map-page-filter-bar-section-choose-dates-start-calendar-arrow {
+            top: 2px;
+
+            @media only screen and (max-width: 768px) {
+                padding-left: 20px;
+            }
+        }
+
+        .kst-map-page-filter-bar-section-choose-dates-end {
+            @include standard-button-style;
+
+            @media only screen and (max-width: 768px) {
+                border-width: 0px;
+                background-color: rgba(255, 255, 255, 0.0);
+                justify-content: flex-start;
+            }
+
+            .kst-map-page-filter-bar-section-choose-dates-end-calendar-toggle {}
+        }
+
+        .kst-map-page-filter-bar-section-choose-dates-calendar {
+            position: absolute;
+            top: 40px;
+            display: none;
+            max-width: auto;
+            height: auto;
+            z-index: 10;
+
+            @media only screen and (max-width: 768px) {
+                top: calc(100% + 5px);
+                justify-self: center;
+            }
+        }
+    }
+
+    .kst-map-page-filter-bar-section-choose-price {
+
+        @media only screen and (max-width: 768px) {
+            display: none;
+        }
+
+        .kst-map-page-filter-bar-section-choose-price-toggle {
+            @include standard-button-style;
+
+        }
+
+        .kst-map-page-filter-bar-section-choose-price-input {
+            position: absolute;
+            top: 40px;
+            display: none;
+            flex-flow: column;
+            padding: 15px 15px 20px;
+            width: 200px;
+            height: auto;
+            background-color: rgba(255, 255, 255, 1);
+            border: 1px solid #000;
+            border-radius: 10px;
+            z-index: 500;
+            overflow: hidden;
+
+            .kst-map-page-filter-bar-section-choose-price-input-label {
+                display: block;
+                padding-bottom: 5px;
+                color: #000;
+                font-size: 14px;
+                font-weight: 300;
+            }
+
+            .kst-map-page-filter-bar-section-choose-price-input-container {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 0.5rem;
+                background: #fff;
+                width: 100%;
+                height: 33px;
+                border: 1px solid #000;
+                border-radius: 100px;
+                font-size: 14px;
+                overflow: hidden;
+
+                span {
+                    width: 14px;
+                    font-weight: 300;
+                    font-size: 14px;
+                    color: #999;
+                }
+
+                input {
+                    display: inline-block;
+                    width: calc(100% - 14px);
+                    padding: 0.55rem 2px 0.55 0;
+                    border: none;
+                    outline: none;
+                    writing-mode: horizontal-tb !important;
+                    font-size: 14px;
+                }
+            }
+
+            .kst-map-page-filter-bar-section-choose-price-input-actions {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 10px;
+                width: 100%;
+
+                .kst-map-page-filter-bar-section-choose-price-input-actions-clear {
+                    display: block;
+                    cursor: pointer;
+                    font-size: 12px;
+                    line-height: 14px;
+                    color: #b1b1b1;
+                }
+
+                .kst-map-page-filter-bar-section-choose-price-input-actions-apply {
+                    display: block;
+                    cursor: pointer;
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 14px;
+                    color: #aad4d2;
+                }
+            }
+        }
+    }
+
+    .kst-map-page-filter-bar-section-more-filters {
+
+        @media only screen and (max-width: 768px) {
+            display: flex;
+            justify-content: center;
+        }
+
+        .kst-map-page-filter-bar-section-more-filters-toggle {
+            @include standard-button-style;
+
+            @media only screen and (max-width: 768px) {
+                width: 100%;
+                background-color: transparent;
+                border-radius: unset;
+                border-width: 0px;
+                font-weight: 300;
+                font-size: 12px;
+                line-height: 12px;
+            }
+        }
+
+        .kst-map-page-filter-bar-section-more-filters-inputs {
+            position: absolute;
+            top: 40px;
+            display: flex;
+            flex-flow: column;
+            padding: 15px;
+            width: 370px;
+            height: 420px;
+            background: #fcfaf8;
+            border: 1px solid #000;
+            border-radius: 10px;
+            overflow: hidden;
+            z-index: 500;
+
+            .kst-map-page-filter-bar-section-more-filters-inputs-lists {
+                display: flex;
+                flex-flow: column;
+                width: 100%;
+                height: 342px;
+                overflow: auto;
+
+                &::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: transparent;
+                    color: #000;
+                }
+
+                .kst-map-page-filter-bar-section-more-filters-inputs-list-1 {
+                    display: flex;
+                    flex-flow: column;
+                    width: 100%;
+                    height: auto;
+                }
+
+                .kst-map-page-filter-bar-section-more-filters-inputs-list-2 {
+                    display: grid;
+                    grid-template-rows: repeat(2, auto);
+
+                    .kst-map-page-filter-bar-section-more-filters-inputs-list-2-header {
+                        display: block;
+                        margin-bottom: 22px;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 14px;
+                    }
+
+                    .kst-map-page-filter-bar-section-more-filters-inputs-list-2-items {
+                        display: grid;
+                        grid-template-columns: repeat(2, 50%);
+                        width: 100%;
+                        height: auto;
+                        border-bottom: 1px solid #000;
+
+                        .kst-map-page-filter-bar-section-more-filters-inputs-list-2-item {
+                            display: flex;
+                            margin-bottom: 17px;
+
+                            .kst-map-page-filter-bar-section-more-filters-inputs-list-2-item-toggle {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                width: 1em;
+                                height: 1em;
+                                border: 1px solid #000;
+                                border-radius: 100%;
+                                cursor: pointer;
+
+                                .kst-map-page-filter-bar-section-more-filters-inputs-list-2-item-toggle-inner-circle {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    background: #aad4d2;
+                                    width: 100%;
+                                    height: 100%;
+                                    border-radius: 100%;
+                                    overflow: hidden;
+                                }
+                            }
+
+                            .kst-map-page-filter-bar-section-more-filters-inputs-list-2-item-label {
+                                margin-left: 5px;
+                                text-align: left;
+                                white-space: nowrap;
+                                font-weight: 300;
+                                font-size: 14px;
+                                line-height: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .kst-map-page-filter-bar-section-more-filters-inputs-actions {
+                display: flex;
+                flex-flow: column;
+                width: 100%;
+                height: 78px;
+                margin-top: 25px;
+                justify-content: flex-start;
+                align-items: center;
+
+                .kst-map-page-filter-bar-section-more-filters-inputs-actions-show-listings {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-bottom: 4px;
+                    width: 100%;
+                    height: 50px;
+                    background: #aad4d2;
+                    color: #000;
+                    border: 1px solid #000;
+                    border-radius: 100px;
+                    font-size: 14px;
+                    letter-spacing: 1px;
+                    font-weight: 500;
+                    cursor: pointer;
+                }
+
+                .kst-map-page-filter-bar-section-more-filters-inputs-actions-clear-all {
+                    font-size: 12px;
+                    line-height: 14px;
+                    color: #b1b1b1;
+                    background-color: transparent;
+                    border: 0;
+                    margin: 2vh 0 0;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,282 @@
+#kst-desktop-header {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 30px 0px 0px;
+  width: 100%;
+  height: auto;
+  min-height: 60px;
+  transition: all 250ms ease-in;
+  letter-spacing: 1px;
+  transform: translateX(-3px);
+
+  &.isScrolled {
+    background: rgba(29, 25, 25, 0.5);
+
+    &.light-theme {
+      background: hsla(0, 0%, 100%, 0.75) !important;
+      backdrop-filter: blur(7.5px) !important;
+    }
+  }
+
+  .kst-desktop-header-home-link {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 1px;
+    width: auto;
+    height: auto;
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 300;
+    cursor: pointer;
+
+    .kst-desktop-header-home-link-img {
+      box-sizing: border-box;
+      height: 75px;
+      width: 75px;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 0 2px 1px slategrey;
+      margin: 5px 0 5px 10px;
+    }
+
+    &.light-theme {
+      color: #000;
+    }
+  }
+
+  .kst-desktop-header-navigation {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 680px;
+    height: 50px;
+    border-radius: 50px;
+    background: rgba(29, 25, 25, 0.5);
+    color: whitesmoke;
+    transition: all 250ms ease-in;
+
+    &.light-theme {
+      background: #fff;
+      color: #000;
+      border: 1px solid #000;
+    }
+
+    &.isScrolled {
+      background: transparent;
+
+      &.light-theme {
+        border-width: 0px;
+      }
+    }
+
+    .kst-desktop-header-navigation-browse-rentals {
+      box-sizing: border-box;
+      display: flex;
+
+      .kst-desktop-header-navigation-browse-rentals-button {
+        display: flex;
+        cursor: pointer;
+
+        .kst-desktop-header-navigation-browse-rentals-title {
+          margin-right: 5px;
+        }
+
+        .kst-desktop-header-navigation-browse-rentals-toggle {
+          i {
+            transition: all 250ms linear;
+          }
+        }
+      }
+
+      .kst-desktop-header-navigation-browse-rentals-dropdown {
+        position: absolute;
+        top: 44px;
+        left: 0;
+        display: none;
+        flex-flow: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        backdrop-filter: blur(7.5px);
+        border-radius: 20px;
+        background: rgba(29, 25, 25, 0.5);
+        transition: all 500ms linear;
+        text-wrap: nowrap;
+        overflow: visible;
+        z-index: 3;
+
+        &.is-open {
+          display: flex;
+        }
+
+        a {
+          width: 100%;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          padding-left: 25px;
+          padding-right: 25px;
+          text-decoration: none;
+
+          &:hover {
+            background: hsla(120, 7%, 55%, 0.1);
+          }
+        }
+      }
+    }
+
+    .kst-desktop-header-navigation-list-rentals {
+      box-sizing: border-box;
+      display: flex;
+
+      .kst-desktop-header-navigation-list-rentals-button {
+        display: flex;
+        cursor: pointer;
+
+        .kst-desktop-header-navigation-list-rentals-title {
+          margin-right: 5px;
+        }
+
+        .kst-desktop-header-navigation-list-rentals-toggle {
+          i {
+            transition: all 250ms linear;
+          }
+        }
+      }
+
+      .kst-desktop-header-navigation-list-rentals-dropdown {
+        position: absolute;
+        top: 44px;
+        left: 0;
+        display: none;
+        flex-flow: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: 20px;
+        background: rgba(29, 25, 25, 0.5);
+        transition: all 500ms linear;
+        text-wrap: nowrap;
+        overflow: hidden;
+
+        &.is-open {
+          display: flex;
+        }
+
+        a {
+          width: 100%;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          padding-left: 25px;
+          padding-right: 25px;
+          text-decoration: none;
+
+          &:hover {
+            background: hsla(120, 7%, 55%, 0.1);
+          }
+        }
+      }
+    }
+
+    .kst-desktop-header-navigation-blog {
+      text-decoration: none;
+      color: whitesmoke;
+
+      &.light-theme {
+        color: #000;
+      }
+    }
+
+    .kst-desktop-header-navigation-contact {
+      box-sizing: border-box;
+      display: flex;
+      padding-top: 5px;
+
+      .kst-desktop-header-navigation-call {
+        margin-right: 25px;
+
+        i {
+          display: flex;
+          font-size: 20px;
+          transition: all 500ms linear;
+          cursor: pointer;
+        }
+
+        .kst-desktop-header-navigation-call-info {
+          display: none;
+          color: rgba(0, 0, 0, 0);
+          text-decoration: none;
+          font-size: 10px;
+          font-weight: 500;
+          letter-spacing: 1px;
+          line-height: 24px;
+          transition: all 500ms linear;
+        }
+      }
+
+      .kst-desktop-header-navigation-email {
+        i {
+          display: flex;
+          font-size: 20px;
+          transition: all 500ms linear;
+          cursor: pointer;
+        }
+
+        .kst-desktop-header-navigation-email-info {
+          display: none;
+          color: rgba(0, 0, 0, 0);
+          text-decoration: none;
+          font-size: 10px;
+          font-weight: 500;
+          letter-spacing: 1px;
+          line-height: 24px;
+          transition: all 500ms linear;
+        }
+      }
+    }
+  }
+
+  .kst-desktop-header-login-signup {
+    box-sizing: border-box;
+    display: flex;
+
+    .kst-desktop-header-logout {
+      color: darkorange;
+      text-decoration: none;
+      cursor: pointer;
+
+      &.light-theme {
+        color: #000;
+      }
+    }
+
+    .kst-desktop-header-login {
+      margin-right: 15px;
+      color: whitesmoke;
+      text-decoration: none;
+      cursor: pointer;
+
+      &.light-theme {
+        color: #000;
+      }
+    }
+
+    .kst-desktop-header-signup {
+      color: darkcyan;
+      text-decoration: none;
+      cursor: pointer;
+
+      &.light-theme {
+        color: #000;
+      }
+    }
+  }
+}

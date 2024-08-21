@@ -1,26 +1,50 @@
 {
-  "name": "krispee-cleen-services-theme",
+  "name": "modern-hostels-theme",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "ssl-dev": "node app/generalFunctions/runSSLServer.js",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-secret": "npx auth secret",
+    "ssl:setup": "node app/generalFunctions/createSSLCert.js"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^0.0.42",
+    "@auth0/nextjs-auth0": "^3.5.0",
+    "@react-google-maps/api": "^2.19.3",
+    "@types/ua-parser-js": "^0.7.39",
+    "ai": "^3.3.2",
+    "cookie-parser": "^1.4.6",
+    "csurf": "^1.11.0",
+    "devcert": "^1.2.2",
+    "he": "^1.2.0",
+    "next": "14.2.5",
+    "next-auth": "5.0.0-beta.20",
+    "next-connect": "^1.0.0",
+    "openai": "^4.55.0",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.5"
+    "react-square-web-payments-sdk": "^3.2.1",
+    "sass": "^1.77.8",
+    "square": "^37.1.1",
+    "string-strip-html": "^13.4.8",
+    "ua-parser-js": "^1.0.38"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@types/cookie-parser": "^1.4.7",
+    "@types/csurf": "^1.11.5",
+    "@types/google.maps": "^3.55.12",
+    "@types/grecaptcha": "^3.0.9",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.5"
+    "typescript": "^5"
   }
 }

@@ -1,0 +1,144 @@
+.kst-property-page-overview-info {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+
+    .kst-property-page-overview-info-title {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 20px;
+        width: 100%;
+        font-weight: 400;
+        font-size: 50px;
+        letter-spacing: 1px;
+
+        @media only screen and (max-width: 768px) {
+            font-size: 30px;
+        }
+    }
+
+    .kst-property-page-overview-info-snapshots {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+
+        @media only screen and (max-width: 768px) {
+            grid-template-columns: 100%;
+        }
+
+        .kst-property-page-overview-info-snapshot {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+    }
+
+    .kst-property-page-overview-info-about-the-space {
+        display: flex;
+        flex-flow: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-bottom: 25px;
+
+        .kst-property-page-overview-info-about-the-space-title {
+            display: block;
+            margin-bottom: 15px;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 20px;
+        }
+
+        .kst-property-page-overview-info-about-the-space-summary {
+            display: block;
+            width: 100%;
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 20px;
+            letter-spacing: 1px;
+        }
+    }
+
+    .kst-property-page-overview-info-features {
+        display: flex;
+        flex-flow: column;
+        width: 100%;
+        justify-content: flex-start;
+
+        .kst-property-page-overview-info-features-header {
+            display: block;
+            margin-bottom: 15px;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 20px;
+        }
+
+        .kst-property-page-overview-info-features-amenities-summary {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            font-weight: 300;
+            font-size: 12px;
+            letter-spacing: 1px;
+            line-height: 20px;
+        }
+
+        .kst-property-page-overview-info-features-workstation-summary {
+            width: 100%;
+            font-weight: 300;
+            font-size: 12px;
+            letter-spacing: 1px;
+            line-height: 20px;
+        }
+
+        .kst-property-page-overview-info-features-workstation-list {
+            display: flex;
+            flex-flow: column;
+
+            .kst-property-page-overview-info-features-workstation-list-item {
+                font-weight: 300;
+                font-size: 12px;
+                line-height: 20px;
+            }
+        }
+
+        .kst-property-page-overview-info-features-amenities-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 16px;
+            row-gap: 28px;
+            margin-top: 30px;
+            width: 100%;
+
+            @media only screen and (max-width: 768px) {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .kst-property-page-overview-info-features-amenities-list-item {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                .kst-property-page-overview-info-features-amenities-list-item-icon {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 25px;
+                    height: 25px;
+                    font-size: 20px;
+                    object-fit: contain;
+                    overflow: hidden;
+                }
+
+                .kst-property-page-overview-info-features-amenities-list-item-name {
+                    display: block;
+                    margin-left: 17px;
+                    text-transform: capitalize;
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 30px;
+                }
+            }
+        }
+    }
+}

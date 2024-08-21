@@ -1,0 +1,248 @@
+.kst-map-page-properties-section-list-item {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 182px;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-color: hsla(0, 0%, 100%, 0.5);
+  overflow: hidden;
+  cursor: pointer;
+
+  @media only screen and (max-width: 768px) {
+    flex-flow: column;
+    height: auto;
+    padding: 0px;
+    padding-bottom: 15px;
+    border-width: 0px;
+    border-radius: unset;
+    background-color: transparent;
+  }
+
+  .kst-map-page-properties-section-list-item-image-date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 242px;
+    height: 100%;
+    object-fit: contain;
+    overflow: hidden;
+
+    @media only screen and (max-width: 768px) {
+      padding-bottom: 50%;
+      width: 100%;
+      height: auto;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+
+      @media only screen and (max-width: 768px) {
+        top: 0px;
+        position: absolute;
+      }
+    }
+
+    .kst-map-page-properties-section-list-item-date {
+      position: absolute;
+      right: 4px;
+      top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 5px;
+      width: auto;
+      height: 16px;
+      background: #aad4d2;
+      border-radius: 100px;
+      z-index: 0;
+      color: #1d1919;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 10px;
+    }
+
+    .kst-map-page-properties-section-list-item-image-navigation {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      display: flex;
+      width: -moz-max-content;
+      width: max-content;
+      height: 29px;
+      z-index: 0;
+
+      .kst-map-page-properties-section-list-item-image-navigation-prev {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        width: 45px;
+        height: 29px;
+        background: hsla(26, 33%, 96%, 0.3);
+        border: none;
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        &:hover {
+          background: hsla(26, 33%, 96%, 0.5);
+        }
+      }
+
+      .kst-map-page-properties-section-list-item-image-navigation-next {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        width: 45px;
+        height: 29px;
+        background: hsla(26, 33%, 96%, 0.3);
+        border: none;
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        &:hover {
+          background: hsla(26, 33%, 96%, 0.5);
+        }
+      }
+    }
+  }
+
+  .kst-map-page-properties-section-list-item-info {
+    display: flex;
+    flex-flow: column;
+    padding-left: 15px;
+    width: calc(100% - 262px);
+    height: 100%;
+
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      height: auto;
+    }
+
+    .kst-map-page-properties-section-list-item-name {
+      display: block;
+      font-size: 16px;
+      line-height: 16px;
+      text-align: left;
+      margin: 8px 0;
+    }
+
+    .kst-map-page-properties-section-list-item-location {
+      display: block;
+      font-size: 12px;
+      line-height: 14px;
+      text-align: left;
+    }
+
+    .kst-map-page-properties-section-list-item-rating {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .kst-map-page-properties-section-list-item-specs-price {
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 100%;
+      height: 34px;
+
+      @media only screen and (max-width: 768px) {
+        position: static;
+        margin-top: 10px;
+        height: auto;
+      }
+
+      .kst-map-page-properties-section-list-item-spec {
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: auto;
+        height: 100%;
+        padding-right: 12px;
+
+        .kst-map-page-properties-section-list-item-spec-name {
+          display: flex;
+          font-size: 9px;
+          line-height: 9px;
+          color: #aaa;
+          padding-right: 13px;
+        }
+
+        .kst-map-page-properties-section-list-item-spec-number {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          width: 100%;
+          font-size: 14px;
+          line-height: 9px;
+          padding: 8px 0;
+          border-right: 1px solid #b7b7b7;
+        }
+      }
+
+      .kst-map-page-properties-section-list-item-price {
+        flex: 1 1 auto;
+        position: absolute;
+        right: 0;
+        display: flex;
+        flex-flow: column;
+
+        @media only screen and (max-width: 768px) {
+          margin-right: 5px;
+        }
+
+        .kst-map-page-properties-section-list-item-price-header {
+          margin-bottom: 2px;
+          color: #859485;
+          font-size: 8px;
+          font-weight: 500;
+          text-align: left;
+          line-height: 8px;
+
+          @media only screen and (max-width: 768px) {
+            margin-bottom: 4px;
+            line-height: 10px;
+          }
+        }
+
+        .kst-map-page-properties-section-list-item-price-number {
+          font-size: 22px;
+          font-weight: 500;
+          line-height: 22px;
+          color: #859485;
+        }
+      }
+    }
+  }
+
+  .kst-map-page-properties-section-view-page {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    box-shadow: inset 0px 0px 2px 1px #1d1919;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 5px;
+    font-size: 500;
+    letter-spacing: 1px;
+    transition: all 250ms ease-in-out;
+
+    &:hover {
+      background-color: #1d1919;
+      color: whitesmoke;
+      box-shadow: inset 0px 0px 2px 1px whitesmoke;
+    }
+  }
+}

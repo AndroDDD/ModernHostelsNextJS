@@ -1,0 +1,40 @@
+#kst-list-property-page-single-review-section {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 125vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media only screen and (max-width: 768px) {
+        height: auto;
+        padding: 15vh 3%;
+    }
+
+    .kst-list-property-page-single-review-section-statement {
+        display: block;
+        margin: 0 0 20px;
+        font-size: 30px;
+        line-height: 40px;
+        letter-spacing: 1px;
+        text-align: center;
+        max-width: 934px;
+        color: #fff;
+
+        @media only screen and (max-width: 768px) {
+            font-size: 15px;
+            line-height: 20px;
+        }
+    }
+
+    .kst-list-property-page-single-review-section-from {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: 1px;
+        color: #fff;
+    }
+}

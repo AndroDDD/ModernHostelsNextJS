@@ -1,0 +1,14 @@
+#kst-main-header {
+    position: fixed;
+    top: 0%;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: auto;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    transition: all 5s linear;
+    z-index: 1000;
+}

@@ -1,0 +1,45 @@
+.kst-check-in-out-calendar-month-day.blocked {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: #ececec;
+    color: #d6d6d6;
+    border: 0.5px solid #d6d6d6;
+    cursor: default;
+
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+    }
+
+    .kst-check-in-out-calendar-month-day-index-number {
+        display: block;
+        text-align: center;
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 22px;
+    }
+
+    .kst-check-in-out-calendar-month-day-price {
+        display: block;
+        text-align: center;
+
+        .kst-check-in-out-calendar-month-day-price-static {
+            display: inherit;
+            text-align: inherit;
+            font-weight: 500;
+            font-size: 10px;
+            line-height: 10px;
+        }
+
+        .kst-check-in-out-calendar-month-day-price-dynamic {
+            display: inherit;
+            text-align: inherit;
+            font-weight: 500;
+            font-size: 10px;
+            line-height: 10px;
+        }
+    }
+}

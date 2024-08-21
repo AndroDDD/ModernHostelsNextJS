@@ -1,0 +1,300 @@
+#kst-checkout-order-review-section {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  padding: 0 5vw;
+  justify-content: space-between;
+
+  .kst-order-review-property-details {
+    box-sizing: border-box;
+    display: flex;
+    width: calc(60% - 5px);
+    height: max-content;
+    border-radius: 10px;
+    border: 1px solid #d4d4d4;
+    background: whitesmoke;
+    box-shadow: 0 0 8px 0 hsla(0, 0%, 81%, 0.25), 0 4px 25px 0 #f5f5f5;
+    overflow: hidden;
+    padding: 24px;
+
+    .kst-order-review-property-image {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 2px 1px #878787;
+
+      img {
+      }
+    }
+
+    .kst-order-review-property-stats {
+      box-sizing: border-box;
+      display: flex;
+      width: 100%;
+      height: fit-content;
+      padding: 15px 0;
+      flex-wrap: wrap;
+      padding-left: 20px;
+
+      .kst-order-review-property-name {
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        margin-bottom: 15px;
+      }
+
+      .kst-order-review-property-stat {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .kst-order-review-property-stat-number {
+          font-size: 15px;
+          font-weight: 300;
+          margin-right: 3px;
+        }
+
+        .kst-order-review-property-stat-name {
+          font-size: 12px;
+          font-weight: 400;
+        }
+      }
+
+      .kst-dot {
+        margin: 0 5px;
+      }
+    }
+  }
+
+  .kst-order-review-order-details {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    width: calc(40% - 5px);
+    height: max-content;
+    border-radius: 10px;
+    border: 1px solid #d4d4d4;
+    background: whitesmoke;
+    box-shadow: 0 0 8px 0 hsla(0, 0%, 81%, 0.25), 0 4px 25px 0 #f5f5f5;
+    overflow: hidden;
+    margin-bottom: 50px;
+
+    .kst-order-review-order-dates {
+      box-sizing: border-box;
+      display: flex;
+      padding: 24px;
+      justify-content: space-around;
+      align-items: center;
+      box-shadow: 0 1px 2px 3px #878787;
+      margin-bottom: 30px;
+
+      .kst-order-review-order-date {
+        box-sizing: border-box;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        .kst-order-review-order-date-header {
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          margin-bottom: 10px;
+        }
+
+        .kst-order-review-order-date-time {
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 14px;
+        }
+      }
+    }
+
+    .kst-book-now-form-totals {
+      display: flex;
+      flex-flow: column;
+      padding: 0 16px 27px;
+
+      .kst-book-now-form-totals-subtotal {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 7px;
+        width: 100%;
+
+        .kst-book-now-form-totals-subtotal-label {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 14px;
+        }
+
+        .kst-book-now-form-totals-subtotal-number {
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+        }
+      }
+
+      .kst-book-now-form-totals-taxes-fees {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        .kst-book-now-form-totals-taxes-fees-label {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+
+          .kst-book-now-form-totals-taxes-fees-label-text {
+            margin-right: 4px;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 14px;
+          }
+
+          .kst-book-now-form-totals-taxes-fees-label-toggle {
+            top: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 250ms ease-in;
+            transform: rotate(-90deg);
+
+            i {
+              font-size: 9px;
+            }
+          }
+        }
+
+        .kst-book-now-form-totals-taxes-fees-number {
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+        }
+      }
+
+      .kst-book-now-form-totals-taxes-fees-expanded {
+        display: none;
+        flex-flow: column;
+        justify-content: flex-start;
+        width: 100%;
+        transition: all 250ms ease-in;
+
+        .kst-book-now-form-totals-taxes-fees-expanded-item {
+          display: flex;
+          justify-content: space-between;
+          padding: 5px 5px 2px;
+          width: 100%;
+          color: #878787;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 14px;
+
+          .kst-book-now-form-totals-taxes-fees-expanded-item-label {
+          }
+
+          .kst-book-now-form-totals-taxes-fees-expanded-item-number {
+          }
+        }
+      }
+
+      .kst-book-now-form-totals-due {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 12px;
+        width: 100%;
+        font-size: 14px;
+        line-height: 14px;
+
+        .kst-book-now-form-totals-due-label {
+          font-weight: 500;
+        }
+
+        .kst-book-now-form-totals-due-number {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  .kst-order-review-contact-details {
+    position: absolute;
+    bottom: -25px;
+    right: calc(5vw);
+    width: calc(40% - 5vw + 10px);
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    height: max-content;
+    border-radius: 10px;
+    border: 1px solid #d4d4d4;
+    background: whitesmoke;
+    box-shadow: 0 0 8px 0 hsla(0, 0%, 81%, 0.25), 0 4px 25px 0 #f5f5f5;
+    overflow: hidden;
+    z-index: 15;
+
+    .kst-order-review-contact-input {
+      display: flex;
+      padding: 2px 5px;
+      align-items: center;
+      justify-self: start;
+
+      label {
+        margin-right: 4px;
+        font-weight: 500;
+      }
+
+      input {
+        display: flex;
+        align-items: center;
+        border: 1px solid hsla(0, 0%, 81%, 0.25);
+        border-radius: 10px;
+        width: 100%;
+        padding: 3px 7px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .kst-order-review-payment-button {
+    position: absolute;
+    bottom: -65px;
+    right: calc(5vw + 5px);
+    width: calc(40% - 5vw);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 1px 2px lightgreen, 0 0 8px 0 hsla(0, 0%, 81%, 0.25),
+      0 4px 25px 0 #f5f5f5;
+    border: 1px solid lime;
+    color: lightgreen;
+    background: rgb(0, 0, 0);
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    padding: 2px;
+    border-radius: 5px;
+    transition: all 250ms ease-in-out;
+    text-shadow: 1px 1px #87878783;
+    z-index: 15;
+
+    &:hover {
+      background: lightgreen;
+      color: black;
+      box-shadow: 0 0 3px 4px darkgreen, inset 0 0 1px 1px lime;
+    }
+  }
+}

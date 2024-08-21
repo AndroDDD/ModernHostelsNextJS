@@ -1,0 +1,101 @@
+#kst-home-two-link-call-to-action-section {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    background: #1d1919;
+
+    .kst-home-two-link-call-to-action-section-title {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        color: #c3beb4;
+        font-weight: 400;
+        font-size: 60px;
+        line-height: 120%;
+        text-align: center;
+        letter-spacing: 1px;
+
+        @media only screen and (max-width: 768px) {
+            font-size: 35px;
+        }
+    }
+
+    .kst-home-two-link-call-to-action-section-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+        width: 100%;
+        height: auto;
+
+        @media only screen and (max-width: 768px) {
+            padding: 0 3%;
+            flex-flow: column;
+        }
+
+        .kst-home-two-link-call-to-action-section-links-1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 13px;
+            padding: 0 25px 0 25px;
+            width: auto;
+            height: 50px;
+            background: whitesmoke;
+            border: 2px solid whitesmoke;
+            border-radius: 50px;
+            color: #1d1919;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 100ms;
+            cursor: pointer;
+
+            @media only screen and (max-width: 768px) {
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+                width: 94%;
+                margin-right: 0px;
+                margin-bottom: 15px;
+            }
+
+            &:hover {
+                background: #1d1919;
+                color: whitesmoke;
+            }
+        }
+
+        .kst-home-two-link-call-to-action-section-links-2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 25px 0 25px;
+            width: auto;
+            height: 50px;
+            background: #1d1919;
+            border: 2px solid whitesmoke;
+            border-radius: 50px;
+            color: whitesmoke;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 100ms;
+            cursor: pointer;
+
+            @media only screen and (max-width: 768px) {
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+                width: 93%;
+            }
+
+            &:hover {
+                background: #1d1919;
+                color: whitesmoke;
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+.kst-property-page-review-stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .kst-property-page-review-star {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 5px;
+
+        i {
+            font-size: 10px;
+            color: #70c5c1;
+        }
+    }
+}

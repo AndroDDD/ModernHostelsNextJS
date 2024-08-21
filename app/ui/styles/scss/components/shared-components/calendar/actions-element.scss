@@ -1,0 +1,77 @@
+.kst-check-in-out-calendar-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 15px 0 0;
+    width: 100%;
+    height: auto;
+
+    &.compact {
+        justify-content: space-between;
+        padding: 5px 0 0;
+        width: calc(100% - 48px);
+    }
+
+    .kst-check-in-out-calendar-actions-clear-dates {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+        color: #aad4d2;
+        font-weight: 500;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 125ms ease-in;
+
+        &:hover {
+            opacity: .5;
+        }
+    }
+
+    .kst-check-in-out-calendar-actions-apply {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #aad4d2;
+        color: #000;
+        border: 1px solid #000;
+        border-radius: 100px;
+        width: 91px;
+        height: 32px;
+        min-height: 32px;
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        opacity: .5;
+        cursor: not-allowed;
+
+        &.compact {
+            background: transparent;
+            border: none;
+            width: auto;
+            height: auto;
+            min-width: unset;
+            min-height: unset;
+            color: #aad4d2;
+            font-weight: 500;
+            letter-spacing: unset;
+            opacity: .5;
+        }
+
+        &.enabled {
+            opacity: 1;
+            transition: all 250ms ease-in;
+            cursor: pointer;
+
+            &:hover {
+                background: #000;
+                color: #fff;
+
+                &.compact {
+                    background: none;
+                    color: #aad4d2;
+                }
+            }
+        }
+    }
+}

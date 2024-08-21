@@ -1,0 +1,26 @@
+.kst-check-in-out-calendar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 17px;
+  width: 700px;
+  height: auto;
+  box-shadow: 0 10px 10px 10px hsla(0, 0%, 71%, 0.25);
+  border: 1px solid #1d1919;
+  border-radius: 10px;
+  background: white;
+  overflow: hidden;
+
+  &.compact {
+    flex-flow: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: 325px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
+}

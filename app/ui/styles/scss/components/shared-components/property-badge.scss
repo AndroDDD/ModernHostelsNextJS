@@ -1,0 +1,210 @@
+.kst-property-badge {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+
+  .kst-property-badge-images-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 75%;
+    overflow: hidden;
+
+    .kst-property-badge-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      max-height: 100%;
+      overflow: hidden;
+      will-change: contents;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+        height: 100%;
+        transition: all 500ms ease-out;
+        will-change: contents;
+        object-fit: cover;
+
+        &:hover {
+          width: 200%;
+          height: 200%;
+        }
+      }
+    }
+
+    .kst-property-badge-images-navigation {
+      display: flex;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: -moz-max-content;
+      width: max-content;
+      height: 29px;
+      z-index: 1;
+
+      .kst-property-badge-images-navigation-prev {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        width: 45px;
+        height: 29px;
+        background: hsla(26, 33%, 96%, 0.3);
+        border: none;
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        &:hover {
+          background: hsla(26, 33%, 96%, 0.5);
+        }
+      }
+
+      .kst-property-badge-images-navigation-next {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        width: 45px;
+        height: 29px;
+        background: hsla(26, 33%, 96%, 0.3);
+        border: none;
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        &:hover {
+          background: hsla(26, 33%, 96%, 0.5);
+        }
+      }
+    }
+  }
+
+  .kst-property-badge-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 25%;
+    background-color: rgb(47, 42, 42);
+    color: whitesmoke;
+    text-decoration: none !important;
+    cursor: pointer;
+
+    .kst-property-badge-info-left {
+      box-sizing: border-box;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-top: 9px;
+      padding-left: 10px;
+      width: 60%;
+      height: 100%;
+
+      .kst-property-badge-info-left-name {
+        display: -webkit-box;
+        width: 100%;
+        height: 50%;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        white-space: normal;
+        text-overflow: ellipsis;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 16px;
+        overflow: hidden;
+      }
+
+      .kst-property-badge-info-left-price {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        height: 50%;
+        font-size: 10px;
+      }
+    }
+
+    .kst-property-badge-info-right {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 9px;
+      width: 40%;
+      height: 100%;
+      font-size: 12px;
+
+      .kst-property-badge-info-beds {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        margin-right: 5px;
+        justify-content: center;
+        align-items: center;
+
+        .kst-property-badge-info-beds-title {
+        }
+
+        .kst-property-badge-info-beds-quantity {
+          text-decoration: none;
+        }
+      }
+
+      .kst-property-badge-info-baths {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        margin-right: 5px;
+        justify-content: center;
+        align-items: center;
+
+        .kst-property-badge-info-baths-title {
+        }
+
+        .kst-property-badge-info-baths-quantity {
+        }
+      }
+
+      .kst-property-badge-info-offices {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .kst-property-badge-info-offices-title {
+        }
+
+        .kst-property-badge-info-offices-quantity {
+        }
+      }
+    }
+  }
+
+  .kst-property-badge-available-date {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px 4px 0px 4px;
+    width: auto;
+    height: 14px;
+    border-radius: 50px;
+    color: black;
+    background: cadetblue;
+    font-size: 10px;
+  }
+}

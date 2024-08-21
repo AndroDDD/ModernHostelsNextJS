@@ -1,0 +1,207 @@
+.kst-property-location-slide-section {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: 175px 60px 100px;
+  background: #ddd;
+
+  @media only screen and (max-width: 768px) {
+    padding: 35px 3% 50px;
+  }
+
+  .kst-property-location-slide-section-header {
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 70px;
+    letter-spacing: 1px;
+    margin: 0 0 40px;
+    color: black;
+    font-weight: 500;
+    letter-spacing: 1px;
+
+    @media only screen and (max-width: 768px) {
+      margin-bottom: 20px;
+      font-size: 25px;
+      line-height: 25px;
+    }
+  }
+
+  .kst-property-location-slide-section-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    height: 728px;
+
+    @media only screen and (max-width: 768px) {
+      height: auto;
+    }
+
+    .kst-property-location-slide-section-content-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60%;
+      height: 100%;
+      object-fit: contain;
+      overflow: hidden;
+
+      @media only screen and (max-width: 768px) {
+        width: 100%;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .kst-property-location-slide-section-content-title-summary {
+      display: flex;
+      flex-flow: column;
+      width: 30%;
+      height: 100%;
+      overflow: hidden;
+
+      @media only screen and (max-width: 768px) {
+        width: 100%;
+      }
+
+      .kst-property-location-slide-section-content-title {
+        display: flex;
+        width: 100%;
+        margin: 0 0 9px 34px;
+        text-wrap: wrap;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 25px;
+        letter-spacing: 1px;
+        color: black;
+
+        @media only screen and (max-width: 768px) {
+          justify-content: center;
+          align-items: center;
+          padding-top: 10px;
+          margin: 0;
+          background: #1d1919;
+          color: #fff;
+          text-align: center;
+        }
+      }
+
+      .kst-property-location-slide-section-content-summary {
+        display: flex;
+        width: 100%;
+        background: #1d1919;
+        box-sizing: border-box;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 21px;
+        letter-spacing: 1px;
+        color: #fff;
+        overflow: auto;
+
+        p {
+          width: 100%;
+          height: auto;
+          max-height: 100%;
+          margin: 8vh 34px 8vh;
+
+          @media only screen and (max-width: 768px) {
+            margin: 5% 10% 5%;
+          }
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: #fff;
+        }
+      }
+    }
+
+    .kst-property-location-slide-section-content-navigation {
+      display: flex;
+      flex-flow: column;
+      width: 10%;
+
+      @media only screen and (max-width: 768px) {
+        flex-flow: row;
+        width: 100%;
+        height: 10vh;
+      }
+
+      .kst-property-location-slide-section-content-navigation-index-tracker {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        @media only screen and (max-width: 768px) {
+          display: none;
+        }
+
+        span {
+          font-size: 24px;
+        }
+      }
+
+      .kst-property-location-slide-section-content-navigation-prev {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 25px;
+        width: 100%;
+        height: 100px;
+        border: 1px solid black;
+        font-size: 50px;
+        stroke-width: 0.75px;
+        fill: none;
+        overflow: hidden;
+        cursor: pointer;
+
+        @media only screen and (max-width: 768px) {
+          width: 50%;
+          height: 100%;
+        }
+
+        svg {
+          width: inherit;
+          height: inherit;
+          font-size: inherit;
+          stroke-width: inherit;
+        }
+      }
+
+      .kst-property-location-slide-section-content-navigation-next {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 25px;
+        width: 100%;
+        height: 100px;
+        border: 1px solid black;
+        font-size: 25px;
+        stroke-width: 0.75px;
+        fill: none;
+        overflow: hidden;
+        cursor: pointer;
+
+        @media only screen and (max-width: 768px) {
+          width: 50%;
+          height: 100%;
+        }
+
+        svg {
+          width: inherit;
+          height: inherit;
+          font-size: inherit;
+          stroke-width: inherit;
+        }
+      }
+    }
+  }
+}

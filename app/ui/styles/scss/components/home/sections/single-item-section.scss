@@ -1,0 +1,148 @@
+.kst-home-single-item-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 50px 25px 50px 75px;
+    width: 100%;
+    height: auto;
+    background: #1d1919;
+    overflow: hidden;
+
+    @media only screen and (max-width: 768px) {
+        flex-flow: column;
+        align-items: center;
+        padding: 50px 3%;
+    }
+
+    .kst-home-single-item-section-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: calc(100% - 360px);
+        height: auto;
+        border-radius: 10px;
+        overflow: hidden;
+        object-fit: contain;
+
+        @media only screen and (max-width: 768px) {
+            width: 100%;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .kst-home-single-item-section-details {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 235px;
+        height: auto;
+        margin-left: 25px;
+
+        @media only screen and (max-width: 768px) {
+            width: 100%;
+            margin-left: 0px;
+            align-items: center;
+        }
+
+        .kst-home-single-item-section-details-summary {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+            height: auto;
+            color: whitesmoke;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 1px;
+
+            @media only screen and (max-width: 768px) {
+                margin-top: 10px;
+            }
+        }
+
+        .kst-home-single-item-section-details-links {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: auto;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+
+            @media only screen and (max-width: 768px) {
+                display: grid;
+                grid-template-columns: auto auto;
+                column-gap: 10px;
+                justify-content: center;
+                align-items: center;
+                width: auto;
+                padding: 0 3%;
+                font-size: 12px;
+            }
+
+            .kst-home-single-item-section-details-links-view-item {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                margin-bottom: 25px;
+                padding: 0px 20px 0px 20px;
+                width: auto;
+                min-height: 50px;
+                border: 2px solid #fff;
+                border-radius: 50px;
+                background: #f8f4f1;
+                color: #1d1919;
+                text-align: start;
+                text-decoration: none;
+                transition: all 100ms;
+                cursor: pointer;
+
+                @media only screen and (max-width: 768px) {
+                    justify-content: center;
+                    margin-bottom: 0px;
+                    text-align: center;
+                    text-wrap: nowrap;
+                }
+
+                &:hover {
+                    background: #1d1919;
+                    color: #f8f4f1;
+                }
+            }
+
+            .kst-home-single-item-section-details-links-view-collection {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 0px 20px 0px 20px;
+                width: auto;
+                min-height: 50px;
+                border: 2px solid #fff;
+                border-radius: 50px;
+                background: #f8f4f1;
+                color: #1d1919;
+                text-align: start;
+                text-decoration: none;
+                transition: all 100ms;
+                cursor: pointer;
+
+                @media only screen and (max-width: 768px) {
+                    justify-content: center;
+                    text-align: center;
+                }
+
+                &:hover {
+                    background: #1d1919;
+                    color: #f8f4f1;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,148 @@
+#kst-property-page-the-neighborhood-section {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  // background: #f8f4f1;
+  background: #1d1919;
+
+  .kst-property-page-the-neighborhood-section-areas {
+    display: flex;
+    flex-flow: column;
+    padding: 45px 60px 30px;
+    width: 50%;
+
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      padding: 25px 3% 15px;
+    }
+
+    .kst-property-page-the-neighborhood-section-areas-title {
+      display: flex;
+      max-width: 100%;
+      font-weight: 400;
+      font-size: 50px;
+      line-height: 70px;
+      color: whitesmoke;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 30px;
+        line-height: 30px;
+      }
+    }
+
+    .kst-property-page-the-neighborhood-section-areas-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 15px;
+      margin-bottom: 20px;
+      width: 100%;
+
+      @media only screen and (max-width: 768px) {
+      }
+
+      .kst-property-page-the-neighborhood-section-areas-link {
+        display: block;
+        margin-right: 2vw;
+        color: #aaa;
+        text-wrap: nowrap;
+        font-weight: 500;
+        font-size: 20px;
+        transition: all 125ms ease-in-out;
+        cursor: pointer;
+
+        @media only screen and (max-width: 768px) {
+          font-size: 15px;
+        }
+
+        &:hover {
+          color: whitesmoke;
+        }
+      }
+    }
+
+    .kst-property-page-the-neighborhood-section-areas-details {
+      display: flex;
+      flex-flow: column;
+
+      @media only screen and (max-width: 768px) {
+        flex-flow: row;
+        overflow-x: auto;
+      }
+
+      .kst-property-page-the-neighborhood-section-areas-detail {
+        display: flex;
+        flex-flow: column;
+        margin-bottom: 15px;
+        width: 285px;
+        height: auto;
+        cursor: pointer;
+
+        @media only screen and (max-width: 768px) {
+          margin-right: 15px;
+        }
+
+        .kst-property-page-the-neighborhood-section-areas-detail-image {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 285px;
+          height: 180px;
+          object-fit: contain;
+          overflow: hidden;
+
+          @media only screen and (max-width: 768px) {
+            height: auto;
+            padding-bottom: 100%;
+            overflow: hidden;
+          }
+
+          img {
+            width: 100%;
+
+            @media only screen and (max-width: 768px) {
+              position: absolute;
+              top: 0%;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+
+        .kst-property-page-the-neighborhood-section-areas-detail-location {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          padding: 5px 0 0px;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 20px;
+          color: whitesmoke;
+        }
+      }
+
+      .kst-property-page-the-neighborhood-section-areas-detail-miles-away {
+        font-size: 14px;
+        font-weight: 500;
+        color: #70c5c1;
+      }
+    }
+  }
+
+  .kst-property-page-the-neighborhood-section-map {
+    display: flex;
+    width: 50%;
+    background: limegreen;
+
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      height: 50vh;
+    }
+
+    img {
+    }
+  }
+}

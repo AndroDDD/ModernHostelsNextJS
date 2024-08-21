@@ -1,0 +1,105 @@
+.kst-check-in-out-calendar-month {
+    display: flex;
+    flex-flow: column;
+    width: 310px;
+    height: auto;
+
+    &.center {
+        display: none;
+    }
+
+    &.compact {
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    @media only screen and (max-width: 768px) {
+
+        &.left {
+            display: none;
+        }
+
+        &.center {
+            display: flex;
+            width: 100%;
+        }
+
+        &.right {
+            display: none;
+        }
+    }
+
+    .kst-check-in-out-calendar-month-header {
+        display: flex;
+        align-items: center;
+        padding-bottom: 29px;
+        width: 100%;
+
+        &.compact {
+            padding-bottom: 12px
+        }
+
+        .kst-check-in-out-calendar-month-header-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 14px;
+        }
+
+        .kst-check-in-out-calendar-month-header-button {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px 5px 4px;
+            height: 20px;
+            border: 1px solid #1d1919;
+            border-radius: 5px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 5;
+
+            &:hover {
+                background: slategrey;
+            }
+        }
+    }
+
+    .kst-check-in-out-calendar-month-day-labels {
+        display: grid;
+        grid-template-columns: repeat(7, auto);
+        padding-bottom: 7px;
+
+        .kst-check-in-out-calendar-month-day-label {
+            display: block;
+            width: 44px;
+            height: 15px;
+            text-align: center;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 14px;
+
+            &.compact {
+                width: 35px;
+            }
+
+            @media only screen and (max-width: 768px) {
+                width: calc(100% / 7);
+            }
+        }
+    }
+
+    .kst-check-in-out-calendar-month-days {
+        display: grid;
+        grid-template-columns: repeat(7, auto);
+
+        @media only screen and (max-width: 768px) {
+            width: 100%;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+    }
+}

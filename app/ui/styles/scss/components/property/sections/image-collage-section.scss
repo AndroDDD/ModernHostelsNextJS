@@ -1,0 +1,121 @@
+#kst-property-page-image-collage-section {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0 25px 15px;
+    width: 100%;
+    height: auto;
+    overflow: auto;
+
+    @media only screen and (max-width: 768px) {
+        height: calc(50vh + 35px);
+    }
+
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border: 3px solid #f0beaa;
+        background-color: #ddd;
+        border-radius: 50px;
+    }
+
+    &::-webkit-scrollbar-track {
+        margin: 0 20px;
+        background: hsla(19, 59%, 76%, 0.387);
+    }
+
+    .kst-property-page-image-collage-section-1-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 855px;
+        min-width: 855px;
+        height: 580px;
+        background-color: black;
+        object-fit: contain;
+        overflow: hidden;
+
+        @media only screen and (max-width: 768px) {
+            height: 100%;
+        }
+
+        img {
+            width: auto;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .kst-property-page-image-collage-section-2-images {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 2fr;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 0px 25px;
+        width: auto;
+        height: 100%;
+        row-gap: 20px;
+
+        @media only screen and (max-width: 768px) {
+            row-gap: 10px;
+            justify-content: center;
+        }
+
+        .kst-property-page-image-collage-section-2-images-first {
+            grid-column: 1;
+            grid-row: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 420px;
+            height: 280px;
+            background-color: black;
+            object-fit: contain;
+            overflow: hidden;
+
+            @media only screen and (max-width: 768px) {
+                height: 25vh;
+            }
+
+            img {
+                width: auto;
+                height: 100%;
+                object-fit: cover;
+
+                @media only screen and (max-width: 768px) {
+                    width: 100%;
+                }
+            }
+        }
+
+        .kst-property-page-image-collage-section-2-images-second {
+            grid-column: 1;
+            grid-row: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 420px;
+            height: 280px;
+            background-color: black;
+            object-fit: contain;
+            overflow: hidden;
+
+            @media only screen and (max-width: 768px) {
+                height: 25vh;
+            }
+
+            img {
+                width: auto;
+                height: 100%;
+                object-fit: cover;
+
+                @media only screen and (max-width: 768px) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

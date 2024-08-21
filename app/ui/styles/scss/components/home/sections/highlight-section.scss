@@ -1,0 +1,58 @@
+#kst-home-highlight-section {
+    display: flex;
+    width: 100%;
+    height: max(1080px, 100vh);
+    align-self: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    will-change: contents;
+
+    @media only screen and (max-width: 768px) {
+        height: 70vh;
+    }
+
+    .kst-home-highlight-section-background-gradient {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, #1d1919 7.81%, rgba(29, 25, 25, 0) 51.04%, #1d1919 87.5%);
+    }
+
+    .kst-home-highlight-section-top {
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin: 117px 138px 0px;
+        color: whitesmoke;
+        font-weight: 400;
+        font-size: 60px;
+        line-height: 70px;
+
+        @media only screen and (max-width: 768px) {
+            justify-content: center;
+            align-items: flex-start;
+            margin: 0 10%;
+            width: 100%;
+        }
+
+        .kst-home-highlight-section-top-static {}
+
+        .kst-home-highlight-section-top-animated {
+            width: auto;
+            height: 70px;
+            overflow: hidden;
+
+            @media only screen and (max-width: 768px) {
+                height: 140px;
+            }
+
+            div {
+                transition: all 5s;
+            }
+        }
+    }
+}

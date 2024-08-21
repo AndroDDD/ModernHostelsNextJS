@@ -1,0 +1,147 @@
+#kst-property-page-reviews-section {
+    display: flex;
+    flex-flow: column;
+    padding: 30px 60px 60px;
+    width: 100%;
+    height: auto;
+
+    @media only screen and (max-width: 768px) {
+        padding: 15px 3% 15px;
+    }
+
+    .kst-property-page-reviews-section-header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        @media only screen and (max-width: 768px) {
+            justify-content: space-between;
+        }
+
+        .kst-property-page-reviews-section-header-number-of-reviews {
+            display: block;
+            margin-right: 16px;
+            font-weight: 400;
+            font-size: 50px;
+            line-height: 70px;
+
+            @media only screen and (max-width: 768px) {
+                text-wrap: nowrap;
+                font-size: 25px;
+            }
+        }
+
+        .kst-property-page-reviews-section-header-number-of-stars {
+            top: 25px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            .kst-property-page-reviews-section-header-number-of-stars-graphics {
+                display: block;
+
+                .kst-property-page-review-stars {
+
+                    .kst-property-page-review-star {
+                        width: 17px !important;
+                        overflow: hidden !important;
+                        margin-right: 0 !important;
+                        margin: 0 4px !important;
+
+                        i {
+                            font-size: 15px !important;
+                        }
+                    }
+                }
+            }
+
+            .kst-property-page-reviews-section-header-number-of-stars-text {
+                display: block;
+                margin-left: 12px;
+                color: #70c5c1;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 20px;
+
+                @media only screen and (max-width: 768px) {
+                    text-wrap: nowrap;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+
+    .kst-property-page-reviews-section-other-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 15px;
+        margin-top: 25px;
+        margin-bottom: 35px;
+        width: 50%;
+        height: auto;
+
+        @media only screen and (max-width: 768px) {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .kst-property-page-reviews-section-other-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1vh 0;
+            margin-right: 5vw;
+            min-width: 170px;
+
+            .kst-property-page-reviews-section-other-stat-name {
+                display: block;
+                font-size: 16px;
+                font-weight: 300;
+            }
+
+            .kst-property-page-reviews-section-other-stat-stars {
+                top: 1px;
+                left: 7px;
+                display: block;
+            }
+        }
+    }
+
+    .kst-property-page-reviews-section-testimonials {
+        display: flex;
+        flex-flow: column;
+        width: 575px;
+
+        @media only screen and (max-width: 768px) {
+            width: 100%;
+        }
+
+        .kst-property-page-reviews-section-testimonials-first-three {
+            display: flex;
+            flex-flow: column;
+            width: 100%;
+        }
+
+        .kst-property-page-reviews-section-testimonials-expanded {
+            display: none;
+            flex-flow: column;
+            width: 100%;
+        }
+
+        .kst-property-page-reviews-section-testimonials-expand-hide-link {
+            display: block;
+            width: 100%;
+            color: #70c5c1;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 14px;
+            cursor: pointer;
+            transition: all .2s linear;
+
+            &:hover {
+                opacity: .7;
+            }
+        }
+    }
+}

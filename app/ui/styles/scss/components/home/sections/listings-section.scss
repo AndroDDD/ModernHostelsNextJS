@@ -1,0 +1,119 @@
+#kst-home-listings-section {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 50px;
+  width: 100%;
+  height: auto;
+  background: #1d1919;
+
+  @media only screen and (max-width: 768px) {
+    padding: 0px;
+  }
+
+  .kst-home-listings-section-header {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 20px;
+    width: 100%;
+
+    @media only screen and (max-width: 768px) {
+      padding: 0 3%;
+      overflow-x: auto;
+
+      &::-webkit-scrollbar {
+        width: 0px;
+        height: 0px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: 50px;
+      }
+    }
+
+    .kst-home-listings-section-header-button {
+      box-sizing: border-box;
+      display: flex;
+      padding-bottom: 5px;
+      margin-right: 40px;
+      justify-content: center;
+      align-items: center;
+      color: whitesmoke;
+      text-align: center;
+      text-wrap: nowrap;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  }
+
+  .kst-home-listings-section-content {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 3vw;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    width: 100%;
+    overflow-x: auto;
+
+    @media only screen and (max-width: 768px) {
+      padding: 5px 3%;
+
+      &::-webkit-scrollbar {
+        width: 0px;
+        height: 0px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: 50px;
+      }
+    }
+
+    .kst-home-listings-section-content-post {
+      box-sizing: border-box;
+      display: flex;
+      width: 320px;
+      height: 290px;
+      margin-bottom: 15px;
+    }
+
+    .kst-home-listings-section-content-empty {
+      grid-column: 1 / 4;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 290px;
+      color: whitesmoke;
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+  }
+
+  .kst-home-listings-section-view-all-button {
+    position: relative;
+    bottom: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    width: 145px;
+    height: 45px;
+    background: whitesmoke;
+    color: black;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: beige;
+    }
+  }
+}

@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
+
+* {
+  position: relative;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  margin: 0px;
+  padding: 0px;
+  font-family: Poppins, Montserrat, Roboto, monospace;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

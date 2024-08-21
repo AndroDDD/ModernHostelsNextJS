@@ -1,0 +1,50 @@
+#kst-property-page-also-viewed-section {
+    display: flex;
+    flex-flow: column;
+    padding-top: 20px;
+    width: 100%;
+
+    .kst-property-page-also-viewed-section-header {
+        margin: 2vh 0 5vh;
+        padding: 0 60px;
+        width: 100%;
+        text-align: center;
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 70px;
+
+        @media only screen and (max-width: 768px) {
+            margin: 2vh 20px 10px;
+            padding: 0 0 7px;
+            font-size: 30px;
+            line-height: 30px;
+            width: fit-content;
+            border-bottom: 3px solid #f0beaa;
+        }
+    }
+
+    .kst-property-page-also-viewed-section-property-badges {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 15px;
+        width: 100%;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border: 3px solid #f0beaa;
+            background-color: #ddd;
+            border-radius: 50px;
+        }
+
+        &::-webkit-scrollbar-track {
+            margin: 0 20px;
+            background: hsla(19, 59%, 76%, 0.387);
+        }
+
+    }
+}

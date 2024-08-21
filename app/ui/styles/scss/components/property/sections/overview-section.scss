@@ -1,0 +1,83 @@
+#kst-property-page-overview-section {
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding-top: 70px;
+    padding-bottom: 60px;
+
+    @media only screen and (max-width: 768px) {
+        position: unset;
+        flex-wrap: wrap;
+    }
+
+    .kst-property-page-overview-section-info {
+        display: block;
+        width: 60%;
+        height: auto;
+        padding: 0 60px;
+
+        @media only screen and (max-width: 768px) {
+            width: 100%;
+            padding: 0 3%;
+        }
+    }
+
+    .kst-property-page-overview-section-book-now {
+        position: static;
+        display: block;
+        padding-right: 60px;
+        width: 40%;
+        height: auto;
+        z-index: 200;
+
+        .kst-book-now-form-expand-form-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background: whitesmoke;
+            display: none;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 16px;
+
+            .kst-book-now-form-expand-form-container-avg-price {
+                display: flex;
+                flex-flow: column;
+
+                .kst-book-now-form-expand-form-container-avg-price-header {
+                    font-size: 14px;
+                    line-height: 18px;
+                }
+
+                .kst-book-now-form-expand-form-container-avg-price-number {
+                    font-weight: 500;
+                    font-size: 25px;
+                    line-height: 40px;
+                }
+            }
+
+            .kst-book-now-form-expand-form-container-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 195px;
+                height: 50px;
+                border-radius: 25px;
+                border: 1px solid black;
+                color: black;
+                background: #aad4d2;
+                text-align: center;
+                font-size: 14px;
+                font-weight: 500;
+                transition: all .2s linear;
+                cursor: pointer;
+
+                &:hover {
+                    background: black;
+                    color: whitesmoke;
+                }
+            }
+        }
+    }
+}

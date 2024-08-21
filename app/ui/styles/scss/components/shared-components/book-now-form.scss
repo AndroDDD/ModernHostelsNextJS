@@ -1,0 +1,309 @@
+.kst-book-now-form {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-flow: column;
+  padding-top: 14px;
+  background: white;
+  border: 1px solid #d4d4d4;
+  border-radius: 15px;
+  overflow: visible;
+  color: black;
+
+  .kst-book-now-form-close-button {
+    display: none;
+    flex-direction: row-reverse;
+    width: 100%;
+    padding-right: 3%;
+
+    .kst-book-now-form-close-button-svg-icon-container {
+      svg {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .kst-book-now-form-header {
+    display: block;
+    padding: 14px 16px 24px;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .kst-book-now-form-discounts {
+    display: block;
+    background: #f8f4f1;
+    padding: 40px 40px;
+  }
+
+  .kst-book-now-form-avg-nightly-price {
+    display: flex;
+    flex-flow: column;
+    padding: 16px 16px 0;
+
+    .kst-book-now-form-avg-nightly-price-header {
+      display: block;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 40px;
+
+      span {
+        margin-right: 5px;
+        font-weight: 500;
+        font-size: 40px;
+        line-height: 40px;
+      }
+    }
+
+    .kst-book-now-form-avg-nightly-price-sub-text {
+      margin-top: 4px;
+      color: #aaa;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 14px;
+    }
+  }
+
+  .kst-book-now-form-check-in-out-dates {
+    display: flex;
+    justify-content: flex-start;
+    padding: 24px 16px 20px;
+    width: 100%;
+    z-index: 5;
+
+    .kst-book-now-form-check-in-date {
+      display: flex;
+      flex-flow: column;
+
+      .kst-book-now-form-check-in-date-header {
+        margin-bottom: 5px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+      }
+
+      .kst-book-now-form-check-in-date-button {
+        height: 30px;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        justify-content: center;
+        border: 1px solid #d4d4d4;
+        border-radius: 35px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 14px;
+        cursor: pointer;
+      }
+    }
+
+    .kst-book-now-form-check-out-date {
+      display: flex;
+      flex-flow: column;
+      margin-left: 24px;
+
+      .kst-book-now-form-check-out-date-header {
+        margin-bottom: 5px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+      }
+
+      .kst-book-now-form-check-out-date-button {
+        height: 30px;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        justify-content: center;
+        border: 1px solid #d4d4d4;
+        border-radius: 35px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 14px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .kst-book-now-form-have-pets {
+    display: flex;
+    padding: 0px 16px 20px;
+
+    .kst-book-now-form-have-pets-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 2px solid #70c5c1;
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+
+      &.enabled {
+        background: #aad4d2;
+      }
+
+      i {
+        color: #fff;
+        font-size: 10px;
+      }
+    }
+
+    .kst-book-now-form-have-pets-question {
+      margin-left: 7px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+
+  .kst-book-now-form-totals {
+    display: flex;
+    flex-flow: column;
+    padding: 0 16px 27px;
+
+    .kst-book-now-form-totals-subtotal {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 7px;
+      width: 100%;
+
+      .kst-book-now-form-totals-subtotal-label {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 14px;
+      }
+
+      .kst-book-now-form-totals-subtotal-number {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+      }
+    }
+
+    .kst-book-now-form-totals-taxes-fees {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .kst-book-now-form-totals-taxes-fees-label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        .kst-book-now-form-totals-taxes-fees-label-text {
+          margin-right: 4px;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 14px;
+        }
+
+        .kst-book-now-form-totals-taxes-fees-label-toggle {
+          top: 0px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: all 250ms ease-in;
+          transform: rotate(-90deg);
+
+          i {
+            font-size: 9px;
+          }
+        }
+      }
+
+      .kst-book-now-form-totals-taxes-fees-number {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+      }
+    }
+
+    .kst-book-now-form-totals-taxes-fees-expanded {
+      display: none;
+      flex-flow: column;
+      justify-content: flex-start;
+      width: 100%;
+      transition: all 250ms ease-in;
+
+      .kst-book-now-form-totals-taxes-fees-expanded-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 5px 2px;
+        width: 100%;
+        color: #878787;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+
+        .kst-book-now-form-totals-taxes-fees-expanded-item-label {
+        }
+
+        .kst-book-now-form-totals-taxes-fees-expanded-item-number {
+        }
+      }
+    }
+
+    .kst-book-now-form-totals-due {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 12px;
+      width: 100%;
+      font-size: 14px;
+      line-height: 14px;
+
+      .kst-book-now-form-totals-due-label {
+        font-weight: 500;
+      }
+
+      .kst-book-now-form-totals-due-number {
+        font-weight: 400;
+      }
+    }
+  }
+
+  .kst-book-now-form-submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 32px);
+    height: 44px;
+    margin: 0 16px 16px;
+    background: #aad4d2;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 14px;
+    letter-spacing: 0.5px;
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &.enabled {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  .kst-book-now-form-check-in-out-dates-calendar {
+    position: absolute;
+    top: 5px;
+    right: 60px;
+    display: none;
+    width: auto;
+    height: auto;
+    z-index: 5;
+
+    @media only screen and (max-width: 768px) {
+      right: unset;
+      margin: 0 3%;
+      width: calc(100% - 6%);
+    }
+  }
+}

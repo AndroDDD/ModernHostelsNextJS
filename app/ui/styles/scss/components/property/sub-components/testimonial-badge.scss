@@ -1,0 +1,26 @@
+.kst-testimonial-badge {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 35px;
+
+    .kst-testimonial-badge-from {
+        display: block;
+        font-weight: 600;
+        font-size: 20px;
+        color: #70c5c1;
+    }
+
+    .kst-testimonial-badge-date {
+        display: block;
+        font-weight: 400;
+        font-size: 12px;
+    }
+
+    .kst-testimonial-badge-review {
+        display: block;
+        flex-direction: column;
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 20px;
+    }
+}

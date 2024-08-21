@@ -1,0 +1,74 @@
+#kst-home-image-collage-section {
+    display: flex;
+    width: 100%;
+    height: 905px;
+    background: #1d1919;
+    color: whitesmoke;
+
+    .kst-home-image-collage-section-header {
+        position: absolute;
+        top: 88px;
+        left: 128px;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 524px;
+        color: whitesmoke;
+
+        .kst-home-image-collage-section-header-title {
+            margin-bottom: 25px;
+            font-size: 60px;
+            font-weight: 400;
+            line-height: 120%;
+            letter-spacing: 1px;
+        }
+
+        .kst-home-image-collage-section-header-summary {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 150%;
+            letter-spacing: 1px;
+        }
+    }
+
+    .kst-home-image-collage-section-images {
+        position: absolute;
+        top: 330px;
+        left: 128px;
+        display: flex;
+        width: 100%;
+        height: 575px;
+        flex-wrap: nowrap;
+
+        .kst-home-image-collage-section-images-1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 783px;
+            min-width: 783px;
+            height: 448px;
+            object-fit: contain;
+        }
+
+        .kst-home-image-collage-section-images-2 {
+            position: absolute;
+            top: -137px;
+            left: 610px;
+            width: 440px;
+            min-width: 440px;
+            height: 390px;
+            object-fit: contain;
+        }
+
+        .kst-home-image-collage-section-images-3 {
+            position: absolute;
+            top: -105px;
+            left: 972px;
+            width: 296px;
+            min-width: 296px;
+            height: 643px;
+            object-fit: contain;
+        }
+    }
+}
