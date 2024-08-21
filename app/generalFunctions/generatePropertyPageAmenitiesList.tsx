@@ -6,12 +6,14 @@ const generatePropertyPageAmenitiesList = (amenitiesList: AmenitiesList) => {
 
   for (const amenity in amenitiesList) {
     if (amenitiesList[amenity]) {
-      amenitiesPageDataArray.push(
-        amenitiesPageDataNameAndIcons.find(
-          (amenityPageDataAndIcon: { itemName: string }) =>
-            amenityPageDataAndIcon.itemName === amenity
-        )
+      const foundPageDataAndIcon = amenitiesPageDataNameAndIcons.find(
+        (amenityPageDataAndIcon: { itemName: string }) =>
+          amenityPageDataAndIcon.itemName === amenity
       );
+
+      if (foundPageDataAndIcon) {
+        amenitiesPageDataArray.push(foundPageDataAndIcon);
+      }
     }
   }
 
