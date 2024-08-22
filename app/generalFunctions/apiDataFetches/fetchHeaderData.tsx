@@ -1,6 +1,9 @@
 import { LinkData } from "@/app/types/linkData";
 import { fetchPropertyLocations } from "@/app/generalFunctions/apiDataFetches/fetchPropertyLocations";
-import { useDevOrigin } from "@/app/generalFunctions/devToPro/useDevOrigin";
+import {
+  useDevOrigin,
+  useXAMPPPath,
+} from "@/app/generalFunctions/devToPro/useDevOrigin";
 import { useHttpProtocol } from "@/app/generalFunctions/devToPro/useHttpProtocol";
 import { getLogoUrl } from "@/app/constants/wpApiUrl";
 
@@ -34,7 +37,7 @@ export const fetchHeaderData = async () => {
         }));
 
       const social_communications_res = await fetch(
-        `${useHttpProtocol}${useDevOrigin}wordpress/wp-json/kst/homepage-settings`
+        `${useHttpProtocol}${useDevOrigin}${useXAMPPPath}wp-json/kst/homepage-settings`
       );
       const social_communications_json = await social_communications_res.json();
 
