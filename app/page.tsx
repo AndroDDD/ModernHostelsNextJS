@@ -1,7 +1,6 @@
 import { SimpleInformationDataArray } from "@/app/types/simpleInformationData";
 import { isMobileDevice } from "@/app/generalFunctions/isMobile";
-import { useDevOrigin } from "./generalFunctions/devToPro/useDevOrigin";
-import { useHttpProtocol } from "./generalFunctions/devToPro/useHttpProtocol";
+import { homepageSettingsApiUrl } from "./constants/wpApiUrl";
 import { fetchHomePageSettings } from "@/app/generalFunctions/apiDataFetches/homeRoute/fetchHomePageSettings";
 import Header from "@/app/ui/headerAndFooter/header/header";
 import IntroSection from "@/app/ui/home/sections/introSection";
@@ -19,9 +18,7 @@ import "@/app/ui/styles/scss/route-pages/home/home-component.scss";
 
 export default async function Home() {
   const isMobile = await isMobileDevice();
-  const homePageSettings = await fetchHomePageSettings(
-    `${useHttpProtocol}${useDevOrigin}wordpress/wp-json/kst/homepage-settings`
-  );
+  const homePageSettings = await fetchHomePageSettings(homepageSettingsApiUrl);
 
   console.log({ homePageSettings });
   const introSectionData = JSON.parse(

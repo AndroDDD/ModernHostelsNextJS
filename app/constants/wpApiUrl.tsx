@@ -12,6 +12,7 @@ const blogPostsUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-
 const emailServerUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kst/sendContactForm/`;
 const getLogoUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kst/get-logo-url/`;
 const newsletterApiUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kst/v1/newsletter/`;
+const homepageSettingsApiUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kst/homepage-settings`;
 
 export {
   wpApiUrl,
@@ -22,4 +23,5 @@ export {
   emailServerUrl,
   getLogoUrl,
   newsletterApiUrl,
+  homepageSettingsApiUrl,
 };
