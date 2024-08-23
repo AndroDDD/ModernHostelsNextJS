@@ -26,8 +26,7 @@ const PropertiesSection: React.FC<PropertiesSectionParameters> = ({
   filterBarData,
 }) => {
   const router = useRouter();
-  const [sortedProperties, setSortedProperties] =
-    useState<PropertyData[]>(properties);
+  const [sortedProperties, setSortedProperties] = useState<PropertyData[]>();
   const [{ isMonthly, isNightly, sortBy, prevSortBy }, setSectionData] =
     useState<PropertiesSectionData>({
       isNightly: true,
@@ -216,34 +215,42 @@ const PropertiesSection: React.FC<PropertiesSectionParameters> = ({
           </div>
         </div>
 
-        <div className="kst-map-page-properties-section-list-items">
-          {sortedProperties.map((property, index) => (
-            <PropertyBadge
-              key={`kst-map-page-properties-section-list-item-${index}`}
-              property={property}
-              settings={{ isMonthly, isNightly }}
-              badgeOnClick={(
-                e: React.MouseEvent<HTMLDivElement, MouseEvent>
-              ) => {
-                e.preventDefault();
-                setSelectedProperty(index);
-              }}
-              viewPropertyOnClick={(
-                e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-              ) => {
-                e.preventDefault();
-                router.push(`/property/${property.pageSlug}`);
-              }}
-            />
-          ))}
-        </div>
+        {sortedProperties ? (
+          <div className="kst-map-page-properties-section-list-items">
+            {sortedProperties.map((property, index) => (
+              <PropertyBadge
+                key={`kst-map-page-properties-section-list-item-${index}`}
+                property={property}
+                settings={{ isMonthly, isNightly }}
+                badgeOnClick={(
+                  e: React.MouseEvent<HTMLDivElement, MouseEvent>
+                ) => {
+                  e.preventDefault();
+                  setSelectedProperty(index);
+                }}
+                viewPropertyOnClick={(
+                  e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+                ) => {
+                  e.preventDefault();
+                  router.push(`/property/${property.pageSlug}`);
+                }}
+              />
+            ))}
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
 
-      <div className="kst-map-page-properties-section-map">
-        <GoogleMapSection
-          center={sortedProperties[selectedProperty]?.latLong ?? {}}
-        />
-      </div>
+      {sortedProperties ? (
+        <div className="kst-map-page-properties-section-map">
+          <GoogleMapSection
+            center={sortedProperties[selectedProperty]?.latLong ?? {}}
+          />
+        </div>
+      ) : (
+        <></>
+      )}
 
       <div className="kst-map-page-properties-section-toggle-map-and-list-container">
         <div
