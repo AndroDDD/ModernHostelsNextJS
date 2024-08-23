@@ -64,7 +64,8 @@ const PropertiesSection: React.FC<PropertiesSectionParameters> = ({
 
   // Handle sorting and filtering of properties when market location changes
   useEffect(() => {
-    if (sortedProperties && filterBarData && "maxPrice" in filterBarData) {
+    console.log({properties})
+    if (properties && filterBarData && "maxPrice" in filterBarData) {
       const { filteredProperties } = filterProperties(
         properties,
         filterBarData
@@ -320,6 +321,7 @@ const checkIsPropertyFiltered = (
   property: PropertyData,
   filterBarData: FilterBarData
 ) => {
+  console.log({filteringProperty: property})
   const filteredStartDate = new Date(
     `${filterBarData.dates.start}T00:00:00`
   ).getTime();
@@ -410,6 +412,21 @@ const checkIsPropertyFiltered = (
     filteredAllUtilitiesIncluded
   );
 
+  console.log({
+    isPropertyInFilteredDateRange,
+    isPropertyPriceLessThanFilteredMaxPrice,
+    isPropertyWithinFilteredNumberOfBathrooms,
+    isPropertyWithinFilteredNumberOfBeds,
+    isPropertyWithinFilteredNumberOfWorkstations,
+    isAirConditioningIncluded,
+    isKitchenIncludedInProperty,
+    isTelevisionIncluded,
+    isWasherAndDryerIncluded,
+    isHeatingIncluded,
+    isCableIncluded,
+    isComputerMonitorIncluded
+  })
+
   return (
     isPropertyInFilteredDateRange &&
     isPropertyPriceLessThanFilteredMaxPrice &&
@@ -431,7 +448,7 @@ const checkIfNumberOfSpacesMatchFilteredNumber = (
   filteredNumber: number,
   useExact: boolean
 ) => {
-  return propertyNumber > 0
+  return propertyNumber >= 0
     ? useExact
       ? propertyNumber === filteredNumber
       : propertyNumber >= filteredNumber
