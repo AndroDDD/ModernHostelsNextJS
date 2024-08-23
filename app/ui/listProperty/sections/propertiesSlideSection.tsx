@@ -21,17 +21,21 @@ export default ({ properties }: PropertiesSlideSection) => {
           </div>
 
           <div className="kst-list-property-page-properties-slide-section-content-stats">
-            {properties[currentPropertyIndex].stats.map((stat) => (
-              <div className="kst-list-property-page-properties-slide-section-content-stat">
-                <div className="kst-list-property-page-properties-slide-section-content-stat-number">
-                  {stat.number}
-                </div>
+            {properties[currentPropertyIndex].stats.length > 0 ? (
+              properties[currentPropertyIndex].stats.map((stat) => (
+                <div className="kst-list-property-page-properties-slide-section-content-stat">
+                  <div className="kst-list-property-page-properties-slide-section-content-stat-number">
+                    {stat.number}
+                  </div>
 
-                <div className="kst-list-property-page-properties-slide-section-content-stat-name">
-                  {stat.name}
+                  <div className="kst-list-property-page-properties-slide-section-content-stat-name">
+                    {stat.name}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <></>
+            )}
           </div>
 
           <div className="kst-list-property-page-properties-slide-section-content-review">
