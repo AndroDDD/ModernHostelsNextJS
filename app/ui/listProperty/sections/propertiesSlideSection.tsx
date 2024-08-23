@@ -13,7 +13,7 @@ export default ({ properties }: PropertiesSlideSection) => {
       <div className="kst-list-property-page-properties-slide-section-content">
         <div className="kst-list-property-page-properties-slide-section-content-text">
           <div className="kst-list-property-page-properties-slide-section-content-title">
-            {properties[currentPropertyIndex].name}
+            {properties[currentPropertyIndex].name ?? ""}
           </div>
 
           <div className="kst-list-property-page-properties-slide-section-content-image">
