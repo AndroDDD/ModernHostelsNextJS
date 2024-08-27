@@ -47,7 +47,9 @@ export default ({
   const [totalsDisplay, setTotalsDisplay] = useState<PriceTotalsDisplay>();
   const [includePetFee, setIncludePetFee] = useState<boolean>(false);
   const [calendarSpaceId, setCalendarSpaceId] = useState<string>(
-    calendarSpaces ? calendarSpaces[0].calendar_space_id : ""
+    calendarSpaces && calendarSpaces[0] && calendarSpaces[0].calendar_space_id
+      ? calendarSpaces[0].calendar_space_id
+      : ""
   );
 
   const calendarElementRef = useRef<HTMLDivElement>(null);
