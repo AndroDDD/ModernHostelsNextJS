@@ -65,6 +65,16 @@ export type OverviewSection = {
     summary: string;
   };
 
+  spaces: {
+    calendar_space_id: string;
+    label: string;
+    displays: {
+      title: string;
+      description: string;
+      img_url: string;
+    }[];
+  }[];
+
   amenitiesSummary: string;
 
   amenitiesList: PageDataAmenitiesList;

@@ -87,6 +87,7 @@ export default (overviewInfo: OverviewSection & { isMobile: boolean }) => {
           numberOfBeds={overviewInfo.numberOfBeds}
           numberOfBaths={overviewInfo.numberOfBaths}
           bookNowFormExpandFormContainerRef={bookNowFormExpandFormContainerRef}
+          calendarSpaces={overviewInfo.spaces}
         />
 
         <div

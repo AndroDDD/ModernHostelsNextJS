@@ -25,6 +25,7 @@ export default ({
   numberOfBeds,
   numberOfBaths,
   bookNowFormExpandFormContainerRef,
+  calendarSpaces,
 }: BookNowFormParameters) => {
   const [formSendData, setFormSendData] = useState<
     BookNowFormSendData | FilterBarData
@@ -45,9 +46,14 @@ export default ({
   });
   const [totalsDisplay, setTotalsDisplay] = useState<PriceTotalsDisplay>();
   const [includePetFee, setIncludePetFee] = useState<boolean>(false);
+  const [calendarSpaceId, setCalendarSpaceId] = useState<string>(
+    calendarSpaces ? calendarSpaces[0].calendar_space_id : ""
+  );
 
   const calendarElementRef = useRef<HTMLDivElement>(null);
   const bookNowFormElementRef = useRef<HTMLDivElement>(null);
+
+  console.log({ calendarSpaces, calendarSpaceId });
 
   useEffect(() => {
     const handleAutomaticDisplayToggleOfElements = (event: Event) => {
@@ -107,15 +113,15 @@ export default ({
     };
 
     let headerElement = bookNowFormElementRef.current
-      ?.children[1] as HTMLDivElement;
-    let discountElement = bookNowFormElementRef.current
       ?.children[2] as HTMLDivElement;
-    let avgNightlyPriceElement = bookNowFormElementRef.current
+    let discountElement = bookNowFormElementRef.current
       ?.children[3] as HTMLDivElement;
+    let avgNightlyPriceElement = bookNowFormElementRef.current
+      ?.children[4] as HTMLDivElement;
     let totalsElement = bookNowFormElementRef.current
-      ?.children[6] as HTMLDivElement;
+      ?.children[7] as HTMLDivElement;
     let submitButtonElement = bookNowFormElementRef.current
-      ?.children[7] as HTMLButtonElement;
+      ?.children[8] as HTMLButtonElement;
 
     if ("checkIn" in formSendData.dates) {
       const checkInDate = formSendData.dates.checkIn.split("-");
@@ -138,7 +144,8 @@ export default ({
           await fetchPropertyCalenderDataByDateRange(
             propertyPageSlug,
             formSendData.dates.checkIn,
-            formSendData.dates.checkOut
+            formSendData.dates.checkOut,
+            calendarSpaceId
           );
         const propertyPriceData = await fetchPropertyPriceData(
           propertyPageSlug
@@ -151,16 +158,25 @@ export default ({
         const propertyServiceFee = Number(propertyPriceData["service_fee"]);
 
         let subTotal = 0;
+        let calculatedPetFee = 0;
 
         for (let i = 0; i < calendarDataByDateRange.length; i++) {
           subTotal += Number(calendarDataByDateRange[i].price);
+
+          if (calendarDataByDateRange[i].petFee) {
+            calculatedPetFee += Number(calendarDataByDateRange[i].petFee);
+          } else if (!Number.isNaN(propertyPetFee)) {
+            calculatedPetFee += propertyPetFee;
+          }
         }
+
+        calculatedPetFee = calculatedPetFee / calendarDataByDateRange.length;
 
         const avgNightPrice = subTotal / calendarDataByDateRange.length;
         const fees = {
           pet: includePetFee
-            ? !Number.isNaN(propertyPetFee)
-              ? propertyPetFee
+            ? !Number.isNaN(calculatedPetFee)
+              ? calculatedPetFee
               : 0
             : 0,
           cleaning: !Number.isNaN(propertyCleaningFee)
@@ -176,9 +192,7 @@ export default ({
         const totalDueExcludingTaxes =
           subTotal + fees.pet + fees.cleaning + fees.service;
         const taxes =
-          (totalDueExcludingTaxes *
-            Number(propertyPriceData["tax_percentage"])) /
-          100;
+          (totalDueExcludingTaxes * Number(propertyTaxPercentage)) / 100;
         const totalDueIncludingTaxes = totalDueExcludingTaxes + taxes;
         const taxesFeesCombined =
           taxes + fees.pet + fees.cleaning + fees.service;
@@ -257,6 +271,62 @@ export default ({
           {fetchSVGIcon("xIcon")}
         </div>
       </div>
+
+      {calendarSpaces && calendarSpaces.length > 0 ? (
+        <div className="kst-book-now-form-spaces-selection">
+          <div
+            className="kst-book-now-form-spaces-selection-selected"
+            onClick={(e) => {
+              let spaceSelections = document.getElementsByClassName(
+                "kst-book-now-form-spaces-selections"
+              )[0] as HTMLDivElement;
+              const currentDisplay = spaceSelections.style.display;
+
+              if (currentDisplay && currentDisplay === "flex") {
+                spaceSelections.style.display = "none";
+              } else {
+                spaceSelections.style.display = "flex";
+              }
+            }}
+          >
+            {calendarSpaces[0].label}
+          </div>
+
+          <div className="kst-book-now-form-spaces-selections">
+            {calendarSpaces.map((calendarSpace) => (
+              <div
+                className="kst-book-now-form-spaces-selections-option"
+                onClick={(e) => {
+                  const calendarSpaceId = (
+                    e.currentTarget.children[0] as HTMLInputElement
+                  ).value;
+                  const calendarSpaceLabel =
+                    e.currentTarget.children[1].textContent;
+
+                  setCalendarSpaceId(calendarSpaceId);
+
+                  let calendarSpaceSelectedLabel =
+                    document.getElementsByClassName(
+                      "kst-book-now-form-spaces-selection-selected"
+                    )[0];
+                  calendarSpaceSelectedLabel.textContent = calendarSpaceLabel;
+
+                  let calendarSpacesSelectionContainer =
+                    document.getElementsByClassName(
+                      "kst-book-now-form-spaces-selections"
+                    )[0] as HTMLDivElement;
+                  calendarSpacesSelectionContainer.style.display = "none";
+                }}
+              >
+                <input type="hidden" value={calendarSpace.calendar_space_id} />
+                <label>{calendarSpace.label}</label>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div></div>
+      )}
 
       <div
         className="kst-book-now-form-header"
@@ -467,6 +537,7 @@ export default ({
           event.preventDefault();
 
           const bookingDataForCookie = JSON.stringify({
+            calendarSpaceId,
             propertyName,
             propertyImageUrl,
             spaces: {
@@ -491,6 +562,7 @@ export default ({
       >
         <PropertyCheckInOutCalendar
           propertyPageSlug={propertyPageSlug}
+          calendarSpaceId={calendarSpaceId}
           setFormSendData={setFormSendData}
         />
       </div>

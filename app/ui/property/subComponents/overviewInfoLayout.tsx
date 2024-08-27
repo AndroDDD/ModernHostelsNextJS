@@ -2,6 +2,7 @@ import { OverviewSection } from "@/app/types/propertyPageData";
 import { fetchSVGIcon } from "@/app/generalFunctions/fetchSVGIcon";
 import SnapshotBadge from "@/app/ui/property/subComponents/snapshotBadge";
 import "@/app/ui/styles/scss/components/property/sub-components/overview-info-layout.scss";
+import overviewSection from "../sections/overviewSection";
 
 export default ({
   headerTitle,
@@ -11,6 +12,7 @@ export default ({
   amenitiesList,
   workstationsSummary,
   workstationsList,
+  spaces,
 }: OverviewSection) => {
   return (
     <div
@@ -47,6 +49,56 @@ export default ({
           {aboutTheSpace.summary}
         </div>
       </div>
+
+      {spaces && spaces.length > 0 ? (
+        <div className="kst-property-page-overview-info-spaces-section">
+          <div className="kst-property-page-overview-info-spaces-title">
+            {"Spaces"}
+          </div>
+
+          <div className="kst-property-page-overview-info-spaces">
+            {spaces.map((space) => (
+              <div className="kst-property-page-overview-info-space">
+                <div className="kst-property-page-overview-info-space-title">
+                  {space.label}
+                </div>
+
+                {space.displays && space.displays.length > 0 ? (
+                  <div className="kst-property-page-overview-info-space-displays">
+                    {space.displays.map((display) => (
+                      <div className="kst-property-page-overview-info-space-display">
+                        <div className="kst-property-page-overview-info-space-display-title">
+                          {display.title ?? "Space"}
+                        </div>
+
+                        {display.img_url ? (
+                          <div className="kst-property-page-overview-info-space-display-img">
+                            <img src={display.img_url} />
+                          </div>
+                        ) : (
+                          <></>
+                        )}
+
+                        {display.description ? (
+                          <div className="kst-property-page-overview-info-space-display-description">
+                            {display.description}
+                          </div>
+                        ) : (
+                          <></>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
 
       <div
         className="kst-property-page-overview-info-features"

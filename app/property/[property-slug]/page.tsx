@@ -57,13 +57,13 @@ export default async function Page({
           <CategorizedImagesSection
             {...propertyPageData.categorizedImagesSection}
           />
-          <CancellationPolicySection
-            {...propertyPageData.cancellationPolicySection}
-          />
           <TheNeighborhoodSection
             {...propertyPageData.theNeighborhoodSection}
           />
           <ReviewsSection {...propertyPageData.reviewsSection} />
+          <CancellationPolicySection
+            {...propertyPageData.cancellationPolicySection}
+          />
           <AlsoViewedSection {...propertyPageData.alsoViewedSection} />
         </>
       ) : (

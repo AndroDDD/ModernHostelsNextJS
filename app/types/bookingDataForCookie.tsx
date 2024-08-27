@@ -18,4 +18,5 @@ export type BookingDataForCookie = {
     email: string;
   };
   orderData?: any;
+  calendarSpaceId?: string;
 };

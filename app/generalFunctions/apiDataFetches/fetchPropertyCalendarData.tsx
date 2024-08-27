@@ -1,3 +1,5 @@
+"use server";
+
 import {
   PropertyCalendarData,
   PropertyCalendarItemData,
@@ -7,13 +9,33 @@ import { wpPropertyCalendarApiUrl } from "@/app/constants/wpApiUrl";
 export const fetchPropertyCalenderDataByDateRange = async (
   propertyPageSlug: string,
   checkIn: string,
-  checkOut: string
+  checkOut: string,
+  calendarSpaceId: string | null = null
 ): Promise<PropertyCalendarItemData[]> => {
   const propertyCalendarDataResponse = await fetch(
-    `${wpPropertyCalendarApiUrl}get/${propertyPageSlug}`
+    `${wpPropertyCalendarApiUrl}get/${propertyPageSlug}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        calendar_space_id: calendarSpaceId,
+      }),
+    }
   );
   const propertyCalendarData =
-    (await propertyCalendarDataResponse.json()) as unknown as PropertyCalendarData;
+    (await propertyCalendarDataResponse.json()) as unknown as {
+      [key: string]: {
+        [key: string]: {
+          price: number;
+          date: string;
+          pet_fee: number;
+          is_booked: boolean;
+          minimum_days_stay: number;
+        }[];
+      };
+    };
 
   if (!propertyCalendarData) {
     return [];
@@ -47,7 +69,14 @@ export const fetchPropertyCalenderDataByDateRange = async (
           itemDateEpochTime >= checkInDateEpochTime &&
           itemDateEpochTime <= checkOutDateEpochTime
         ) {
-          calendarData.push(calendarMonthData[i]);
+          const reStructuredData = {
+            price: calendarMonthData[i].price,
+            minimumDaysStay: calendarMonthData[i].minimum_days_stay,
+            date: calendarMonthData[i].date,
+            isBooked: calendarMonthData[i].is_booked,
+            petFee: calendarMonthData[i].pet_fee,
+          };
+          calendarData.push(reStructuredData);
         }
       }
     } else {
@@ -73,7 +102,14 @@ export const fetchPropertyCalenderDataByDateRange = async (
             itemDateEpochTime >= checkInDateEpochTime &&
             itemDateEpochTime <= checkOutDateEpochTime
           ) {
-            calendarData.push(daysData[dayIndex]);
+            const reStructuredData = {
+              price: daysData[dayIndex].price,
+              minimumDaysStay: daysData[dayIndex].minimum_days_stay,
+              date: daysData[dayIndex].date,
+              isBooked: daysData[dayIndex].is_booked,
+              petFee: daysData[dayIndex].pet_fee,
+            };
+            calendarData.push(reStructuredData);
           }
         }
       }
@@ -100,7 +136,14 @@ export const fetchPropertyCalenderDataByDateRange = async (
                 itemDateEpochTime >= checkInDateEpochTime &&
                 itemDateEpochTime <= checkOutDateEpochTime
               ) {
-                calendarData.push(daysData[dayIndex]);
+                const reStructuredData = {
+                  price: daysData[dayIndex].price,
+                  minimumDaysStay: daysData[dayIndex].minimum_days_stay,
+                  date: daysData[dayIndex].date,
+                  isBooked: daysData[dayIndex].is_booked,
+                  petFee: daysData[dayIndex].pet_fee,
+                };
+                calendarData.push(reStructuredData);
               }
             }
           }
@@ -119,7 +162,14 @@ export const fetchPropertyCalenderDataByDateRange = async (
                 itemDateEpochTime >= checkInDateEpochTime &&
                 itemDateEpochTime <= checkOutDateEpochTime
               ) {
-                calendarData.push(daysData[dayIndex]);
+                const reStructuredData = {
+                  price: daysData[dayIndex].price,
+                  minimumDaysStay: daysData[dayIndex].minimum_days_stay,
+                  date: daysData[dayIndex].date,
+                  isBooked: daysData[dayIndex].is_booked,
+                  petFee: daysData[dayIndex].pet_fee,
+                };
+                calendarData.push(reStructuredData);
               }
             }
           }
@@ -129,7 +179,14 @@ export const fetchPropertyCalenderDataByDateRange = async (
           const daysData = Object.values(item[1]);
 
           for (let dayIndex = 0; dayIndex < daysData.length; dayIndex++) {
-            calendarData.push(daysData[i]);
+            const reStructuredData = {
+              price: daysData[dayIndex].price,
+              minimumDaysStay: daysData[dayIndex].minimum_days_stay,
+              date: daysData[dayIndex].date,
+              isBooked: daysData[dayIndex].is_booked,
+              petFee: daysData[dayIndex].pet_fee,
+            };
+            calendarData.push(reStructuredData);
           }
         });
       }
@@ -142,10 +199,21 @@ export const fetchPropertyCalenderDataByDateRange = async (
 export const fetchPropertyCalenderMonthData = async (
   propertyPageSlug: string,
   year: string,
-  month: string
+  month: string,
+  calendarSpaceId: string | null = null
 ): Promise<PropertyCalendarItemData[]> => {
+  console.log({ tryFetchCalendarSpaceId: calendarSpaceId });
   const propertyCalendarDataResponse = await fetch(
-    `${wpPropertyCalendarApiUrl}get/${propertyPageSlug}`
+    `${wpPropertyCalendarApiUrl}get/${propertyPageSlug}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        calendar_space_id: calendarSpaceId,
+      }),
+    }
   );
 
   const propertyCalendarData = await propertyCalendarDataResponse.json();
@@ -159,6 +227,7 @@ export const fetchPropertyCalenderMonthData = async (
   ) {
     return [];
   }
+
   const propertyCalendarMonthData = Object.values(
     propertyCalendarData[year][month]
   ).map((calendarDate: any) => ({
@@ -166,6 +235,7 @@ export const fetchPropertyCalenderMonthData = async (
     minimumDaysStay: calendarDate.minimum_days_stay,
     price: calendarDate.price,
     date: calendarDate.date,
+    petFee: calendarDate.pet_fee,
   }));
 
   propertyCalendarMonthData.sort((a, b) => {
@@ -178,10 +248,20 @@ export const fetchPropertyCalenderMonthData = async (
 };
 
 export const fetchPropertyCalenderData = async (
-  propertyPageSlug: string
+  propertyPageSlug: string,
+  calendarSpaceId: string | null = null
 ): Promise<PropertyCalendarData> => {
   const propertyCalendarDataResponse = await fetch(
-    `${wpPropertyCalendarApiUrl}get/${propertyPageSlug}`
+    `${wpPropertyCalendarApiUrl}get/${propertyPageSlug}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        calendar_space_id: calendarSpaceId,
+      }),
+    }
   );
   const propertyCalendarData =
     (await propertyCalendarDataResponse.json()) as unknown as PropertyCalendarData;

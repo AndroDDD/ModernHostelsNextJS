@@ -4,6 +4,7 @@ import { PropertyCalendarItemData } from "./propertyCalendarData";
 
 export type TPropertyCheckInOutCalendar = {
   propertyPageSlug: string;
+  calendarSpaceId?: string;
   setFormSendData: React.Dispatch<
     React.SetStateAction<BookNowFormSendData | FilterBarData>
   >;

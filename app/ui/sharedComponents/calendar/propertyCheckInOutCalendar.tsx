@@ -13,6 +13,7 @@ import "@/app/ui/styles/scss/components/shared-components/calendar/check-in-out-
 
 export default ({
   propertyPageSlug,
+  calendarSpaceId,
   setFormSendData,
 }: TPropertyCheckInOutCalendar) => {
   const [calendarDatesData, setCalendarDatesData] = useState<{
@@ -76,16 +77,17 @@ export default ({
   useEffect(() => {
     (async () => {
       if (selectedYearMonth) {
-        console.log("running running");
         const leftMonthData = await fetchPropertyCalenderMonthData(
           propertyPageSlug,
           selectedYearMonth.left.year,
-          selectedYearMonth.left.month
+          selectedYearMonth.left.month,
+          calendarSpaceId
         );
         const rightMonthData = await fetchPropertyCalenderMonthData(
           propertyPageSlug,
           selectedYearMonth.right.year,
-          selectedYearMonth.right.month
+          selectedYearMonth.right.month,
+          calendarSpaceId
         );
         setCalendarDatesData({
           left: leftMonthData,
@@ -93,7 +95,7 @@ export default ({
         });
       }
     })();
-  }, [selectedYearMonth]);
+  }, [selectedYearMonth, calendarSpaceId]);
 
   return (
     <div className="kst-check-in-out-calendar">

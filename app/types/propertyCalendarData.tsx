@@ -13,4 +13,5 @@ export type PropertyCalendarItemData = {
   isBooked: boolean;
   price: number;
   minimumDaysStay: number;
+  petFee: number;
 };

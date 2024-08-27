@@ -239,6 +239,10 @@
     letter-spacing: 1px;
     transition: all 250ms ease-in-out;
 
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
+
     &:hover {
       background-color: #1d1919;
       color: whitesmoke;

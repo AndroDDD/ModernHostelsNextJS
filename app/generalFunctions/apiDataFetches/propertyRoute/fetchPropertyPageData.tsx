@@ -29,6 +29,15 @@ const generatePropertyPageDataFromFetchedResponse = (fetchedPropertyData: {
         title: string;
         summary: string;
       };
+      spaces: {
+        calendar_space_id: string;
+        label: string;
+        displays: {
+          title: string;
+          description: string;
+          img_url: string;
+        }[];
+      }[];
       number_of_beds: number;
       number_of_bathrooms: number;
       number_of_guestrooms: number;
@@ -328,6 +337,12 @@ const generatePropertyPageDataFromFetchedResponse = (fetchedPropertyData: {
             ? fetchedPropertyData.meta.living_space_data.about_the_space.summary
             : "",
       },
+
+      spaces:
+        fetchedPropertyData.meta.living_space_data &&
+        fetchedPropertyData.meta.living_space_data.spaces
+          ? fetchedPropertyData.meta.living_space_data.spaces
+          : [],
 
       amenitiesSummary:
         fetchedPropertyData.meta.living_space_data &&

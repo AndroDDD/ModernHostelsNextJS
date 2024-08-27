@@ -123,7 +123,8 @@ export default function PaymentDetails() {
                     await updateWPCalendarData(
                       propertySlug,
                       bookingData.dates.checkIn,
-                      bookingData.dates.checkOut
+                      bookingData.dates.checkOut,
+                      bookingData.calendarSpaceId ?? null
                     );
 
                     const emailData = {

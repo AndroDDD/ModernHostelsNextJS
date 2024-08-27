@@ -1,6 +1,7 @@
 import { useHttpProtocol } from "./useHttpProtocol";
+import { useDev } from "./useDevOrigin";
 
-export const isXAMPPDev = false;
+export const isXAMPPDev = useDev;
 export const placeXAMPPHostname = isXAMPPDev
   ? "192.168.1.137"
   : "modern-hostels.imaginative-accumulation.com";

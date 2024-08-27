@@ -23,6 +23,69 @@
     }
   }
 
+  .kst-book-now-form-spaces-selection {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    box-shadow: inset 0 0 2px 3px whitesmoke;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: inset 0 0 1px 2px #1d1919;
+    }
+
+    .kst-book-now-form-spaces-selection-selected {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4px;
+    }
+
+    .kst-book-now-form-spaces-selections {
+      position: absolute;
+      display: none;
+      flex-flow: column;
+      box-shadow: inset 0 0 2px 3px #1d1919;
+      border-radius: 5px;
+      top: 33px;
+      width: 100%;
+      background-color: white;
+      z-index: 10;
+      padding: 5px 0;
+
+      .kst-book-now-form-spaces-selections-option {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        margin: 1px;
+        width: calc(100% - 4px);
+        margin: 2px;
+        padding: 2px;
+        cursor: pointer;
+
+        &:hover {
+          box-shadow: inset 0 0 1px 2px #1d1919;
+        }
+
+        label {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
   .kst-book-now-form-header {
     display: block;
     padding: 14px 16px 24px;
