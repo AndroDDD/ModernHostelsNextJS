@@ -182,6 +182,8 @@ export default ({
         }
 
         calculatedPetFee = calculatedPetFee / calendarDataByDateRange.length;
+        calculatedCleaningFee =
+          calculatedCleaningFee / calendarDataByDateRange.length;
 
         const avgNightPrice = subTotal / calendarDataByDateRange.length;
         const fees = {
