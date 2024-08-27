@@ -161,6 +161,7 @@ export default ({
 
         let subTotal = 0;
         let calculatedPetFee = 0;
+        let calculatedCleaningFee = 0;
 
         for (let i = 0; i < calendarDataByDateRange.length; i++) {
           subTotal += Number(calendarDataByDateRange[i].price);
@@ -169,6 +170,14 @@ export default ({
             calculatedPetFee += Number(calendarDataByDateRange[i].petFee);
           } else if (!Number.isNaN(propertyPetFee)) {
             calculatedPetFee += propertyPetFee;
+          }
+
+          if (calendarDataByDateRange[i].cleaningFee) {
+            calculatedCleaningFee += Number(
+              calendarDataByDateRange[i].cleaningFee
+            );
+          } else if (!Number.isNaN(propertyCleaningFee)) {
+            calculatedCleaningFee += propertyCleaningFee;
           }
         }
 
@@ -181,8 +190,8 @@ export default ({
               ? calculatedPetFee
               : 0
             : 0,
-          cleaning: !Number.isNaN(propertyCleaningFee)
-            ? propertyCleaningFee
+          cleaning: !Number.isNaN(calculatedCleaningFee)
+            ? calculatedCleaningFee
             : 0,
           service:
             (subTotal +

@@ -33,6 +33,7 @@ export const fetchPropertyCalenderDataByDateRange = async (
           pet_fee: number;
           is_booked: boolean;
           minimum_days_stay: number;
+          cleaning_fee: number;
         }[];
       };
     };
@@ -75,6 +76,7 @@ export const fetchPropertyCalenderDataByDateRange = async (
             date: calendarMonthData[i].date,
             isBooked: calendarMonthData[i].is_booked,
             petFee: calendarMonthData[i].pet_fee,
+            cleaningFee: calendarMonthData[i].cleaning_fee,
           };
           calendarData.push(reStructuredData);
         }
@@ -108,6 +110,7 @@ export const fetchPropertyCalenderDataByDateRange = async (
               date: daysData[dayIndex].date,
               isBooked: daysData[dayIndex].is_booked,
               petFee: daysData[dayIndex].pet_fee,
+              cleaningFee: daysData[dayIndex].cleaning_fee,
             };
             calendarData.push(reStructuredData);
           }
@@ -142,6 +145,7 @@ export const fetchPropertyCalenderDataByDateRange = async (
                   date: daysData[dayIndex].date,
                   isBooked: daysData[dayIndex].is_booked,
                   petFee: daysData[dayIndex].pet_fee,
+                  cleaningFee: daysData[dayIndex].cleaning_fee,
                 };
                 calendarData.push(reStructuredData);
               }
@@ -168,6 +172,7 @@ export const fetchPropertyCalenderDataByDateRange = async (
                   date: daysData[dayIndex].date,
                   isBooked: daysData[dayIndex].is_booked,
                   petFee: daysData[dayIndex].pet_fee,
+                  cleaningFee: daysData[dayIndex].cleaning_fee,
                 };
                 calendarData.push(reStructuredData);
               }
@@ -185,6 +190,7 @@ export const fetchPropertyCalenderDataByDateRange = async (
               date: daysData[dayIndex].date,
               isBooked: daysData[dayIndex].is_booked,
               petFee: daysData[dayIndex].pet_fee,
+              cleaningFee: daysData[dayIndex].cleaning_fee,
             };
             calendarData.push(reStructuredData);
           }
@@ -236,6 +242,7 @@ export const fetchPropertyCalenderMonthData = async (
     price: calendarDate.price,
     date: calendarDate.date,
     petFee: calendarDate.pet_fee,
+    cleaningFee: calendarDate.cleaning_fee,
   }));
 
   propertyCalendarMonthData.sort((a, b) => {

@@ -14,4 +14,5 @@ export type PropertyCalendarItemData = {
   price: number;
   minimumDaysStay: number;
   petFee: number;
+  cleaningFee: number;
 };
