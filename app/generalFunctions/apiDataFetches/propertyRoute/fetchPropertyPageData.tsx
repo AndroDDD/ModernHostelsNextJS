@@ -32,6 +32,8 @@ const generatePropertyPageDataFromFetchedResponse = (fetchedPropertyData: {
       spaces: {
         calendar_space_id: string;
         label: string;
+        show_displays: boolean;
+        is_rentable: boolean;
         displays: {
           title: string;
           description: string;
