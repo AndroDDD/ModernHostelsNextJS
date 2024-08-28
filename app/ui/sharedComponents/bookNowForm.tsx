@@ -306,35 +306,42 @@ export default ({
           </div>
 
           <div className="kst-book-now-form-spaces-selections">
-            {calendarSpaces.map((calendarSpace) => (
-              <div
-                className="kst-book-now-form-spaces-selections-option"
-                onClick={(e) => {
-                  const calendarSpaceId = (
-                    e.currentTarget.children[0] as HTMLInputElement
-                  ).value;
-                  const calendarSpaceLabel =
-                    e.currentTarget.children[1].textContent;
+            {calendarSpaces.map((calendarSpace) =>
+              calendarSpace.is_rentable ? (
+                <div
+                  className="kst-book-now-form-spaces-selections-option"
+                  onClick={(e) => {
+                    const calendarSpaceId = (
+                      e.currentTarget.children[0] as HTMLInputElement
+                    ).value;
+                    const calendarSpaceLabel =
+                      e.currentTarget.children[1].textContent;
 
-                  setCalendarSpaceId(calendarSpaceId);
+                    setCalendarSpaceId(calendarSpaceId);
 
-                  let calendarSpaceSelectedLabel =
-                    document.getElementsByClassName(
-                      "kst-book-now-form-spaces-selection-selected"
-                    )[0];
-                  calendarSpaceSelectedLabel.textContent = calendarSpaceLabel;
+                    let calendarSpaceSelectedLabel =
+                      document.getElementsByClassName(
+                        "kst-book-now-form-spaces-selection-selected"
+                      )[0];
+                    calendarSpaceSelectedLabel.textContent = calendarSpaceLabel;
 
-                  let calendarSpacesSelectionContainer =
-                    document.getElementsByClassName(
-                      "kst-book-now-form-spaces-selections"
-                    )[0] as HTMLDivElement;
-                  calendarSpacesSelectionContainer.style.display = "none";
-                }}
-              >
-                <input type="hidden" value={calendarSpace.calendar_space_id} />
-                <label>{calendarSpace.label}</label>
-              </div>
-            ))}
+                    let calendarSpacesSelectionContainer =
+                      document.getElementsByClassName(
+                        "kst-book-now-form-spaces-selections"
+                      )[0] as HTMLDivElement;
+                    calendarSpacesSelectionContainer.style.display = "none";
+                  }}
+                >
+                  <input
+                    type="hidden"
+                    value={calendarSpace.calendar_space_id}
+                  />
+                  <label>{calendarSpace.label}</label>
+                </div>
+              ) : (
+                <></>
+              )
+            )}
           </div>
         </div>
       ) : (

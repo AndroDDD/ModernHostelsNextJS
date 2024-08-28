@@ -57,43 +57,47 @@ export default ({
           </div>
 
           <div className="kst-property-page-overview-info-spaces">
-            {spaces.map((space) => (
-              <div className="kst-property-page-overview-info-space">
-                <div className="kst-property-page-overview-info-space-title">
-                  {space.label}
-                </div>
-
-                {space.displays && space.displays.length > 0 ? (
-                  <div className="kst-property-page-overview-info-space-displays">
-                    {space.displays.map((display) => (
-                      <div className="kst-property-page-overview-info-space-display">
-                        <div className="kst-property-page-overview-info-space-display-title">
-                          {display.title ?? "Space"}
-                        </div>
-
-                        {display.img_url ? (
-                          <div className="kst-property-page-overview-info-space-display-img">
-                            <img src={display.img_url} />
-                          </div>
-                        ) : (
-                          <></>
-                        )}
-
-                        {display.description ? (
-                          <div className="kst-property-page-overview-info-space-display-description">
-                            {display.description}
-                          </div>
-                        ) : (
-                          <></>
-                        )}
-                      </div>
-                    ))}
+            {spaces.map((space) =>
+              space.show_displays ? (
+                <div className="kst-property-page-overview-info-space">
+                  <div className="kst-property-page-overview-info-space-title">
+                    {space.label}
                   </div>
-                ) : (
-                  <></>
-                )}
-              </div>
-            ))}
+
+                  {space.displays && space.displays.length > 0 ? (
+                    <div className="kst-property-page-overview-info-space-displays">
+                      {space.displays.map((display) => (
+                        <div className="kst-property-page-overview-info-space-display">
+                          <div className="kst-property-page-overview-info-space-display-title">
+                            {display.title ?? "Space"}
+                          </div>
+
+                          {display.img_url ? (
+                            <div className="kst-property-page-overview-info-space-display-img">
+                              <img src={display.img_url} />
+                            </div>
+                          ) : (
+                            <></>
+                          )}
+
+                          {display.description ? (
+                            <div className="kst-property-page-overview-info-space-display-description">
+                              {display.description}
+                            </div>
+                          ) : (
+                            <></>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              ) : (
+                <></>
+              )
+            )}
           </div>
         </div>
       ) : (
