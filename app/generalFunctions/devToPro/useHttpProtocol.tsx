@@ -1,1 +1,1 @@
-export const useHttpProtocol = false ? "https://" : "http://";
+export const useHttpProtocol = true ? "https://" : "http://";
