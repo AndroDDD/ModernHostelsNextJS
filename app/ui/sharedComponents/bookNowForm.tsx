@@ -258,7 +258,7 @@ export default ({
     })();
 
     setFormattedDateDisplayText(updatedDateDisplayText);
-  }, [formSendData, includePetFee]);
+  }, [formSendData, includePetFee, calendarSpaceId]);
 
   return (
     <div ref={bookNowFormElementRef} className="kst-book-now-form">

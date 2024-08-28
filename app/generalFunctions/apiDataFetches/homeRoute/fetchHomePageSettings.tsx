@@ -3,6 +3,12 @@ export async function fetchHomePageSettings(restUrl: string) {
     const restUrlResponse = await fetch(restUrl);
     const json = await restUrlResponse.json();
 
+    const laxDataFetch = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(`Resolved after ${500} milliseconds`);
+      }, 500);
+    });
+
     console.log({ json });
 
     return json;
