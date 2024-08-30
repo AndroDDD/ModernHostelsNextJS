@@ -61,6 +61,7 @@
 
     @media only screen and (max-width: 768px) {
       padding: 5px 3%;
+      grid-template-columns: 100%;
 
       &::-webkit-scrollbar {
         width: 0px;
@@ -79,6 +80,12 @@
       width: 320px;
       height: 290px;
       margin-bottom: 15px;
+
+      @media only screen and (max-width: 768px) {
+        width: 100%;
+        align-self: center;
+        justify-self: center;
+      }
     }
 
     .kst-home-listings-section-content-empty {

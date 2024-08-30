@@ -13,7 +13,10 @@ export const fetchPostPageData = async (slug: string) => {
     id: data.id,
     title: he.decode(data.title.rendered),
     excerpt: stripHtml(he.decode(data.excerpt.rendered)).result,
-    featuredImage: data._embedded["wp:featuredmedia"][0].source_url,
+    featuredImage:
+      data._embedded && data._embedded["wp:featuredmedia"]
+        ? data._embedded["wp:featuredmedia"][0].source_url
+        : "",
     content: he.decode(data.content.rendered),
     author: data._embedded["author"][0].name,
     date: new Date(data.date).toLocaleDateString("en-US", {
