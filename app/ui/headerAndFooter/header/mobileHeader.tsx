@@ -141,23 +141,31 @@ export default ({ content, headerRef }: DesktopHeaderParameters) => {
 
         <div className="kst-mobile-header-menu-container-login-signup-links">
           {user ? (
-            <div
-              className="kst-mobile-header-menu-container-logout"
-              onClick={(event) => {
-                const handleLogout = () => {
-                  const returnTo = window.location.pathname; // Save the current URL
-                  router.push(
-                    `/rest-api/authentication/log?returnTo=${encodeURIComponent(
-                      returnTo
-                    )}`
-                  );
-                };
+            <>
+              <Link
+                className="kst-mobile-header-menu-container-dashboard"
+                href="/dashboard"
+              >
+                Dashboard
+              </Link>
+              <div
+                className="kst-mobile-header-menu-container-logout"
+                onClick={(event) => {
+                  const handleLogout = () => {
+                    const returnTo = window.location.pathname; // Save the current URL
+                    router.push(
+                      `/rest-api/authentication/log?returnTo=${encodeURIComponent(
+                        returnTo
+                      )}`
+                    );
+                  };
 
-                handleLogout();
-              }}
-            >
-              Logout
-            </div>
+                  handleLogout();
+                }}
+              >
+                Logout
+              </div>
+            </>
           ) : (
             <>
               <div

@@ -44,7 +44,7 @@ export default ({ title, summary, link }: HeaderSection) => {
                 </div>
               </div>
             ) : (
-              <></>
+              <div key={`kst-property-stat-${index}`}></div>
             );
           } else {
             const statTyped = stat as { statName: string; statNumber: number };
@@ -70,7 +70,7 @@ export default ({ title, summary, link }: HeaderSection) => {
                 </div>
               </div>
             ) : (
-              <></>
+              <div key={`kst-property-stat-${index}`}></div>
             );
           }
         })}

@@ -1,0 +1,116 @@
+.kst-dashboard-rewards-sub-section-list-item {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: fit-content;
+  height: auto;
+  border-radius: 10px;
+  background-color: black;
+  box-shadow: inset 0 0 3px 2px goldenrod;
+  padding: 10px 7px;
+  margin: 5px;
+  color: gold;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    padding-bottom: 25px;
+  }
+
+  .kst-dashboard-list-item-label {
+    letter-spacing: 0.5px;
+    padding: 3px 7px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 2px gold;
+    background-color: black;
+  }
+
+  .kst-dashboard-list-item-quantity {
+    color: black;
+    font-weight: 700;
+    font-size: 25px;
+  }
+
+  &.progress {
+    .kst-dashboard-list-item-progress {
+      color: gold;
+
+      @media only screen and (max-width: 768px) {
+        text-align: center;
+        font-size: 25px;
+        letter-spacing: 1px;
+      }
+
+      span {
+        font-weight: 700;
+        font-size: 25px;
+
+        @media only screen and (max-width: 768px) {
+          font-size: 45px;
+          color: gold;
+          text-shadow: 2px 3px darkblue;
+        }
+      }
+    }
+
+    .kst-dashboard-list-item-img-list {
+      .kst-dashboard-list-item-img-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 7px;
+
+        @media only screen and (max-width: 768px) {
+          margin-top: 15px;
+          margin-bottom: 25px;
+        }
+
+        img {
+          width: 75px;
+          height: 75px;
+          object-fit: cover;
+          overflow: hidden;
+          border-radius: 100%;
+
+          @media only screen and (max-width: 768px) {
+            width: 200px;
+            height: 200px;
+          }
+        }
+      }
+    }
+
+    .kst-dashboard-reward-progress-badge-list {
+      @media only screen and (max-width: 768px) {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+      }
+
+      .kst-dashboard-list-item-label {
+        @media only screen and (max-width: 768px) {
+          width: calc(100% - 30px);
+          text-align: center;
+          font-size: 30px;
+          font-weight: 500;
+          letter-spacing: 2px;
+        }
+      }
+    }
+  }
+
+  &.earned-reward {
+    div {
+      text-wrap: nowrap;
+      width: fit-content;
+    }
+
+    img {
+      width: 75px;
+      height: 75px;
+      object-fit: cover;
+      overflow: hidden;
+      border-radius: 100%;
+      margin-bottom: 7px;
+    }
+  }
+}

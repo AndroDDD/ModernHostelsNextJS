@@ -1,151 +1,164 @@
 #kst-mobile-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+
+  .kst-mobile-header-top {
     display: flex;
-    flex-direction: column;
     width: 100%;
-    height: auto;
 
-    .kst-mobile-header-top {
+    .kst-mobile-header-menu-toggle-button {
+      width: 100px;
+      border: 5px solid darkblue;
+      background-color: black;
+      cursor: pointer;
+
+      .kst-mobile-header-menu-toggle-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 100%;
+        overflow: hidden;
+
+        .kst-mobile-header-menu-toggle {
+          position: absolute;
+          display: flex;
+          width: 100%;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+
+          i {
+            font-size: 90px;
+          }
+        }
+      }
+    }
+
+    .kst-mobile-header-home {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: calc(100% - 100px);
+      background: rgba(29, 25, 25, 0.5);
+      font-size: 30px;
+      text-decoration: none;
+      color: gold;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px black;
+    }
+  }
+
+  .kst-mobile-header-menu-container {
+    flex: 1 1 auto;
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+
+    .kst-mobile-header-menu-container-contacts {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+
+      .kst-mobile-header-menu-container-contact {
+        color: whitesmoke;
+        font-size: 17px;
+      }
+    }
+
+    .kst-mobile-header-menu-container-main-links {
+      top: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+
+      .kst-mobile-header-menu-container-main-link {
         display: flex;
-        width: 100%;
-
-        .kst-mobile-header-menu-toggle-button {
-            width: 100px;
-            border: 5px solid darkblue;
-            background-color: black;
-            cursor: pointer;
-
-            .kst-mobile-header-menu-toggle-container {
-                position: relative;
-                width: 100%;
-                padding-bottom: 100%;
-                overflow: hidden;
-
-                .kst-mobile-header-menu-toggle {
-                    position: absolute;
-                    display: flex;
-                    width: 100%;
-                    height: 100%;
-                    justify-content: center;
-                    align-items: center;
-
-                    i {
-                        font-size: 90px;
-                    }
-                }
-            }
-        }
-
-        .kst-mobile-header-home {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: calc(100% - 100px);
-            background: rgba(29, 25, 25, .5);
-            color: whitesmoke;
-            font-size: 20px;
-            text-decoration: none;
-        }
-    }
-
-    .kst-mobile-header-menu-container {
-        flex: 1 1 auto;
-        display: none;
         flex-direction: column;
-        padding: 20px;
+        justify-content: center;
         align-items: center;
+        padding: 7px;
+        margin-bottom: 7px;
+        border: 2px solid whitesmoke;
+        border-radius: 5px;
+        width: calc(100% - 25px);
+        color: whitesmoke;
+        font-size: 25px;
+        cursor: pointer;
+      }
+
+      .kst-mobile-header-menu-container-main-link-submenu {
+        display: none;
+        grid-template-columns: 1fr;
+        row-gap: 7px;
+        margin-top: 3px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        border-top: 1px solid whitesmoke;
         width: 100%;
-        height: 100%;
-        background-color: black;
 
-        .kst-mobile-header-menu-container-contacts {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            width: 100%;
-
-            .kst-mobile-header-menu-container-contact {
-                color: whitesmoke;
-                font-size: 17px;
-            }
+        .kst-mobile-header-menu-container-main-link-submenu-item {
+          display: flex;
+          justify-self: center;
+          color: darkcyan;
+          text-decoration: none;
         }
-
-        .kst-mobile-header-menu-container-main-links {
-            top: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            width: 100%;
-
-            .kst-mobile-header-menu-container-main-link {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                padding: 7px;
-                margin-bottom: 7px;
-                border: 2px solid whitesmoke;
-                border-radius: 5px;
-                width: calc(100% - 25px);
-                color: whitesmoke;
-                font-size: 25px;
-                cursor: pointer;
-            }
-
-            .kst-mobile-header-menu-container-main-link-submenu {
-                display: none;
-                grid-template-columns: 1fr;
-                row-gap: 7px;
-                margin-top: 3px;
-                padding-top: 3px;
-                padding-bottom: 3px;
-                border-top: 1px solid whitesmoke;
-                width: 100%;
-
-                .kst-mobile-header-menu-container-main-link-submenu-item {
-                    display: flex;
-                    justify-self: center;
-                    color: darkcyan;
-                    text-decoration: none;
-                }
-            }
-        }
-
-        .kst-mobile-header-menu-container-login-signup-links {
-            position: absolute;
-            bottom: 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: calc(100% - 50px);
-
-            .kst-mobile-header-menu-container-logout {
-                padding: 5px;
-                border: 2px solid darkorange;
-                border-radius: 5px;
-                color: darkorange;
-                font-size: 20px;
-                cursor: pointer;
-            }
-
-            .kst-mobile-header-menu-container-login {
-                padding: 5px;
-                border: 2px solid whitesmoke;
-                border-radius: 5px;
-                color: whitesmoke;
-                font-size: 20px;
-                cursor: pointer;
-            }
-
-            .kst-mobile-header-menu-container-signup {
-                padding: 5px;
-                border: 2px solid darkcyan;
-                border-radius: 5px;
-                color: darkcyan;
-                font-size: 20px;
-                cursor: pointer;
-            }
-        }
+      }
     }
+
+    .kst-mobile-header-menu-container-login-signup-links {
+      position: absolute;
+      bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: calc(100% - 50px);
+
+      .kst-mobile-header-menu-container-dashboard {
+        padding: 10px;
+        border: 2px solid gold;
+        box-shadow: inset 0 0 2px 3px goldenrod;
+        border-radius: 5px;
+        color: gold;
+        font-size: 17px;
+        letter-spacing: 2px;
+        cursor: pointer;
+      }
+
+      .kst-mobile-header-menu-container-logout {
+        padding: 5px;
+        border: 2px solid darkorange;
+        border-radius: 5px;
+        color: darkorange;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .kst-mobile-header-menu-container-login {
+        padding: 5px;
+        border: 2px solid whitesmoke;
+        border-radius: 5px;
+        color: whitesmoke;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .kst-mobile-header-menu-container-signup {
+        padding: 5px;
+        border: 2px solid darkcyan;
+        border-radius: 5px;
+        color: darkcyan;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+  }
 }

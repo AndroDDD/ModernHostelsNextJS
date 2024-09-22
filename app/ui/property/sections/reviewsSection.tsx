@@ -61,9 +61,12 @@ export default ({
         style={otherStats.length === 0 ? { display: "none" } : {}}
       >
         {otherStats ? (
-          otherStats.map((otherStat) =>
+          otherStats.map((otherStat, otherStatIndex) =>
             otherStat.numberOfStars > 0 ? (
-              <div className="kst-property-page-reviews-section-other-stat">
+              <div
+                key={`kst-property-page-reviews-section-other-stat-${otherStatIndex}`}
+                className="kst-property-page-reviews-section-other-stat"
+              >
                 <div className="kst-property-page-reviews-section-header-stat-name">
                   {otherStat.statName}
                 </div>
@@ -73,7 +76,9 @@ export default ({
                 </div>
               </div>
             ) : (
-              <></>
+              <div
+                key={`kst-property-page-reviews-section-other-stat-${otherStatIndex}`}
+              ></div>
             )
           )
         ) : (
@@ -86,8 +91,9 @@ export default ({
         style={testimonials.length === 0 ? { display: "none" } : {}}
       >
         <div className="kst-property-page-reviews-section-testimonials-first-three">
-          {testimonials.slice(0, 3).map((testimonial) => (
+          {testimonials.slice(0, 3).map((testimonial, testimonialIndex) => (
             <TestimonialBadge
+              key={`kst-property-page-reviews-section-testimonial-badge-1-${testimonialIndex}`}
               from={testimonial.from}
               date={testimonial.date}
               review={testimonial.review}
@@ -99,8 +105,9 @@ export default ({
           {testimonials.length > 3 ? (
             testimonials
               .slice(3)
-              .map((testimonial) => (
+              .map((testimonial, testimonialIndex) => (
                 <TestimonialBadge
+                  key={`kst-property-page-reviews-section-testimonial-badge-2-${testimonialIndex}`}
                   from={testimonial.from}
                   date={testimonial.date}
                   review={testimonial.review}

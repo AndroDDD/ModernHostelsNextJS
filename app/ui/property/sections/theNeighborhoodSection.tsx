@@ -49,6 +49,7 @@ export default ({
           {Object.keys(locations).map((locationCategory, index) =>
             locations[locationCategory].length > 0 ? (
               <div
+                key={`kst-property-page-the-neighborhood-section-areas-link-${index}`}
                 className="kst-property-page-the-neighborhood-section-areas-link"
                 style={index === 0 ? { color: "#6d6d6d" } : {}}
                 onClick={(event) => {
@@ -70,7 +71,9 @@ export default ({
                 {locationCategory}
               </div>
             ) : (
-              <></>
+              <div
+                key={`kst-property-page-the-neighborhood-section-areas-link-${index}`}
+              ></div>
             )
           )}
         </div>
@@ -79,6 +82,7 @@ export default ({
           {selectedCategory ? (
             locations[selectedCategory].map((locationData, index) => (
               <div
+                key={`kst-property-page-the-neighborhood-section-areas-detail-${index}`}
                 className="kst-property-page-the-neighborhood-section-areas-detail"
                 onClick={(e) => {
                   setSelectedLocation(index);

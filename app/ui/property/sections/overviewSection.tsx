@@ -98,11 +98,17 @@ export default (overviewInfo: OverviewSection & { isMobile: boolean }) => {
             {formatAvgPriceText(overviewInfo.propertyPrice).map(
               (priceText, index) =>
                 index === 0 ? (
-                  <div className="kst-book-now-form-expand-form-container-avg-price-header">
+                  <div
+                    key={`kst-book-now-form-expand-form-container-avg-price-${index}`}
+                    className="kst-book-now-form-expand-form-container-avg-price-header"
+                  >
                     {`Avg. Price / ${priceText}`}
                   </div>
                 ) : (
-                  <div className="kst-book-now-form-expand-form-container-avg-price-number">
+                  <div
+                    key={`kst-book-now-form-expand-form-container-avg-price-${index}`}
+                    className="kst-book-now-form-expand-form-container-avg-price-number"
+                  >
                     {`${priceText}`}
                   </div>
                 )

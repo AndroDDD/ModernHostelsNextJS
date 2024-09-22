@@ -9,8 +9,6 @@ export async function fetchHomePageSettings(restUrl: string) {
       }, 500);
     });
 
-    console.log({ json });
-
     return json;
   } catch (e) {
     console.error("Error fetching homepage settings:", e);

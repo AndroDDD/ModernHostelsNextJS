@@ -19,12 +19,8 @@ export default (categorizedImages: CategorizedImagesSection) => {
       imagesCategoriesRef.current &&
       imagesCategoriesRef.current?.children.length > 0
     ) {
-      console.log({ imagesSet: "Images are set" });
       return;
     }
-
-    console.log({ categorizedImages });
-
     Object.keys(categorizedImages).forEach((categoryName, index) => {
       const numberOfImages = categorizedImages[categoryName].length;
 

@@ -3,6 +3,7 @@
 import { CreditCard, PaymentForm } from "react-square-web-payments-sdk";
 import { useEffect, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 import { appId, locationId } from "@/app/constants/envReferences";
 import { BookingDataForCookie } from "@/app/types/bookingDataForCookie";
@@ -14,8 +15,10 @@ import {
 import "@/app/ui/styles/scss/components/checkout/payment/sections/payment-details.scss";
 import { sendEmail } from "@/app/generalFunctions/apiDataFetches/sendEmail";
 import { updateWPCalendarData } from "@/app/generalFunctions/calendar/updateWPCalendarData";
+import { updateWPOrdersData } from "@/app/generalFunctions/checkout/updateWPOrdersData";
 
 export default function PaymentDetails() {
+  const { user } = useUser();
   const router = useRouter();
 
   const [bookingData, setBookingData] = useState<BookingDataForCookie>();
@@ -127,17 +130,35 @@ export default function PaymentDetails() {
                       bookingData.calendarSpaceId ?? null
                     );
 
-                    const emailData = {
+                    const completedOrderData = {
+                      user_id: user?.sub ?? "guest-user",
                       full_name: bookingData.contact?.name,
                       reply_to: bookingData.contact?.email,
                       property: bookingData.propertyName,
+                      property_page_slug: bookingData.propertyPageSlug,
                       start_date: bookingData.dates.checkIn,
                       end_date: bookingData.dates.checkOut,
+                      price_totals: {
+                        total_due: bookingData.priceTotals.totalDue,
+                        sub_total: bookingData.priceTotals.subTotal,
+                        taxes: bookingData.priceTotals.taxes,
+                        fees: {
+                          pet: bookingData.priceTotals.fees.pet,
+                          cleaning: bookingData.priceTotals.fees.cleaning,
+                          service: bookingData.priceTotals.fees.service,
+                        },
+                        taxes_fees_combined:
+                          bookingData.priceTotals.taxesFeesCombined,
+                        avg_night: bookingData.priceTotals.avgNight,
+                      },
                       order_id: confirmationNumber,
                     };
+
+                    await updateWPOrdersData(completedOrderData);
+
                     const emailServer = 2;
                     const emailSentSuccessfully = await sendEmail({
-                      data: emailData,
+                      data: completedOrderData,
                       emailServer,
                     });
 

@@ -1,0 +1,25 @@
+#kst-main-dashboard-view {
+  display: grid;
+  grid-template-columns: 250px calc(100% - 250px);
+  grid-template-rows: calc(100% - 50px);
+  color: black;
+  width: 100%;
+  height: calc(100% - 50px);
+  padding-top: 100px;
+  background-color: lightgrey;
+
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    padding-top: 100px;
+    height: auto;
+  }
+}
+
+.kst-main-dashboard-footer-gradient {
+  background: linear-gradient(
+    180deg,
+    lightgrey 90%,
+    rgba(29, 25, 25, 1) 95.04%
+  );
+}

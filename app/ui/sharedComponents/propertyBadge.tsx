@@ -130,7 +130,7 @@ export default ({ property }: TPropertyBadge) => {
       </Link>
 
       <div className="kst-property-badge-available-date">
-        {`Available ${property.available}`}
+        {`${property.dateLabel ?? "Available"} ${property.available}`}
       </div>
     </div>
   );

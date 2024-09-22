@@ -13,6 +13,17 @@ const emailServerUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}w
 const getLogoUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kst/get-logo-url/`;
 const newsletterApiUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kst/v1/newsletter/`;
 const homepageSettingsApiUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kst/homepage-settings`;
+const checkoutSubmitOrderApiUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kstecm/v1/orders/submit`;
+const createCustomerApiUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kstecm/v1/customer/create`;
+const updateCustomerApiUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kstecm/v1/customer/update`;
+const customerOrdersApiUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kstecm/v1/orders`;
+const customerRewardsTierApiUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kstecm/v1/rewards/rental/tiers/all`;
+const customerRewardsApiUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kstecm/v1/rewards/rental/customer`;
+const customersDataApiUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kstecm/v1/customers`;
+const customerDataApiUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kstecm/v1/customer`;
+const getUserChatMessagesApiUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kstecm/v1/chat/get-messages`;
+const getUserChatConversationIdsApiUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kstecm/v1/chat/get-conversation-ids`;
+const sendUserChatMessageApiUrl = `${useHttpProtocol}${placeXAMPPHostname}${placeXAMPPUrl}wp-json/kstecm/v1/chat/send-message`;
 
 export {
   wpApiUrl,
@@ -24,4 +35,15 @@ export {
   getLogoUrl,
   newsletterApiUrl,
   homepageSettingsApiUrl,
+  checkoutSubmitOrderApiUrl,
+  createCustomerApiUrl,
+  updateCustomerApiUrl,
+  customerOrdersApiUrl,
+  customerRewardsTierApiUrl,
+  customerRewardsApiUrl,
+  customersDataApiUrl,
+  customerDataApiUrl,
+  getUserChatMessagesApiUrl,
+  getUserChatConversationIdsApiUrl,
+  sendUserChatMessageApiUrl,
 };

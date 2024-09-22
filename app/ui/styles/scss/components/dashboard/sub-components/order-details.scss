@@ -1,0 +1,26 @@
+.kst-dashboard-booking-order-details-section {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: calc(100% - 10px);
+  border-radius: 5px;
+  box-shadow: inset 0 0 2px 1px darkblue;
+  padding: 20px;
+  background-color: aliceblue;
+  justify-content: center;
+
+  .kst-dashboard-compact-container {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .kst-dashboard-compact-container-item {
+    display: flex;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: darkblue;
+  }
+}

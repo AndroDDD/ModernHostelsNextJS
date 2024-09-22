@@ -38,22 +38,10 @@ export type PropertyData = {
   isNightly: boolean;
 
   pageSlug: string;
+
+  dateLabel?: string;
 };
 
 export type AmenitiesList = {
   [key: string]: boolean;
-  ["kitchen"]: boolean;
-  ["airConditioning"]: boolean;
-  ["television"]: boolean;
-  ["washerAndDryer"]: boolean;
-  ["heating"]: boolean;
-  ["cable"]: boolean;
-  ["computerMonitor"]: boolean;
-  ["bedding"]: boolean;
-  ["cookware"]: boolean;
-  ["tableware"]: boolean;
-  ["iron"]: boolean;
-  ["pool"]: boolean;
-  ["linens"]: boolean;
-  ["wifi"]: boolean;
 };

@@ -3,6 +3,7 @@ import { PriceTotalsDisplay } from "./bookNowFormData";
 export type BookingDataForCookie = {
   propertyName: string;
   propertyImageUrl: string;
+  propertyPageSlug: string;
   spaces: {
     beds: number;
     baths: number;

@@ -20,7 +20,6 @@ export default async function Home() {
   const isMobile = await isMobileDevice();
   const homePageSettings = await fetchHomePageSettings(homepageSettingsApiUrl);
 
-  console.log({ homePageSettings });
   const introSectionData = JSON.parse(
     homePageSettings["homePageIntroSectionData"],
     function (key, value) {

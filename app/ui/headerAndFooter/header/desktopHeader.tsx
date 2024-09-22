@@ -279,23 +279,33 @@ export default ({ isScrolled, content, style }: DesktopHeaderParameters) => {
             className={`kst-desktop-header-login-signup ${style ? style : ""}`}
           >
             {user ? (
-              <div
-                className={`kst-desktop-header-logout ${style ? style : ""}`}
-                onClick={(event) => {
-                  const handleLogout = () => {
-                    const returnTo = window.location.pathname; // Save the current URL
-                    router.push(
-                      `/rest-api/authentication/logout?returnTo=${encodeURIComponent(
-                        returnTo
-                      )}`
-                    );
-                  };
+              <>
+                <Link
+                  href={`/dashboard`}
+                  className={`kst-desktop-header-dashboard ${
+                    style ? style : ""
+                  }`}
+                >
+                  Dashboard
+                </Link>
+                <div
+                  className={`kst-desktop-header-logout ${style ? style : ""}`}
+                  onClick={(event) => {
+                    const handleLogout = () => {
+                      const returnTo = window.location.pathname; // Save the current URL
+                      router.push(
+                        `/rest-api/authentication/logout?returnTo=${encodeURIComponent(
+                          returnTo
+                        )}`
+                      );
+                    };
 
-                  handleLogout();
-                }}
-              >
-                {"Logout"}
-              </div>
+                    handleLogout();
+                  }}
+                >
+                  {"Logout"}
+                </div>
+              </>
             ) : (
               <>
                 <div

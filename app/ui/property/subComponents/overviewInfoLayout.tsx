@@ -33,8 +33,11 @@ export default ({
       <div className="kst-property-page-overview-info-title">{headerTitle}</div>
 
       <div className="kst-property-page-overview-info-snapshots">
-        {snapShots.map((snapshot) => (
-          <div className="kst-property-page-overview-info-snapshot">
+        {snapShots.map((snapshot, snapshotIndex) => (
+          <div
+            key={`kst-property-page-overview-info-snapshot-${snapshotIndex}`}
+            className="kst-property-page-overview-info-snapshot"
+          >
             <SnapshotBadge {...snapshot} />
           </div>
         ))}
@@ -57,17 +60,23 @@ export default ({
           </div>
 
           <div className="kst-property-page-overview-info-spaces">
-            {spaces.map((space) =>
+            {spaces.map((space, spaceIndex) =>
               space.show_displays ? (
-                <div className="kst-property-page-overview-info-space">
+                <div
+                  key={`kst-property-page-overview-info-space-${spaceIndex}`}
+                  className="kst-property-page-overview-info-space"
+                >
                   <div className="kst-property-page-overview-info-space-title">
                     {space.label}
                   </div>
 
                   {space.displays && space.displays.length > 0 ? (
                     <div className="kst-property-page-overview-info-space-displays">
-                      {space.displays.map((display) => (
-                        <div className="kst-property-page-overview-info-space-display">
+                      {space.displays.map((display, displayIndex) => (
+                        <div
+                          key={`kst-property-page-overview-info-space-display-${displayIndex}`}
+                          className="kst-property-page-overview-info-space-display"
+                        >
                           <div className="kst-property-page-overview-info-space-display-title">
                             {display.title ?? "Space"}
                           </div>
@@ -95,7 +104,9 @@ export default ({
                   )}
                 </div>
               ) : (
-                <></>
+                <div
+                  key={`kst-property-page-overview-info-space-${spaceIndex}`}
+                ></div>
               )
             )}
           </div>

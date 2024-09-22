@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 import { BookingDataForCookie } from "@/app/types/bookingDataForCookie";
 import { retrieveBookingDataFromCookie } from "@/app/generalFunctions/retrieveBookingDataFromCookie";
@@ -9,6 +10,7 @@ import "@/app/ui/styles/scss/components/checkout/order-review/sections/order-rev
 import { createOrder } from "@/app/generalFunctions/checkout/actions";
 
 export default function OrderReview() {
+  const { user } = useUser();
   const router = useRouter();
   const [bookingData, setBookingData] = useState<BookingDataForCookie>();
 
@@ -20,7 +22,13 @@ export default function OrderReview() {
       redirect(`/`);
     }
 
-    setBookingData(bookingData);
+    setBookingData({
+      ...bookingData,
+      contact: {
+        name: user?.name ?? "",
+        email: user?.email ?? "",
+      },
+    });
   }, []);
 
   return (
@@ -198,6 +206,7 @@ export default function OrderReview() {
               <input
                 type="text"
                 required
+                defaultValue={user?.name ?? ""}
                 onInput={(e) => {
                   e.preventDefault();
 
@@ -224,6 +233,7 @@ export default function OrderReview() {
               <input
                 type="email"
                 required
+                defaultValue={user?.email ?? ""}
                 onInput={(e) => {
                   e.preventDefault();
 

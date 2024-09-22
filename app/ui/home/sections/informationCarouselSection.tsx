@@ -112,44 +112,49 @@ export default (passedProp: {
         className="kst-home-information-carousel-section-content"
       >
         {simpleInformationArray && simpleInformationArray.length > 0 ? (
-          simpleInformationArray.map((simpleInformation) => {
-            return (
-              <div
-                className="kst-home-information-carousel-section-content-badge"
-                onMouseEnter={(event) => {
-                  if (isCarouselActive) {
-                    setCarouselIntervalIds((intervalIds) => {
-                      intervalIds.forEach((id) => {
-                        clearInterval(id);
+          simpleInformationArray.map(
+            (simpleInformation, simpleInformationIndex) => {
+              return (
+                <div
+                  key={`kst-home-information-carousel-section-content-badge-${simpleInformationIndex}`}
+                  className="kst-home-information-carousel-section-content-badge"
+                  onMouseEnter={(event) => {
+                    if (isCarouselActive) {
+                      setCarouselIntervalIds((intervalIds) => {
+                        intervalIds.forEach((id) => {
+                          clearInterval(id);
+                        });
+                        return [];
                       });
-                      return [];
-                    });
-                  }
-                }}
-                onMouseLeave={(event) => {
-                  if (isCarouselActive) {
-                    setCarouselIntervalIds((intervalIds) => {
-                      const newIntervalId = setInterval(() => {
-                        if (informationCarouselContentRef.current) {
-                          updateInformationCarouselScrollLocation(
-                            informationCarouselContentRef.current,
-                            1
-                          );
-                        }
-                      }, 100);
+                    }
+                  }}
+                  onMouseLeave={(event) => {
+                    if (isCarouselActive) {
+                      setCarouselIntervalIds((intervalIds) => {
+                        const newIntervalId = setInterval(() => {
+                          if (informationCarouselContentRef.current) {
+                            updateInformationCarouselScrollLocation(
+                              informationCarouselContentRef.current,
+                              1
+                            );
+                          }
+                        }, 100);
 
-                      let updatedIntervalIds = intervalIds;
-                      updatedIntervalIds.push(newIntervalId);
+                        let updatedIntervalIds = intervalIds;
+                        updatedIntervalIds.push(newIntervalId);
 
-                      return updatedIntervalIds;
-                    });
-                  }
-                }}
-              >
-                <SimpleInformationBadge simpleInformation={simpleInformation} />
-              </div>
-            );
-          })
+                        return updatedIntervalIds;
+                      });
+                    }
+                  }}
+                >
+                  <SimpleInformationBadge
+                    simpleInformation={simpleInformation}
+                  />
+                </div>
+              );
+            }
+          )
         ) : (
           <></>
         )}

@@ -64,12 +64,6 @@ export default ({
       dates[currentDateIndexToCheck] &&
       dateFormatted === dates[currentDateIndexToCheck].date;
 
-    console.log({
-      dateFormatted,
-      dateToCompare: dates[currentDateIndexToCheck]?.date,
-      foundDateData,
-    });
-
     if (foundDateData) {
       const dateData = dates[currentDateIndexToCheck];
       const isBooked = dates[currentDateIndexToCheck].isBooked;

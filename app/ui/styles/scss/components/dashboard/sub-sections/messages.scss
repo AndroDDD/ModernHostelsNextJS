@@ -1,0 +1,445 @@
+#kst-dashboard-messages-section {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  height: 100%;
+  max-height: 100%;
+  overflow: auto;
+
+  @media only screen and (max-width: 768px) {
+    flex-flow: column;
+    height: auto;
+    overflow: hidden;
+    padding-bottom: 25px;
+    background-color: black;
+    border-radius: 5px;
+    box-shadow: 0 0 1px 2px gold;
+  }
+
+  .kst-dashboard-messages-sidebar {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 200px;
+    background: black;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    height: 100%;
+    overflow: auto;
+    padding: 0 3px 45px;
+
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      margin-bottom: 15px;
+      height: auto;
+      padding-bottom: 5px;
+    }
+
+    .kst-dashboard-messages-sidebar-header {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid whitesmoke;
+      padding: 7px 5px;
+      font-weight: 500;
+      font-size: 20px;
+      color: whitesmoke;
+      width: 100%;
+    }
+
+    .kst-dashboard-messages-sidebar-list {
+      display: flex;
+      flex-flow: column;
+      width: 100%;
+      height: calc(100% - 45px);
+      border: 1px solid burlywood;
+      overflow: auto;
+
+      @media only screen and (max-width: 768px) {
+        height: 200px;
+      }
+
+      .kst-dashboard-messages-sidebar-list-item {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        color: whitesmoke;
+        border: 1px solid whitesmoke;
+        padding: 3px 5px;
+
+        @media only screen and (max-width: 768px) {
+          font-size: 25px;
+          letter-spacing: 2px;
+          padding: 7px 14px;
+        }
+
+        &.button {
+          cursor: pointer;
+
+          &:hover {
+            background-color: whitesmoke;
+            color: black;
+          }
+
+          &.active {
+            background-color: lightcyan;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+
+  .kst-dashboard-messages-sidebar-send-message {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    bottom: 0px;
+    display: flex;
+    border-radius: 5px;
+    border: 2px solid blue;
+    background-color: black;
+    height: auto;
+    width: calc(100% - 4px);
+    margin: 3px 0;
+    padding: 3px 2px;
+
+    @media only screen and (max-width: 768px) {
+      position: relative;
+    }
+
+    .kst-dashboard-messages-sidebar-send-message-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3px 5px;
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: inset 0 0 2px 3px lightgreen;
+      color: lightgreen;
+      cursor: pointer;
+      transition: all 150ms ease-in-out;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 25px;
+      }
+
+      &.cancel {
+        box-shadow: inset 0 0 2px 3px lightcoral;
+        color: lightcoral;
+
+        &:hover {
+          box-shadow: inset 0 0 2px 3px red;
+          color: red;
+        }
+      }
+
+      &:hover {
+        box-shadow: inset 0 0 2px 3px greenyellow;
+        color: greenyellow;
+      }
+    }
+
+    input {
+      border-radius: 3px;
+      padding: 3px 5px;
+    }
+
+    textarea {
+      border-radius: 3px;
+      padding: 3px 5px;
+    }
+
+    .kst-dashboard-messages-sidebar-send-message-options {
+      display: none;
+      flex-flow: column;
+      padding: 3px;
+      width: 100%;
+
+      .kst-dashboard-messages-sidebar-send-message-chat-label {
+        margin-bottom: 3px;
+        padding: 3px 5px;
+        font-weight: 500;
+        font-size: 15px;
+        border-radius: 5px;
+
+        @media only screen and (max-width: 768px) {
+          font-size: 25px;
+        }
+      }
+
+      .kst-dashboard-messages-sidebar-send-message-recipient {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 3px;
+
+        .kst-dashboard-sidebar-send-message-recipient-name {
+          width: calc(100% - 40px);
+
+          @media only screen and (max-width: 768px) {
+            font-size: 25px;
+          }
+        }
+
+        .kst-dashboard-sidebar-send-message-toggle-recipients-list {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 3px;
+          border-radius: 3px;
+          box-shadow: inset 0 0 2px 3px lightblue;
+          width: 35px;
+          cursor: pointer;
+          transition: all 150ms ease-in-out;
+
+          &:hover {
+            box-shadow: inset 0 0 2px 3px royalblue;
+          }
+        }
+
+        .kst-dashboard-sidebar-send-message-recipients-list {
+          position: absolute;
+          display: none;
+          flex-flow: column;
+          top: 33px;
+          left: 0;
+          width: 100%;
+          height: 190px;
+          max-height: 190px;
+          padding: 3px;
+          overflow: auto;
+          border-radius: 3px;
+          background-color: black;
+          border: 1px solid cyan;
+          z-index: 3;
+
+          .kst-dashboard-sidebar-send-message-recipients-list-item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 3px 5px;
+            text-wrap: wrap;
+            width: 100%;
+            border-radius: 3px;
+            box-shadow: inset 0 0 2px 3px lightcyan;
+            margin-bottom: 3px;
+            color: whitesmoke;
+            font-size: 14px;
+            transition: all 150ms ease-in;
+            cursor: pointer;
+
+            @media only screen and (max-width: 768px) {
+              font-size: 25px;
+            }
+
+            &:hover {
+              box-shadow: inset 0 0 2px 3px cyan;
+              color: cyan;
+            }
+          }
+        }
+      }
+
+      .kst-dashboard-messages-sidebar-send-message-conversation-name {
+        width: 100%;
+        margin-bottom: 3px;
+
+        @media only screen and (max-width: 768px) {
+          font-size: 25px;
+        }
+      }
+
+      .kst-dashboard-messages-sidebar-send-message-note {
+        width: 100%;
+        min-height: 150px;
+        height: 150px;
+        max-height: 150px;
+        margin-bottom: 5px;
+
+        @media only screen and (max-width: 768px) {
+          font-size: 25px;
+        }
+      }
+
+      .kst-dashboard-messages-sidebar-send-message-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3px 5px;
+        border-radius: 3px;
+        box-shadow: 0 0 3px 2px lightgreen;
+        color: lightgreen;
+        cursor: pointer;
+        transition: all 150ms ease-in-out;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1px;
+
+        @media only screen and (max-width: 768px) {
+          font-size: 25px;
+        }
+
+        &:hover {
+          box-shadow: 0 0 3px 2px greenyellow;
+          color: greenyellow;
+        }
+      }
+    }
+  }
+
+  .kst-dashboard-chat-conversation {
+    display: flex;
+    flex-flow: column;
+    width: calc(100% - 220px);
+    background: black;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    display: none;
+    height: 100%;
+    max-height: 100%;
+
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      height: 500px;
+      padding: 5px;
+      padding-bottom: 160px;
+    }
+
+    .kst-dashboard-chat-conversation-header {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid whitesmoke;
+      padding: 7px 5px;
+      font-weight: 500;
+      font-size: 20px;
+      color: whitesmoke;
+      height: 35px;
+    }
+
+    .kst-dashboard-chat-conversation-display {
+      box-sizing: border-box;
+      display: flex;
+      flex-flow: column-reverse;
+      align-items: center;
+      border-bottom: 1px solid lightgrey;
+      padding: 7px 5px;
+      font-weight: 300;
+      font-size: 15px;
+      background: whitesmoke;
+      color: black;
+      height: calc(100% - 75px);
+      width: 100%;
+      overflow: auto;
+
+      .kst-dashboard-chat-conversation-display-message-container {
+        display: flex;
+        flex-flow: column;
+        color: black;
+        width: fit-content;
+        max-width: 75%;
+        border-radius: 5px;
+        border: 1px solid black;
+        padding: 5px;
+        align-self: flex-start;
+        margin-top: 3px;
+
+        &.right {
+          justify-content: center;
+          align-self: flex-end;
+        }
+
+        .kst-dashboard-chat-conversation-display-message-header {
+          font-weight: 500;
+          letter-spacing: 1px;
+        }
+
+        .kst-dashboard-chat-conversation-display-message {
+          @media only screen and (max-width: 768px) {
+            font-size: 25px;
+            letter-spacing: 1px;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    .kst-dashboard-chat-conversation-input {
+      display: flex;
+      justify-content: space-between;
+      height: 40px;
+
+      @media only screen and (max-width: 768px) {
+        width: 100%;
+        flex-wrap: wrap;
+        margin-top: 5px;
+      }
+
+      input,
+      textarea {
+        border-radius: 5px;
+        padding: 2px 5px;
+        height: 100%;
+        border: 1px solid black;
+
+        &.kst-dashboard-chat-conversation-input-submit {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100px;
+          color: whitesmoke;
+          transition: all 150ms ease-in;
+          cursor: pointer;
+
+          @media only screen and (max-width: 768px) {
+            width: 115px;
+            letter-spacing: 1px;
+          }
+
+          &:hover {
+            letter-spacing: 1px;
+            background-color: darkgreen;
+            color: greenyellow;
+          }
+        }
+
+        &.kst-dashboard-chat-conversation-input-message {
+          width: calc(100% - 250px);
+
+          @media only screen and (max-width: 768px) {
+            width: 100%;
+            height: 150px;
+            font-size: 25px;
+            letter-spacing: 1px;
+            text-wrap: wrap;
+            word-break: break-all;
+            padding: 10px;
+          }
+        }
+
+        &.kst-dashboard-chat-conversation-input-name {
+          width: 150px;
+
+          @media only screen and (max-width: 768px) {
+            width: calc(100% - 125px);
+            margin-bottom: 5px;
+            font-size: 20px;
+            letter-spacing: 1px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -230,8 +230,13 @@ export default ({
       </div>
 
       <div className="kst-check-in-out-calendar-month-day-labels">
-        {["Su", "Mon", "Tu", "We", "Th", "Fr", "Sa"].map((day) => (
-          <div className="kst-check-in-out-calendar-month-day-label">{day}</div>
+        {["Su", "Mon", "Tu", "We", "Th", "Fr", "Sa"].map((day, dayIndex) => (
+          <div
+            key={`kst-check-in-out-calendar-month-day-label-${dayIndex}`}
+            className="kst-check-in-out-calendar-month-day-label"
+          >
+            {day}
+          </div>
         ))}
       </div>
 

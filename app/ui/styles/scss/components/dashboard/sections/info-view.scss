@@ -1,0 +1,55 @@
+@keyframes sheen {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.kst-dashboard-info-view {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: lightgrey;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+
+  .kst-dashboard-info-view-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background: linear-gradient(
+      45deg,
+      #ffd700,
+      #ffef96,
+      #f5c71a,
+      #d4af37,
+      #b8860b
+    );
+    background-size: 400% 400%;
+    animation: sheen 5s ease infinite;
+    box-shadow: inset 0 0 1px 2px goldenrod;
+    background-color: black;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    @media only screen and (max-width: 768px) {
+      padding: 10px;
+      background: darkgoldenrod;
+    }
+
+    .kst-dashboard-info-inner-content {
+      color: black;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+}

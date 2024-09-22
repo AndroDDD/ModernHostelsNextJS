@@ -248,6 +248,15 @@
     box-sizing: border-box;
     display: flex;
 
+    .kst-desktop-header-dashboard {
+      color: lightblue;
+      margin-right: 7px;
+
+      &.light-theme {
+        color: #000;
+      }
+    }
+
     .kst-desktop-header-logout {
       color: darkorange;
       text-decoration: none;

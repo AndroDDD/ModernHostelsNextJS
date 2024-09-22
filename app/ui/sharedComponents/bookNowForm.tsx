@@ -47,8 +47,9 @@ export default ({
   const [totalsDisplay, setTotalsDisplay] = useState<PriceTotalsDisplay>();
   const [includePetFee, setIncludePetFee] = useState<boolean>(false);
   const [calendarSpaceId, setCalendarSpaceId] = useState<string>(
-    calendarSpaces && calendarSpaces[0] && calendarSpaces[0].calendar_space_id
-      ? calendarSpaces[0].calendar_space_id
+    calendarSpaces
+      ? calendarSpaces.find((calendarSpace) => calendarSpace.is_rentable)
+          ?.calendar_space_id ?? ""
       : ""
   );
 
@@ -302,13 +303,17 @@ export default ({
               }
             }}
           >
-            {calendarSpaces[0].label}
+            {
+              calendarSpaces.find((calendarSpace) => calendarSpace.is_rentable)
+                ?.label
+            }
           </div>
 
           <div className="kst-book-now-form-spaces-selections">
-            {calendarSpaces.map((calendarSpace) =>
+            {calendarSpaces.map((calendarSpace, calendarSpaceIndex) =>
               calendarSpace.is_rentable ? (
                 <div
+                  key={`kst-book-now-form-spaces-selections-option-${calendarSpaceIndex}`}
                   className="kst-book-now-form-spaces-selections-option"
                   onClick={(e) => {
                     const calendarSpaceId = (
@@ -339,7 +344,9 @@ export default ({
                   <label>{calendarSpace.label}</label>
                 </div>
               ) : (
-                <></>
+                <div
+                  key={`kst-book-now-form-spaces-selections-option-${calendarSpaceIndex}`}
+                ></div>
               )
             )}
           </div>
@@ -560,6 +567,7 @@ export default ({
             calendarSpaceId,
             propertyName,
             propertyImageUrl,
+            propertyPageSlug,
             spaces: {
               beds: numberOfBeds,
               baths: numberOfBaths,

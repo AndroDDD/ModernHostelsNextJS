@@ -50,8 +50,9 @@ export default (passedProp: { introSectionData: IntroSectionData }) => {
                   className="kst-home-intro-section-center-search-dropdown-list"
                   style={{ display: "none" }}
                 >
-                  {introSectionData.dropdownMenuItems.map((item) => (
+                  {introSectionData.dropdownMenuItems.map((item, itemIndex) => (
                     <div
+                      key={`kst-home-intro-section-center-search-dropdown-list-item-${itemIndex}`}
                       className="kst-home-intro-section-center-search-dropdown-list-item"
                       onClick={(event) => {
                         const dropdownButtonTitleLink = event.currentTarget
