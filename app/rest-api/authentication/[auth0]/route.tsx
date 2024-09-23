@@ -28,7 +28,7 @@ const afterCallback = async (req: any, session: any, state: any) => {
     });
 
     const customerWPDataJson = await customerWPDataResponse.json();
-    console.log({ customerWPDataJson });
+    console.dir({ customerWPDataJson });
 
     if (
       customerWPDataJson["customer_data"] &&

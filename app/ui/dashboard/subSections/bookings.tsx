@@ -87,7 +87,9 @@ export default function Bookings({ customerId }: BookingsInterface) {
           </div>
         ))
       ) : (
-        <></>
+        <div className="kst-dashboard-bookings-section-empty-orders">
+          Start booking to see your stays here!
+        </div>
       )}
     </div>
   );

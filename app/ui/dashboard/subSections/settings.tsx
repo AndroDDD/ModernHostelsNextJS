@@ -19,6 +19,9 @@ export default function Settings() {
             <div
               className="kst-dashboard-settings-update-button"
               onClick={async (e) => {
+                const updateButtonEl = e.currentTarget;
+                updateButtonEl.style.pointerEvents = "none";
+
                 const usernameInputEl = document.getElementsByClassName(
                   "kst-dashboard-settings-field-input username"
                 )[0] as HTMLInputElement;
@@ -31,8 +34,9 @@ export default function Settings() {
                   "kst-dashboard-settings-field-input email"
                 )[0] as HTMLInputElement;
                 const email = emailInputEl.value;
-
-                console.log({ username, chatName, email });
+                const updateResponseEl = document.getElementsByClassName(
+                  "kst-dashboard-settings-update-response"
+                )[0] as HTMLDivElement;
 
                 const updatedCustomerData = await updateCustomerData({
                   id: user.sub ?? "",
@@ -44,13 +48,42 @@ export default function Settings() {
                 const updatedCustomerProfile =
                   updatedCustomerData["customer_data"]["profile"];
 
+                if (
+                  updatedCustomerData["error"] ||
+                  updatedCustomerData["errorCode"]
+                ) {
+                  updateResponseEl.innerText =
+                    "An error occurred while updating the profile. Please try again later.";
+                  updateResponseEl.style.display = "flex";
+
+                  setTimeout(() => {
+                    updateResponseEl.style.display = "none";
+                    updateButtonEl.style.pointerEvents = "unset";
+                  });
+                  return;
+                }
+
                 user.name = updatedCustomerProfile["username"];
                 user.chatName = updatedCustomerProfile["chat_name"];
                 user.email = updatedCustomerProfile["email"];
+
+                usernameInputEl.value = updatedCustomerProfile["username"];
+                chatNameInputEl.value = updatedCustomerProfile["chat_name"];
+                emailInputEl.value = updatedCustomerProfile["email"];
+
+                updateResponseEl.innerText = "Profile updated successfully!";
+                updateResponseEl.style.display = "flex";
+
+                setTimeout(() => {
+                  updateResponseEl.style.display = "none";
+                  updateButtonEl.style.pointerEvents = "unset";
+                }, 2000);
               }}
             >
               Update Profile
             </div>
+
+            <div className="kst-dashboard-settings-update-response"></div>
           </div>
 
           <div className="kst-dashboard-settings-fields">

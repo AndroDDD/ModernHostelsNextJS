@@ -25,11 +25,18 @@ export default function Overview() {
         console.log({ rewardsData: data });
         setRewardsData({
           earnedRewards: data.earnedRewards,
-          rewardsProgresses: data.rewardsProgresses.splice(0, 1),
+          rewardsProgresses:
+            data.rewardsProgresses && data.rewardsProgresses.length > 0
+              ? data.rewardsProgresses.splice(0, 1)
+              : [],
         });
       });
       fetchCustomerOrders(userId).then((data) => {
-        setOrdersData(data["orders"].splice(0, 3));
+        setOrdersData(
+          data["orders"] && data["orders"].length > 0
+            ? data["orders"].splice(0, 3)
+            : []
+        );
       });
     }
   }, [isLoading]);
