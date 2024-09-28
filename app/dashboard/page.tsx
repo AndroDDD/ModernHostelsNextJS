@@ -19,7 +19,7 @@ export default async function Page() {
 
   return (
     <main id="kst-dashboard">
-      <Header isMobile={isMobile} style="light-theme" />
+      <Header isMobile={isMobile} />
       <MainView />
       <FooterSeperatorSection isMobile={isMobile} />
       <Footer />

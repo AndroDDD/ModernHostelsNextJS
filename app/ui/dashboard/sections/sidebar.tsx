@@ -14,12 +14,14 @@ export default function Sidebar({ setCurrentView }: SidebarInterface) {
   };
   const updateButtonStyles = (view: string) => {
     const sidebarEl = document.getElementsByClassName(
-      "kst-dashboard-sidebar"
+      "kst-dashboard-sidebar-links"
     )[0] as HTMLDivElement;
 
     for (let i = 0; i < sidebarEl.children.length; i++) {
       const button = sidebarEl.children[i] as HTMLDivElement;
       const buttonView = button.innerText.replace(/ /g, "-").toLowerCase();
+
+      console.log({ buttonView, view, button });
 
       if (buttonView === view) {
         button.classList.add("viewing");
@@ -31,76 +33,97 @@ export default function Sidebar({ setCurrentView }: SidebarInterface) {
 
   return (
     <section className="kst-dashboard-sidebar">
-      <div className="kst-dashboard-sidebar-header">Dashboard</div>
-      <div
-        className="kst-dashboard-sidebar-link viewing"
-        onClick={(e) => {
-          e.preventDefault();
-          const buttonView = e.currentTarget.innerText
-            .replace(/ /g, "-")
-            .toLowerCase();
+      <div className="kst-dashboard-sidebar-header">
+        <span>Dashboard</span>
 
-          handleClick(buttonView);
-          updateButtonStyles(buttonView);
-        }}
-      >
-        Overview
+        <div
+          className="kst-dashboard-sidebar-toggle"
+          onClick={(e) => {
+            const sidebarLinksEl = document.getElementsByClassName(
+              "kst-dashboard-sidebar-links"
+            )[0] as HTMLDivElement;
+            sidebarLinksEl.classList.toggle("active");
+          }}
+        >
+          +
+        </div>
       </div>
-      <div
-        className="kst-dashboard-sidebar-link"
-        onClick={(e) => {
-          e.preventDefault();
-          const buttonView = e.currentTarget.innerText
-            .replace(/ /g, "-")
-            .toLowerCase();
 
-          handleClick(buttonView);
-          updateButtonStyles(buttonView);
-        }}
-      >
-        Bookings
-      </div>
-      <div
-        className="kst-dashboard-sidebar-link"
-        onClick={(e) => {
-          e.preventDefault();
-          const buttonView = e.currentTarget.innerText
-            .replace(/ /g, "-")
-            .toLowerCase();
+      <div className="kst-dashboard-sidebar-links">
+        <div
+          className="kst-dashboard-sidebar-link viewing"
+          onClick={(e) => {
+            e.preventDefault();
+            const buttonView = e.currentTarget.innerText
+              .replace(/ /g, "-")
+              .toLowerCase();
 
-          handleClick(buttonView);
-          updateButtonStyles(buttonView);
-        }}
-      >
-        Rewards
-      </div>
-      <div
-        className="kst-dashboard-sidebar-link"
-        onClick={(e) => {
-          e.preventDefault();
-          const buttonView = e.currentTarget.innerText
-            .replace(/ /g, "-")
-            .toLowerCase();
+            handleClick(buttonView);
+            updateButtonStyles(buttonView);
+          }}
+        >
+          Overview
+        </div>
 
-          handleClick(buttonView);
-          updateButtonStyles(buttonView);
-        }}
-      >
-        Messages
-      </div>
-      <div
-        className="kst-dashboard-sidebar-link"
-        onClick={(e) => {
-          e.preventDefault();
-          const buttonView = e.currentTarget.innerText
-            .replace(/ /g, "-")
-            .toLowerCase();
+        <div
+          className="kst-dashboard-sidebar-link"
+          onClick={(e) => {
+            e.preventDefault();
+            const buttonView = e.currentTarget.innerText
+              .replace(/ /g, "-")
+              .toLowerCase();
 
-          handleClick(buttonView);
-          updateButtonStyles(buttonView);
-        }}
-      >
-        Settings
+            handleClick(buttonView);
+            updateButtonStyles(buttonView);
+          }}
+        >
+          Bookings
+        </div>
+
+        <div
+          className="kst-dashboard-sidebar-link"
+          onClick={(e) => {
+            e.preventDefault();
+            const buttonView = e.currentTarget.innerText
+              .replace(/ /g, "-")
+              .toLowerCase();
+
+            handleClick(buttonView);
+            updateButtonStyles(buttonView);
+          }}
+        >
+          Rewards
+        </div>
+
+        <div
+          className="kst-dashboard-sidebar-link"
+          onClick={(e) => {
+            e.preventDefault();
+            const buttonView = e.currentTarget.innerText
+              .replace(/ /g, "-")
+              .toLowerCase();
+
+            handleClick(buttonView);
+            updateButtonStyles(buttonView);
+          }}
+        >
+          Messages
+        </div>
+
+        <div
+          className="kst-dashboard-sidebar-link"
+          onClick={(e) => {
+            e.preventDefault();
+            const buttonView = e.currentTarget.innerText
+              .replace(/ /g, "-")
+              .toLowerCase();
+
+            handleClick(buttonView);
+            updateButtonStyles(buttonView);
+          }}
+        >
+          Settings
+        </div>
       </div>
     </section>
   );

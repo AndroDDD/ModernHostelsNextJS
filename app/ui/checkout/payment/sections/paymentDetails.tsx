@@ -13,6 +13,7 @@ import {
   payOrder,
 } from "@/app/generalFunctions/checkout/actions";
 import "@/app/ui/styles/scss/components/checkout/payment/sections/payment-details.scss";
+
 import { sendEmail } from "@/app/generalFunctions/apiDataFetches/sendEmail";
 import { updateWPCalendarData } from "@/app/generalFunctions/calendar/updateWPCalendarData";
 import { updateWPOrdersData } from "@/app/generalFunctions/checkout/updateWPOrdersData";

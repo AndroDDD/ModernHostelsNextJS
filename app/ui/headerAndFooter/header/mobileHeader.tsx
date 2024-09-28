@@ -134,9 +134,12 @@ export default ({ content, headerRef }: DesktopHeaderParameters) => {
             </div>
           </div>
 
-          <div className="kst-mobile-header-menu-container-main-link">
+          <Link
+            href={content.middleLink.href}
+            className="kst-mobile-header-menu-container-main-link"
+          >
             {content.middleLink.text}
-          </div>
+          </Link>
         </div>
 
         <div className="kst-mobile-header-menu-container-login-signup-links">

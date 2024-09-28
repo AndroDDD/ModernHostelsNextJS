@@ -8,6 +8,10 @@
   border-radius: 10px;
   overflow: hidden;
 
+  @media only screen and (max-width: 768px) {
+    height: auto;
+  }
+
   .kst-property-badge-images-container {
     position: relative;
     display: flex;
@@ -16,6 +20,10 @@
     width: 100%;
     height: 75%;
     overflow: hidden;
+
+    @media only screen and (max-width: 768px) {
+      height: 250px;
+    }
 
     .kst-property-badge-image {
       display: flex;
@@ -100,6 +108,10 @@
     text-decoration: none !important;
     cursor: pointer;
 
+    @media only screen and (max-width: 768px) {
+      padding-bottom: 10px;
+    }
+
     .kst-property-badge-info-left {
       box-sizing: border-box;
       display: flex;
@@ -110,6 +122,10 @@
       padding-left: 10px;
       width: 60%;
       height: 100%;
+
+      @media only screen and (max-width: 768px) {
+        height: auto;
+      }
 
       .kst-property-badge-info-left-name {
         display: -webkit-box;
@@ -123,6 +139,12 @@
         font-size: 14px;
         line-height: 16px;
         overflow: hidden;
+
+        @media only screen and (max-width: 768px) {
+          font-size: 16px;
+          padding-bottom: 5px;
+          line-height: 18px;
+        }
       }
 
       .kst-property-badge-info-left-price {
@@ -132,6 +154,11 @@
         width: 100%;
         height: 50%;
         font-size: 10px;
+
+        @media only screen and (max-width: 768px) {
+          margin-top: 5px;
+          font-size: 14px;
+        }
       }
     }
 
@@ -206,5 +233,10 @@
     color: black;
     background: cadetblue;
     font-size: 10px;
+
+    @media only screen and (max-width: 768px) {
+      top: 15px;
+      right: 7px;
+    }
   }
 }

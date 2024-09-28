@@ -40,17 +40,28 @@ export default async function Page({
   return (
     <main id="kst-blog-post-page">
       <Header style="light-theme" isMobile={isMobile} />
-      <HeaderSection
-        data={{
-          title: postPageData.title,
-          date: postPageData.date,
-          author: postPageData.author,
-          excerpt: postPageData.excerpt,
-          readingTime: postPageData.readTime,
-          img: postPageData.featuredImage,
-        }}
-      />
-      <MainSection data={{ content: postPageData.content }} />
+      {"id" in postPageData ? (
+        <>
+          <HeaderSection
+            data={{
+              title: postPageData.title,
+              date: postPageData.date,
+              author: postPageData.author,
+              excerpt: postPageData.excerpt,
+              readingTime: postPageData.readTime,
+              img: postPageData.featuredImage,
+            }}
+          />
+          <MainSection
+            data={{
+              content: postPageData.content,
+              adjacentPostsSlugs: postPageData.adjacentPostSlugs,
+            }}
+          />
+        </>
+      ) : (
+        <></>
+      )}
       <FooterSeperatorSection style="light-theme" isMobile={isMobile} />
       <Footer style="light-theme" />
     </main>

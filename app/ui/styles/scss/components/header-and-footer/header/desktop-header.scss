@@ -250,7 +250,17 @@
 
     .kst-desktop-header-dashboard {
       color: lightblue;
+      background-color: #000;
+      border-radius: 15px;
+      padding: 5px 10px;
+      box-shadow: inset 0 0 2px 3px lightblue;
       margin-right: 7px;
+      transition: all 150ms ease-in;
+
+      &:hover {
+        color: goldenrod;
+        box-shadow: inset 0 0 2px 3px goldenrod;
+      }
 
       &.light-theme {
         color: #000;
@@ -260,7 +270,17 @@
     .kst-desktop-header-logout {
       color: darkorange;
       text-decoration: none;
+      background-color: black;
+      border-radius: 15px;
+      padding: 5px 10px;
+      box-shadow: inset 0 0 2px 3px darkorange;
+      transition: all 150ms ease-in;
       cursor: pointer;
+
+      &:hover {
+        color: red;
+        box-shadow: inset 0 0 2px 3px red;
+      }
 
       &.light-theme {
         color: #000;

@@ -20,21 +20,31 @@ export default function OrderDetails({
   return (
     <div className={`kst-dashboard-booking-order-details-section`}>
       <div className={`kst-dashboard-compact-container`}>
-        <div
-          className={`kst-dashboard-compact-container-item`}
-        >{`Order Id: ${order_id}`}</div>
-        <div
-          className={`kst-dashboard-compact-container-item`}
-        >{`Order Date: ${order_date}`}</div>
+        <div className={`kst-dashboard-compact-container-item`}>
+          <span>Order Id:</span> {order_id}
+        </div>
+
+        <div className={`kst-dashboard-compact-container-item`}>
+          <span>Order Date:</span> {order_date}
+        </div>
+      </div>
+
+      <div className={`kst-dashboard-compact-container no-wrap`}>
+        <div className={`kst-dashboard-compact-container-item`}>
+          <span>Start Date:</span> {start_date}
+        </div>
+
+        <div className={`kst-dashboard-compact-container-item`}>
+          <span>End Date:</span> {end_date}
+        </div>
       </div>
 
       <div className={`kst-dashboard-compact-container`}>
-        <div
-          className={`kst-dashboard-compact-container-item`}
-        >{`Start Date: ${start_date}`}</div>
-        <div
-          className={`kst-dashboard-compact-container-item`}
-        >{`End Date: ${end_date}`}</div>
+        <div className={`kst-dashboard-compact-container-item`}>
+          <span>Rating:</span>
+
+          <div></div>
+        </div>
       </div>
     </div>
   );

@@ -55,13 +55,5 @@ export async function fetchBlogPagePosts() {
     ),
     all: data,
   };
-
-  console.log({
-    preparedData,
-    data,
-    featuredPost,
-    firstDataContent: featuredPost.content.rendered,
-    featuredPostReadTime,
-  });
   return preparedData;
 }

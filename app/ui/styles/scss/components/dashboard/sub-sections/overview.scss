@@ -1,3 +1,15 @@
+@keyframes sheen {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .kst-dashboard-overview-section {
   box-sizing: border-box;
   display: grid;
@@ -11,7 +23,7 @@
   @media only screen and (max-width: 768px) {
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
-    padding: 0;
+    padding: 0 0 5px;
   }
 
   .kst-dashboard-overview-rewards {
@@ -25,9 +37,10 @@
       align-items: center;
       width: 100%;
       height: 100%;
-      border-radius: 5px;
+      border-radius: 15px;
       background-color: black;
       box-shadow: inset 0 0 2px 3px gold;
+      border: 1px solid black;
       color: gold;
       text-wrap: wrap;
       text-align: center;
@@ -78,9 +91,10 @@
       align-items: center;
       width: fit-content;
       height: 100%;
-      border-radius: 5px;
+      border-radius: 15px;
       background-color: black;
       box-shadow: inset 0 0 2px 3px gold;
+      border: 1px solid black;
       color: gold;
       padding: 0 15px;
       margin-left: 15px;
@@ -101,10 +115,24 @@
       width: 100%;
       height: 100%;
       margin-top: 5px;
+      background: linear-gradient(
+        45deg,
+        rgb(28, 28, 46),
+        rgb(59, 59, 119),
+        rgb(29, 29, 102),
+        rgb(12, 12, 128),
+        darkblue
+      );
+      background-size: 400% 400%;
+      animation: sheen 5s ease infinite;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: inset 0 0 2px 3px lightgrey;
+      border: 1px solid black;
 
       @media only screen and (max-width: 768px) {
-        flex-flow: column;
-        align-items: center;
+        grid-template-columns: 100%;
+        row-gap: 10px;
       }
 
       .kst-dashboard-overview-order-list-item {
@@ -119,11 +147,15 @@
         background: linear-gradient(135deg, #d4af37, #f5c71a, #c79810);
         padding: 6px;
         overflow: hidden;
+        justify-self: center;
 
         @media only screen and (max-width: 768px) {
+          align-self: center;
+          justify-self: center;
           width: calc(100% - 10px);
           height: 300px;
           margin-bottom: 5px;
+          padding: 0;
         }
       }
 

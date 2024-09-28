@@ -10,6 +10,15 @@
   background-size: 100vw auto;
   padding: 241px 5vw 185px;
 
+  @media only screen and (max-width: 768px) {
+    height: auto;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    background-size: auto 100%;
+    padding: 120px 5vw 40px;
+  }
+
   .kst-blog-header-section-title {
     box-sizing: border-box;
     display: flex;
@@ -19,6 +28,15 @@
     padding-left: 5px;
     margin-bottom: 10px;
     border-left: 3px solid #1d1919;
+
+    @media only screen and (max-width: 768px) {
+      border-top: 2px solid goldenrod;
+      font-size: 30px;
+      margin-bottom: 20px;
+      padding-top: 10px;
+      padding-left: 10px;
+      padding-bottom: 10px;
+    }
   }
 
   .kst-blog-header-section-subtext {
@@ -29,6 +47,15 @@
     max-width: 80%;
     min-width: 532px;
     font-weight: 500;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 30px;
+      line-height: 36px;
+      text-wrap: wrap;
+      width: 100%;
+      max-width: 100%;
+      min-width: unset;
+    }
   }
 
   .kst-blog-header-section-meta {
@@ -36,6 +63,10 @@
     display: flex;
     align-items: center;
     margin: 50px 0 40px;
+
+    @media only screen and (max-width: 768px) {
+      margin: 15px 0 15px 10px;
+    }
 
     .kst-blog-header-section-meta-date {
       box-sizing: border-box;
@@ -49,6 +80,10 @@
       display: flex;
       font-size: 12px;
     }
+
+    @media only screen and (max-width: 768px) {
+      align-self: flex-end;
+    }
   }
 
   .kst-blog-header-section-button {
@@ -60,6 +95,10 @@
     padding: 15px 30px;
     background-color: cyan;
     cursor: pointer;
+
+    @media only screen and (max-width: 768px) {
+      align-self: flex-end;
+    }
   }
 }
 

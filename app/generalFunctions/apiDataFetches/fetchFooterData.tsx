@@ -1,14 +1,11 @@
 import { FooterData } from "@/app/types/footerData";
 import { LinkData } from "@/app/types/linkData";
+import { socialCommunicationsUrl } from "@/app/constants/wpApiUrl";
 import { fetchPropertyLocations } from "@/app/generalFunctions/apiDataFetches/fetchPropertyLocations";
-import { useHttpProtocol } from "../devToPro/useHttpProtocol";
-import { useDevOrigin, useXAMPPPath } from "../devToPro/useDevOrigin";
 
 export const fetchFooterData = async () => {
   const footerData = await fetchPropertyLocations().then(async (data) => {
-    const social_communications_res = await fetch(
-      `${useHttpProtocol}${useDevOrigin}${useXAMPPPath}wp-json/kst/social-communications`
-    );
+    const social_communications_res = await fetch(socialCommunicationsUrl);
     const social_communications_json = await social_communications_res.json();
 
     const frontendEmail = social_communications_json.frontendEmail;

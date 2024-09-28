@@ -10,6 +10,10 @@
   );
   padding: 0 10px 0;
 
+  @media only screen and (max-width: 768px) {
+    padding-bottom: 20px;
+  }
+
   .kst-blog-posts-display-title {
     box-sizing: border-box;
     display: flex;
@@ -19,6 +23,19 @@
     line-height: 70px;
     color: #1d1919;
     margin-bottom: 10px;
+
+    @media only screen and (max-width: 768px) {
+      width: fit-content;
+      line-height: 22px;
+      font-weight: 600;
+      font-size: 30px;
+      padding-top: 10px;
+      padding-left: 10px;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      border-top: 2px solid goldenrod;
+      border-left: 3px solid #1d1919;
+    }
   }
 
   .kst-blog-posts-display-items {
@@ -27,6 +44,11 @@
     width: 100%;
     grid-template-columns: 33% 33% 33%;
     column-gap: 0.5%;
+
+    @media only screen and (max-width: 768px) {
+      grid-template-columns: 100%;
+      row-gap: 10px;
+    }
 
     .kst-blog-posts-display-item {
       position: relative;

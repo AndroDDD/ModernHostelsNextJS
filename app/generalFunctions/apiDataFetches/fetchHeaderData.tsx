@@ -1,23 +1,19 @@
 import { LinkData } from "@/app/types/linkData";
 import { fetchPropertyLocations } from "@/app/generalFunctions/apiDataFetches/fetchPropertyLocations";
-import {
-  useDevOrigin,
-  useXAMPPPath,
-} from "@/app/generalFunctions/devToPro/useDevOrigin";
-import { useHttpProtocol } from "@/app/generalFunctions/devToPro/useHttpProtocol";
+import { socialCommunicationsUrl } from "@/app/constants/wpApiUrl";
 import { getLogoUrl } from "@/app/constants/wpApiUrl";
 
 export const fetchHeaderData = async () => {
   const fetchedHeaderData = await fetchPropertyLocations().then(
     async (data) => {
       const rentals: LinkData[] = [
-        ...data.map(
-          (location: { title: { rendered: string }; slug: string }) => ({
+        ...data
+          .splice(0, 5)
+          .map((location: { title: { rendered: string }; slug: string }) => ({
             text: location.title.rendered,
             color: "whitesmoke",
             href: `/location/${location.slug}`,
-          })
-        ),
+          })),
         {
           text: "View all on map",
           href: `/map`,
@@ -30,15 +26,14 @@ export const fetchHeaderData = async () => {
           (location: { meta: { services_data: { management: string } } }) =>
             location.meta.services_data.management === "true"
         )
+        .splice(0, 5)
         .map((location: { title: { rendered: string }; slug: string }) => ({
           text: location.title.rendered,
           color: "whitesmoke",
           href: `/list-property/${location.slug}`,
         }));
 
-      const social_communications_res = await fetch(
-        `${useHttpProtocol}${useDevOrigin}${useXAMPPPath}wp-json/kst/homepage-settings`
-      );
+      const social_communications_res = await fetch(socialCommunicationsUrl);
       const social_communications_json = await social_communications_res.json();
 
       const frontendEmail = social_communications_json.frontendEmail;

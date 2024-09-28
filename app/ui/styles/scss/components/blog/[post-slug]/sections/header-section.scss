@@ -6,6 +6,10 @@
   width: 100%;
   padding: 176px 5vw 24px;
 
+  @media only screen and (max-width: 768px) {
+    padding-bottom: 14px;
+  }
+
   .kst-blog-post-date {
     box-sizing: border-box;
     display: flex;
@@ -27,6 +31,11 @@
     line-height: 80px;
     color: #1d1919;
     text-align: center;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 30px;
+      line-height: 35px;
+    }
   }
 
   .kst-blog-post-reading-time-and-author {
@@ -59,11 +68,17 @@
   .kst-blog-post-excerpt {
     box-sizing: border-box;
     display: flex;
-    width: 100%;
+    width: 60%;
     margin-bottom: 60px;
     max-width: 60%;
     text-align: center;
     font-weight: 300;
+
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 30px;
+    }
   }
 
   .kst-blog-post-img {
@@ -75,6 +90,12 @@
     overflow: hidden;
     justify-content: center;
     align-items: flex-end;
+
+    @media only screen and (max-width: 768px) {
+      height: 300px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
 
     img {
       width: 100%;

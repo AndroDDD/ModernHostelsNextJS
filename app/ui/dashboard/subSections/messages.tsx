@@ -326,7 +326,7 @@ export default function Messages() {
                     "kst-dashboard-sidebar-send-message-recipient-name"
                   )[0] as HTMLInputElement;
 
-                  if (currentDisplay === "none") {
+                  if (!currentDisplay || currentDisplay === "none") {
                     if (!recipientNameInputEl.value) {
                       handleSendMessageRecipientsList("");
                     } else {

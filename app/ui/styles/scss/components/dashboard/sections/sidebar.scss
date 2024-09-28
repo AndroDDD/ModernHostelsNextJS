@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
-  background: lightgrey;
   width: 100%;
   height: 100%;
 
@@ -11,47 +10,102 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    padding: 0 10px;
-    text-decoration: underline;
 
     @media only screen and (max-width: 768px) {
+      border-radius: 5px;
+      background-color: goldenrod;
       font-size: 35px;
+      margin-bottom: 15px;
+      justify-content: space-between;
+      padding: 0 5px 5px;
+      border-bottom: 1px solid black;
+    }
+
+    span {
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      padding: 0 10px;
+      color: gold;
+      text-shadow: 1px 1px lightgrey;
+
+      @media only screen and (max-width: 768px) {
+        padding: 0 5px;
+        width: fit-content;
+        text-decoration: none;
+        color: black;
+        background-color: goldenrod;
+        letter-spacing: 2px;
+        font-size: 30px;
+        text-shadow: 1px 1px gold;
+      }
+    }
+
+    .kst-dashboard-sidebar-toggle {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 0 3px 2px;
+      border-radius: 5px;
+      box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.489);
+      color: rgba(0, 0, 0, 0.707);
+      background-color: gold;
+      font-size: 30px;
+      height: 35px;
+      margin-left: 10px;
+
+      @media only screen and (max-width: 768px) {
+        display: flex;
+      }
     }
   }
 
-  .kst-dashboard-sidebar-link {
+  .kst-dashboard-sidebar-links {
+    box-sizing: border-box;
     display: flex;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid black;
-    box-shadow: inset 0 0 2px 1px gold;
-    border-radius: 50px;
-    color: goldenrod;
-    background-color: black;
-    letter-spacing: 1px;
-    font-weight: 700;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all 150ms ease-in;
+    flex-direction: column;
 
     @media only screen and (max-width: 768px) {
-      font-size: 25px;
+      display: none;
+      transition: all 150ms ease-in;
+
+      &.active {
+        display: flex;
+      }
     }
 
-    &:hover {
-      background-color: lightblue;
-      color: black;
-      border: 1px solid goldenrod;
-    }
-
-    &.viewing {
+    .kst-dashboard-sidebar-link {
+      display: flex;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid black;
+      box-shadow: inset 0 0 2px 1px gold;
+      border-radius: 50px;
+      color: goldenrod;
       background-color: black;
-      color: lightblue;
+      letter-spacing: 1px;
+      font-weight: 500;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 150ms ease-in;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 20px;
+        padding: 5px;
+      }
+
+      &:hover {
+        background-color: lightblue;
+        color: black;
+        border: 1px solid goldenrod;
+      }
+
+      &.viewing {
+        background-color: black;
+        color: lightblue;
+      }
     }
   }
 }

@@ -15,28 +15,8 @@ type HeaderSection = {
   postLink: string;
 };
 
-export default ({
-  title,
-  content,
-  excerpt,
-  featuredImage,
-  date,
-  author,
-  readTime,
-  postLink,
-}: HeaderSection) => {
-  useEffect(() => {
-    console.log({
-      title,
-      content,
-      excerpt,
-      featuredImage,
-      date,
-      author,
-      readTime,
-      postLink,
-    });
-  });
+export default ({ title, date, readTime, postLink }: HeaderSection) => {
+  useEffect(() => {});
 
   return (
     <section

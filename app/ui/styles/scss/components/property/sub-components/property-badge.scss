@@ -1,181 +1,180 @@
 .kst-property-page-property-badge {
+  display: flex;
+  flex-flow: column;
+  margin: 0 40px;
+  width: 390px;
+  min-width: 390px;
+  height: auto;
+
+  .kst-property-page-property-badge-name {
     display: flex;
-    flex-flow: column;
-    margin: 0 40px;
-    width: 390px;
-    min-width: 390px;
-    height: auto;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 100%;
+    min-height: 36px;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 300;
+    cursor: pointer;
+  }
 
-    .kst-property-page-property-badge-name {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-end;
-        width: 100%;
-        min-height: 36px;
-        font-size: 14px;
-        line-height: 18px;
-        font-weight: 300;
-        cursor: pointer;
+  .kst-property-page-property-badge-location-rating {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    width: 100%;
+    cursor: pointer;
+
+    .kst-property-page-property-badge-location {
+      display: block;
+      font-size: 12px;
+      font-weight: 300;
     }
 
-    .kst-property-page-property-badge-location-rating {
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 5px;
+    .kst-property-page-property-badge-rating {
+      display: block;
+      color: #aad4d2;
+      font-weight: 500;
+      font-size: small;
+
+      i {
+        margin: 0 8px;
+        color: #aad4d2;
+      }
+    }
+  }
+
+  .kst-property-page-property-badge-image-and-available-date {
+    display: flex;
+    width: 100%;
+    height: 260px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    .kst-property-page-property-badge-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      overflow: hidden;
+      will-change: contents;
+      cursor: pointer;
+
+      img {
         width: 100%;
-        cursor: pointer;
+        height: auto;
+        transition: all 500ms ease-out;
+        will-change: contents;
 
-        .kst-property-page-property-badge-location {
-            display: block;
-            font-size: 12px;
-            font-weight: 300;
+        &:hover {
+          width: 110%;
         }
-
-        .kst-property-page-property-badge-rating {
-            display: block;
-            color: #aad4d2;
-            font-weight: 500;
-            font-size: small;
-
-            i {
-                margin: 0 8px;
-                color: #aad4d2;
-            }
-        }
+      }
     }
 
-    .kst-property-page-property-badge-image-and-available-date {
+    .kst-property-page-property-badge-image-navigation {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      display: flex;
+      width: -moz-max-content;
+      width: max-content;
+      height: 29px;
+      z-index: 1;
+
+      .kst-property-page-property-badge-image-navigation-prev {
         display: flex;
-        width: 100%;
-        height: 260px;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        width: 45px;
+        height: 29px;
+        background: hsla(26, 33%, 96%, 0.3);
+        border: none;
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        &:hover {
+          background: hsla(26, 33%, 96%, 0.5);
+        }
+      }
+
+      .kst-property-page-property-badge-image-navigation-next {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        width: 45px;
+        height: 29px;
+        background: hsla(26, 33%, 96%, 0.3);
+        border: none;
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        &:hover {
+          background: hsla(26, 33%, 96%, 0.5);
+        }
+      }
+    }
+
+    .kst-property-page-property-badge-available-date {
+      position: absolute;
+      right: 4px;
+      top: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 5px;
+      min-width: 111px;
+      height: 16px;
+      background: #aad4d2;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 10px;
+      white-space: nowrap;
+      z-index: 4;
+      color: #1d1919;
+      cursor: pointer;
+    }
+  }
+
+  .kst-property-page-price-and-rooms {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1vh;
+    cursor: pointer;
+
+    .kst-property-page-price {
+      display: block;
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    .kst-property-page-rooms {
+      display: flex;
+
+      .kst-property-page-room {
+        display: flex;
+        flex-flow: column;
         justify-content: center;
         align-items: center;
-        overflow: hidden;
+        margin: 0 5px;
+        color: #1d1919;
 
-        .kst-property-page-property-badge-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            overflow: hidden;
-            will-change: contents;
-            cursor: pointer;
-
-            img {
-                width: 100%;
-                height: auto;
-                transition: all 500ms ease-out;
-                will-change: contents;
-
-                &:hover {
-                    width: 110%;
-                }
-            }
+        .kst-property-page-room-category {
+          font-size: 10px;
         }
 
-        .kst-property-page-property-badge-image-navigation {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            display: flex;
-            width: -moz-max-content;
-            width: max-content;
-            height: 29px;
-            z-index: 1;
-
-            .kst-property-page-property-badge-image-navigation-prev {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 0;
-                width: 45px;
-                height: 29px;
-                background: hsla(26, 33%, 96%, .3);
-                border: none;
-                transition: all .2s linear;
-                cursor: pointer;
-
-                &:hover {
-                    background: hsla(26, 33%, 96%, .5);
-                }
-            }
-
-            .kst-property-page-property-badge-image-navigation-next {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 0;
-                width: 45px;
-                height: 29px;
-                background: hsla(26, 33%, 96%, .3);
-                border: none;
-                transition: all .2s linear;
-                cursor: pointer;
-
-                &:hover {
-                    background: hsla(26, 33%, 96%, .5);
-                }
-            }
+        .kst-property-page-room-number {
+          font-size: 12px;
         }
-
-        .kst-property-page-property-badge-available-date {
-            position: absolute;
-            right: 4px;
-            top: 4px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 5px;
-            min-width: 111px;
-            height: 16px;
-            background: #aad4d2;
-            border-radius: 100px;
-            font-weight: 500;
-            font-size: 10px;
-            line-height: 10px;
-            white-space: nowrap;
-            z-index: 4;
-            color: #1d1919;
-            cursor: pointer;
-        }
+      }
     }
-
-    .kst-property-page-price-and-rooms {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 1vh;
-        cursor: pointer;
-
-        .kst-property-page-price {
-            display: block;
-            font-weight: 300;
-            font-size: 12px;
-            line-height: 14px;
-        }
-
-        .kst-property-page-rooms {
-            display: flex;
-
-            .kst-property-page-room {
-                display: flex;
-                flex-flow: column;
-                justify-content: center;
-                align-items: center;
-                margin: 0 5px;
-                color: #1d1919;
-
-
-                .kst-property-page-room-category {
-                    font-size: 10px;
-                }
-
-                .kst-property-page-room-number {
-                    font-size: 12px;
-                }
-            }
-        }
-    }
+  }
 }

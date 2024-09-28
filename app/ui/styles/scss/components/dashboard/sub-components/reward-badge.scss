@@ -10,6 +10,7 @@
   padding: 10px 7px;
   margin: 5px;
   color: gold;
+  border: 1px solid black;
 
   @media only screen and (max-width: 768px) {
     width: 100%;
@@ -26,7 +27,7 @@
 
   .kst-dashboard-list-item-quantity {
     color: black;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 25px;
   }
 
@@ -41,7 +42,7 @@
       }
 
       span {
-        font-weight: 700;
+        font-weight: 500;
         font-size: 25px;
 
         @media only screen and (max-width: 768px) {

@@ -6,7 +6,7 @@
   width: 100%;
   height: calc(100% - 50px);
   padding-top: 100px;
-  background-color: lightgrey;
+  background-color: darkblue;
 
   @media only screen and (max-width: 768px) {
     grid-template-columns: 100%;
@@ -17,9 +17,6 @@
 }
 
 .kst-main-dashboard-footer-gradient {
-  background: linear-gradient(
-    180deg,
-    lightgrey 90%,
-    rgba(29, 25, 25, 1) 95.04%
-  );
+  height: 100px;
+  background: linear-gradient(180deg, darkblue 20%, rgba(29, 25, 25, 1) 95.04%);
 }

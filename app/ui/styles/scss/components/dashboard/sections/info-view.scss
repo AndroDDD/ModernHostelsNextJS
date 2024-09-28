@@ -15,7 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background: lightgrey;
+  border-radius: 5px;
   padding: 10px;
   width: 100%;
   height: 100%;
@@ -26,24 +26,24 @@
     height: 100%;
     border-radius: 15px;
     background: linear-gradient(
-      45deg,
-      #ffd700,
-      #ffef96,
-      #f5c71a,
-      #d4af37,
-      #b8860b
-    );
-    background-size: 400% 400%;
-    animation: sheen 5s ease infinite;
+        45deg,
+        #ffd90075,
+        #ffef967c,
+        #f5c61a80,
+        #d4af377c,
+        #b8870b7d
+      ),
+      url("http://modern-hostels.imaginative-accumulation.com/wp-content/uploads/2024/07/luxury-rainey-street-condo-3-misc-1.webp");
+    background-size: 100% auto;
+    // animation: sheen 5s ease infinite;
     border: 1px solid black;
-    box-shadow: inset 0 0 1px 2px goldenrod;
+    box-shadow: inset 0 0 1px 2px goldenrod, inset 0 0 2px 3px lightgrey;
     background-color: black;
     box-sizing: border-box;
     overflow: hidden;
 
     @media only screen and (max-width: 768px) {
       padding: 10px;
-      background: darkgoldenrod;
     }
 
     .kst-dashboard-info-inner-content {
