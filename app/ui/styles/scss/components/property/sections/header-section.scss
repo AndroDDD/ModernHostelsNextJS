@@ -41,6 +41,7 @@
       @media only screen and (max-width: 768px) {
         width: 100%;
         margin-bottom: 15px;
+        align-items: center;
       }
 
       .kst-property-page-header-section-summary-stat-first-stars {
@@ -60,6 +61,10 @@
         font-weight: 500;
         font-size: 14px;
         line-height: 10px;
+
+        @media only screen and (max-width: 768px) {
+          font-size: 17px;
+        }
       }
     }
 

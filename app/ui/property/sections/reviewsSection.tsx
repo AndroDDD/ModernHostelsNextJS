@@ -67,7 +67,7 @@ export default ({
                 key={`kst-property-page-reviews-section-other-stat-${otherStatIndex}`}
                 className="kst-property-page-reviews-section-other-stat"
               >
-                <div className="kst-property-page-reviews-section-header-stat-name">
+                <div className="kst-property-page-reviews-section-other-stat-name">
                   {otherStat.statName}
                 </div>
 
