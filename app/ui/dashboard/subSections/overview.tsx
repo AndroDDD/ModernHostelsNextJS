@@ -66,7 +66,9 @@ export default function Overview() {
       </div>
 
       <div className="kst-dashboard-overview-order">
-        <div className="kst-dashboard-overview-order-header">Recent Orders</div>
+        <div className="kst-dashboard-overview-order-header">
+          Recent Bookings
+        </div>
         <div className="kst-dashboard-overview-order-list">
           {ordersData && ordersData.length > 0 ? (
             ordersData.map((orderData: any, orderIndex: number) => (

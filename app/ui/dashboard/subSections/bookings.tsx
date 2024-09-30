@@ -21,6 +21,32 @@ type OrderData = {
   reply_to: string;
   price_totals: any;
   property: any;
+  ratings: {
+    accuracy_rating?: {
+      rating_date: string;
+      rating: number;
+    };
+    location_rating?: {
+      rating_date: string;
+      rating: number;
+    };
+    cleanliness_rating?: {
+      rating_date: string;
+      rating: number;
+    };
+    support_rating?: {
+      rating_date: string;
+      rating: number;
+    };
+    check_in_rating?: {
+      rating_date: string;
+      rating: number;
+    };
+    value_rating?: {
+      rating_date: string;
+      rating: number;
+    };
+  };
 };
 
 export default function Bookings({ customerId }: BookingsInterface) {
@@ -43,11 +69,14 @@ export default function Bookings({ customerId }: BookingsInterface) {
           >
             <div className="kst-dashboard-bookings-section-order-details">
               <OrderDetails
+                property_slug={orderData.property?.page_slug ?? ""}
+                user_id={orderData.user_id}
                 order_date={orderData.order_date}
                 order_id={orderData.order_id}
                 start_date={orderData.start_date}
                 end_date={orderData.end_date}
                 price_totals={orderData.price_totals}
+                ratings={orderData.ratings}
               />
             </div>
             <div className="kst-dashboard-bookings-section-order-property-badge">

@@ -1,7 +1,9 @@
 import { PropertyPageData } from "@/app/types/propertyPageData";
+import { RatingData } from "@/app/types/ratingsData";
 import { wpApiUrl } from "@/app/constants/wpApiUrl";
 import { formatSnakeCaseToCamelCase } from "@/app/generalFunctions/formatSnakeCaseToCamelCase";
 import { generatePropertyPageAmenitiesList } from "@/app/generalFunctions/generatePropertyPageAmenitiesList";
+import { calculateAverageRating } from "../../calculateRatings";
 
 var he = require("he");
 
@@ -134,12 +136,12 @@ const generatePropertyPageDataFromFetchedResponse = (fetchedPropertyData: {
     };
     ratings_data: {
       average_rating: number;
-      accuracy_rating: number;
-      cleanliness_rating: number;
-      location_rating: number;
-      check_in_rating: number;
-      support_rating: number;
-      value_rating: number;
+      accuracy_rating: RatingData[];
+      cleanliness_rating: RatingData[];
+      location_rating: RatingData[];
+      check_in_rating: RatingData[];
+      support_rating: RatingData[];
+      value_rating: RatingData[];
       reviews: {
         reviewer_name: string;
         date_submitted: string;
@@ -491,7 +493,9 @@ const generatePropertyPageDataFromFetchedResponse = (fetchedPropertyData: {
           numberOfStars:
             fetchedPropertyData.meta.ratings_data &&
             fetchedPropertyData.meta.ratings_data.accuracy_rating
-              ? fetchedPropertyData.meta.ratings_data.accuracy_rating
+              ? calculateAverageRating(
+                  fetchedPropertyData.meta.ratings_data.accuracy_rating
+                )
               : 0,
         },
         {
@@ -499,15 +503,20 @@ const generatePropertyPageDataFromFetchedResponse = (fetchedPropertyData: {
           numberOfStars:
             fetchedPropertyData.meta.ratings_data &&
             fetchedPropertyData.meta.ratings_data.cleanliness_rating
-              ? fetchedPropertyData.meta.ratings_data.cleanliness_rating
+              ? calculateAverageRating(
+                  fetchedPropertyData.meta.ratings_data.cleanliness_rating
+                )
               : 0,
         },
+
         {
           statName: "Location",
           numberOfStars:
             fetchedPropertyData.meta.ratings_data &&
             fetchedPropertyData.meta.ratings_data.location_rating
-              ? fetchedPropertyData.meta.ratings_data.location_rating
+              ? calculateAverageRating(
+                  fetchedPropertyData.meta.ratings_data.location_rating
+                )
               : 0,
         },
         {
@@ -515,7 +524,9 @@ const generatePropertyPageDataFromFetchedResponse = (fetchedPropertyData: {
           numberOfStars:
             fetchedPropertyData.meta.ratings_data &&
             fetchedPropertyData.meta.ratings_data.check_in_rating
-              ? fetchedPropertyData.meta.ratings_data.check_in_rating
+              ? calculateAverageRating(
+                  fetchedPropertyData.meta.ratings_data.check_in_rating
+                )
               : 0,
         },
         {
@@ -523,7 +534,9 @@ const generatePropertyPageDataFromFetchedResponse = (fetchedPropertyData: {
           numberOfStars:
             fetchedPropertyData.meta.ratings_data &&
             fetchedPropertyData.meta.ratings_data.support_rating
-              ? fetchedPropertyData.meta.ratings_data.support_rating
+              ? calculateAverageRating(
+                  fetchedPropertyData.meta.ratings_data.support_rating
+                )
               : 0,
         },
         {
@@ -531,7 +544,9 @@ const generatePropertyPageDataFromFetchedResponse = (fetchedPropertyData: {
           numberOfStars:
             fetchedPropertyData.meta.ratings_data &&
             fetchedPropertyData.meta.ratings_data.value_rating
-              ? fetchedPropertyData.meta.ratings_data.value_rating
+              ? calculateAverageRating(
+                  fetchedPropertyData.meta.ratings_data.value_rating
+                )
               : 0,
         },
       ],

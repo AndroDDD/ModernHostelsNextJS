@@ -9,7 +9,9 @@ import {
   getUserChatMessagesApiUrl,
   getUserChatConversationIdsApiUrl,
   sendUserChatMessageApiUrl,
+  propertyUpdateRatingsApiUrl,
 } from "@/app/constants/wpApiUrl";
+import { RatingSendData } from "@/app/types/ratingsData";
 
 export async function fetchCustomersData(
   params: {
@@ -69,6 +71,8 @@ export async function fetchCustomerOrders(customerId: string) {
   });
 
   const data = await response.json();
+
+  console.log({ userOrdersData: data });
 
   return data;
 }
@@ -281,4 +285,46 @@ export async function sendUserChatMessage(
   const data = await response.json();
 
   return data;
+}
+
+export async function updatePropertyRatings(
+  propertyPageSlug: string,
+  ratings: {
+    [key: string]: RatingSendData;
+    accuracy_rating?: RatingSendData;
+    location_rating?: RatingSendData;
+    check_in_rating?: RatingSendData;
+    cleanliness_rating?: RatingSendData;
+    support_rating?: RatingSendData;
+    value_rating?: RatingSendData;
+  },
+  rater_id?: string,
+  order_id?: string
+) {
+  let requestBody: any = {
+    property_slug: propertyPageSlug,
+    ...ratings,
+  };
+
+  if (rater_id) {
+    requestBody["rater_id"] = rater_id;
+  }
+
+  if (order_id) {
+    requestBody["rating_id"] = order_id;
+  }
+
+  console.log({ requestBody });
+
+  const response = await fetch(`${propertyUpdateRatingsApiUrl}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(requestBody),
+  });
+
+  const responseData = response.json();
+
+  return responseData;
 }

@@ -110,6 +110,8 @@
 
     @media only screen and (max-width: 768px) {
       padding-bottom: 10px;
+      height: auto;
+      align-items: flex-start;
     }
 
     .kst-property-badge-info-left {
@@ -171,6 +173,13 @@
       width: 40%;
       height: 100%;
       font-size: 12px;
+
+      @media only screen and (max-width: 768px) {
+        height: auto;
+        border-left: 2px solid black;
+        border-bottom: 1px solid goldenrod;
+        margin-left: 3px;
+      }
 
       .kst-property-badge-info-beds {
         box-sizing: border-box;

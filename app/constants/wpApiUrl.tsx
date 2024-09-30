@@ -4,6 +4,7 @@ const wpApiUrl = `${fullWPURL}wp-json/wp/v2/`;
 const wpPropertyPriceDataApiUrl = `${fullWPURL}wp-json/kst/v1/price-data/`;
 const wpLocationsApiUrl = `${fullWPURL}wp-json/kst/v1/locations/`;
 const wpPropertyCalendarApiUrl = `${fullWPURL}wp-json/kst/v1/calendar/`;
+const propertyUpdateRatingsApiUrl = `${fullWPURL}wp-json/kst/v1/property/update-property-rating/`;
 const blogPostsUrl = `${fullWPURL}wp-json/wp/v2/ai_blog_posts/`;
 const blogPostAdjacentPostsUrl = `${fullWPURL}wp-json/kst/post/get-adjacent-slugs`;
 const emailServerUrl = `${fullWPURL}wp-json/kst/sendContactForm/`;
@@ -28,6 +29,7 @@ export {
   wpPropertyPriceDataApiUrl,
   wpLocationsApiUrl,
   wpPropertyCalendarApiUrl,
+  propertyUpdateRatingsApiUrl,
   blogPostsUrl,
   blogPostAdjacentPostsUrl,
   emailServerUrl,
