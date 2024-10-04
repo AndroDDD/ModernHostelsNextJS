@@ -2,6 +2,7 @@
 
 import {
   updateCustomerApiUrl,
+  updateCustomerOrderReviewApiUrl,
   customersDataApiUrl,
   customerOrdersApiUrl,
   customerRewardsApiUrl,
@@ -324,6 +325,31 @@ export async function updatePropertyRatings(
     body: JSON.stringify(requestBody),
   });
 
+  const responseData = response.json();
+
+  return responseData;
+}
+
+export async function updateCustomerOrderReview(
+  propertySlug: string,
+  orderId: string,
+  reviewerId: string,
+  theReview: string
+) {
+  const requestBody = {
+    property_slug: propertySlug,
+    order_id: orderId,
+    reviewer_id: reviewerId,
+    the_review: theReview,
+  };
+
+  const response = await fetch(`${updateCustomerOrderReviewApiUrl}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(requestBody),
+  });
   const responseData = response.json();
 
   return responseData;

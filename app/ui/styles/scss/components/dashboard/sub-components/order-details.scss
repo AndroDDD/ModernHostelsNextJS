@@ -80,6 +80,11 @@
         background-color: black;
         z-index: 10;
 
+        @media only screen and (max-width: 768px) {
+          top: 29px;
+          width: 100%;
+        }
+
         .kst-dashboard-compact-container-item-toggle-menu-item {
           display: flex;
           padding: 3px 5px;
@@ -104,6 +109,36 @@
               &:hover {
                 color: lightblue;
               }
+            }
+          }
+        }
+
+        .kst-dashboard-order-details-the-review {
+          width: 100%;
+          padding: 3px;
+
+          textarea {
+            width: 100%;
+            border-radius: 5px;
+            padding: 5px;
+            min-height: 100px;
+          }
+
+          div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 2px;
+            box-shadow: inset 0 0 1px 2px darkcyan;
+            background-color: lightgrey;
+            color: darkcyan;
+
+            &:hover {
+              box-shadow: 0 0 1px 2px darkgreen;
+              color: darkgreen;
             }
           }
         }

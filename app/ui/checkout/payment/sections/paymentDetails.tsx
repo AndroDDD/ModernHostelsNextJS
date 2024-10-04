@@ -14,10 +14,6 @@ import {
 } from "@/app/generalFunctions/checkout/actions";
 import "@/app/ui/styles/scss/components/checkout/payment/sections/payment-details.scss";
 
-import { sendEmail } from "@/app/generalFunctions/apiDataFetches/sendEmail";
-import { updateWPCalendarData } from "@/app/generalFunctions/calendar/updateWPCalendarData";
-import { updateWPOrdersData } from "@/app/generalFunctions/checkout/updateWPOrdersData";
-
 export default function PaymentDetails() {
   const { user } = useUser();
   const router = useRouter();
@@ -103,75 +99,35 @@ export default function PaymentDetails() {
                     errorElementDisplay.remove();
                   }, 6000);
                 } else {
-                  console.log({
-                    orderVersionBeforePaymentSubmission:
-                      bookingData.orderData.order.version,
-                  });
                   const orderResult = await payOrder(
                     paymentResult.payment.id,
                     bookingData.orderData.order.id,
                     bookingData.orderData.order.version + 1
                   );
-                  console.log({ orderResult });
 
                   if (typeof orderResult === "string") {
                     console.log({ orderResult });
-                    alert(orderResult);
-                    return;
-                  } else {
-                    const confirmationNumber = orderResult.order.id;
-                    const propertySlug = bookingData.propertyName
-                      .replace(/ /g, "-")
-                      .toLowerCase();
 
-                    await updateWPCalendarData(
-                      propertySlug,
-                      bookingData.dates.checkIn,
-                      bookingData.dates.checkOut,
-                      bookingData.calendarSpaceId ?? null
+                    const errorElementDisplay = document.createElement("div");
+                    errorElementDisplay.innerHTML = orderResult;
+                    errorElementDisplay.classList.add(
+                      "kst-payment-error-message"
                     );
 
-                    const completedOrderData = {
-                      user_id: user?.sub ?? "guest-user",
-                      full_name: bookingData.contact?.name,
-                      reply_to: bookingData.contact?.email,
-                      property: bookingData.propertyName,
-                      property_page_slug: bookingData.propertyPageSlug,
-                      start_date: bookingData.dates.checkIn,
-                      end_date: bookingData.dates.checkOut,
-                      price_totals: {
-                        total_due: bookingData.priceTotals.totalDue,
-                        sub_total: bookingData.priceTotals.subTotal,
-                        taxes: bookingData.priceTotals.taxes,
-                        fees: {
-                          pet: bookingData.priceTotals.fees.pet,
-                          cleaning: bookingData.priceTotals.fees.cleaning,
-                          service: bookingData.priceTotals.fees.service,
-                        },
-                        taxes_fees_combined:
-                          bookingData.priceTotals.taxesFeesCombined,
-                        avg_night: bookingData.priceTotals.avgNight,
-                      },
-                      order_id: confirmationNumber,
-                    };
+                    const paymentInputsElement =
+                      document.getElementsByClassName(
+                        "kst-payment-details-inputs"
+                      )[0] as HTMLDivElement;
+                    paymentInputsElement.appendChild(errorElementDisplay);
 
-                    await updateWPOrdersData(completedOrderData);
-
-                    const emailServer = 2;
-                    const emailSentSuccessfully = await sendEmail({
-                      data: completedOrderData,
-                      emailServer,
-                    });
-
-                    if (emailSentSuccessfully) {
-                      console.log("Email sent successfully!");
-                    } else {
-                      console.log("Failed to send email!");
-                    }
-
+                    setTimeout(() => {
+                      errorElementDisplay.remove();
+                    }, 10000);
+                    return;
+                  } else {
                     const thankYouData = JSON.stringify({
-                      emailSentSuccessfully,
-                      confirmationNumber,
+                      bookingData,
+                      confirmationNumber: orderResult.order.id,
                     });
 
                     document.cookie = `bookingData=; path=/; domain=${window.location.hostname}; expires = Thu, 01 Jan 1970 00:00:00 GMT`;

@@ -23,6 +23,7 @@ const customerDataApiUrl = `${fullWPURL}wp-json/kstecm/v1/customer`;
 const getUserChatMessagesApiUrl = `${fullWPURL}wp-json/kstecm/v1/chat/get-messages`;
 const getUserChatConversationIdsApiUrl = `${fullWPURL}wp-json/kstecm/v1/chat/get-conversation-ids`;
 const sendUserChatMessageApiUrl = `${fullWPURL}wp-json/kstecm/v1/chat/send-message`;
+const updateCustomerOrderReviewApiUrl = `${fullWPURL}wp-json/kst/v1/property/update-reviews/`;
 
 export {
   wpApiUrl,
@@ -48,4 +49,5 @@ export {
   getUserChatMessagesApiUrl,
   getUserChatConversationIdsApiUrl,
   sendUserChatMessageApiUrl,
+  updateCustomerOrderReviewApiUrl,
 };

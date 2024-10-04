@@ -2,7 +2,10 @@
 
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { updatePropertyRatings } from "@/app/generalFunctions/apiDataFetches/dashboard/functions";
+import {
+  updatePropertyRatings,
+  updateCustomerOrderReview,
+} from "@/app/generalFunctions/apiDataFetches/dashboard/functions";
 import "@/app/ui/styles/scss/components/dashboard/sub-components/order-details.scss";
 
 type OrderDetailsInterface = {
@@ -18,6 +21,9 @@ type OrderDetailsInterface = {
       | {
           rating_date: string;
           rating: number;
+        }
+      | {
+          review: string;
         }
       | undefined;
     accuracy_rating?: {
@@ -44,6 +50,7 @@ type OrderDetailsInterface = {
       rating_date: string;
       rating: number;
     };
+    review?: any;
   };
 };
 
@@ -72,11 +79,16 @@ export default function OrderDetails({
       rating: number;
     }[]
   ): JSX.Element[] => {
-    const numberOfRatings = ratings.length;
+    let numberOfRatings = 0;
     let totalRating = 0;
     let starEls: JSX.Element[] = [];
 
     for (let rating of ratings) {
+      if (!rating.rating) {
+        continue;
+      }
+
+      numberOfRatings++;
       totalRating += rating.rating;
     }
     const averageRating = totalRating / numberOfRatings;
@@ -165,7 +177,10 @@ export default function OrderDetails({
                     const ratingData = ratings
                       ? ratings[ratingName]
                       : { rating: 0 };
-                    const ratingValue = ratingData?.rating ?? 0;
+                    const ratingValue =
+                      ratingData && "rating" in ratingData
+                        ? ratingData.rating ?? 0
+                        : 0;
 
                     const onClick = async (
                       e: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -243,6 +258,32 @@ export default function OrderDetails({
                 </div>
               </div>
             ))}
+
+            <div className="kst-dashboard-order-details-the-review">
+              <textarea>
+                {ratings && ratings.review
+                  ? ratings.review.the_review
+                  : "Let us know what your thoughts on your stay!"}
+              </textarea>
+
+              <div
+                onClick={async (e) => {
+                  const theReviewInputEl = e.currentTarget.parentElement
+                    ?.children[0] as HTMLTextAreaElement;
+                  const theReview = theReviewInputEl.value;
+
+                  const updatedReview = await updateCustomerOrderReview(
+                    property_slug,
+                    order_id,
+                    user_id,
+                    theReview
+                  );
+                  console.log({ updatedReview });
+                }}
+              >
+                Update Review
+              </div>
+            </div>
           </div>
         </div>
       </div>

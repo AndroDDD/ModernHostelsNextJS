@@ -24,7 +24,5 @@ export async function updateWPCalendarData(
   const json = await response.json();
   const updatedSuccessfully = json["updated_calendar"];
 
-  console.log({ updatedSuccessfully, propertySlug });
-
   return updatedSuccessfully;
 }
