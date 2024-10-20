@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { EarningsSection } from "@/app/types/listPropertyPageData";
 import "@/app/ui/styles/scss/components/list-property/sections/earnings-section.scss";
 
@@ -32,7 +34,7 @@ export default ({ title, statement, stats, statsImage }: EarningsSection) => {
         </div>
 
         <div className="kst-list-property-page-earnings-section-stats-image">
-          <img src={statsImage} />
+          <Image src={statsImage} width={500} height={500} alt="" />
         </div>
       </div>
     </section>

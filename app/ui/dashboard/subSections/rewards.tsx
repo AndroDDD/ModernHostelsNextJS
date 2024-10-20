@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
-import { RewardsData } from "@/app/types/rewardsData";
 import { fetchCustomerRewards } from "@/app/generalFunctions/apiDataFetches/dashboard/functions";
 import RewardBadge from "../subComponents/rewardBadge";
 import "@/app/ui/styles/scss/components/dashboard/sub-sections/rewards.scss";
@@ -87,7 +87,12 @@ export default function Rewards({ customerId }: RewardsInterface) {
                         {earnedReward[1].quantity}
                       </div>
 
-                      <img src={earnedReward[1].badgeUrl} />
+                      <Image
+                        src={earnedReward[1].badgeUrl}
+                        width={500}
+                        height={500}
+                        alt=""
+                      />
 
                       <div className="kst-dashboard-list-item-label">
                         {earnedReward[1].label}

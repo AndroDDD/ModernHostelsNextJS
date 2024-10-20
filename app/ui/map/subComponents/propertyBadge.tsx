@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 
 import { PropertyData } from "@/app/types/propertyData";
 import { formatAvgPriceText } from "@/app/generalFunctions/formatAvgPriceText";
@@ -33,7 +34,12 @@ const PropertyBadge: React.FC<{
       onClick={badgeOnClick ?? (() => {})}
     >
       <div className="kst-map-page-properties-section-list-item-image-date">
-        <img src={property.images ? property.images[currentImageIndex] : ""} />
+        <Image
+          src={property.images ? property.images[currentImageIndex] : ""}
+          width={500}
+          height={500}
+          alt=""
+        />
 
         <div className="kst-map-page-properties-section-list-item-date">{`Available ${property.available}`}</div>
 

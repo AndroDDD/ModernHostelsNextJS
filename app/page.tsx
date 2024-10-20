@@ -119,7 +119,7 @@ export default async function Home() {
     }
   );
   const singleItemSectionTwo = JSON.parse(
-    homePageSettings[`locationAndPropertyLinksSectionData0`],
+    homePageSettings[`locationAndPropertyLinksSectionData1`],
     function (key, value) {
       if (key === "image_url") {
         this.imageUrl = value;

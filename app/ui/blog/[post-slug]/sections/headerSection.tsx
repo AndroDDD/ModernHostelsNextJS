@@ -26,7 +26,7 @@ export default ({
       </div>
       <div className="kst-blog-post-excerpt">{excerpt}</div>
       <div className="kst-blog-post-img">
-        <img src={img} alt={title} width={"100%"} height={"100%"} />
+        <Image src={img} alt={title} width={1250} height={1250} />
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 import { TheNeighborhoodSection } from "@/app/types/propertyPageData";
 import "@/app/ui/styles/scss/components/property/sections/the-neighborhood-section.scss";
@@ -89,7 +90,12 @@ export default ({
                 }}
               >
                 <div className="kst-property-page-the-neighborhood-section-areas-detail-image">
-                  <img src={locationData.imgUrl} />
+                  <Image
+                    src={locationData.imgUrl}
+                    width={500}
+                    height={500}
+                    alt=""
+                  />
                 </div>
 
                 <div className="kst-property-page-the-neighborhood-section-areas-detail-location">

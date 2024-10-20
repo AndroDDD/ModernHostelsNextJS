@@ -79,9 +79,9 @@ export default function Overview() {
                 <PropertyBadge
                   property={{
                     propertyName: orderData.property?.name ?? "",
-                    price:
-                      `Booking Total: $${orderData.price_totals?.total_due}` ??
-                      "",
+                    price: orderData.price_totals?.total_due
+                      ? `Booking Total: $${orderData.price_totals?.total_due}`
+                      : "",
                     rating: 0,
                     numberOfGuests:
                       orderData.property?.living_space_data

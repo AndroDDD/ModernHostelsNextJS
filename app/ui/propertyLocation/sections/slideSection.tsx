@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 import { SlideSectionParameters } from "@/app/types/locationPageData";
 import { fetchSVGIcon } from "@/app/generalFunctions/fetchSVGIcon";
@@ -30,12 +31,15 @@ export default ({ title, slides }: SlideSectionParameters) => {
 
       <div className="kst-property-location-slide-section-content">
         <div className="kst-property-location-slide-section-content-image">
-          <img
+          <Image
             src={
               slides[currentSlideIndex].imgUrl
                 ? slides[currentSlideIndex].imgUrl
                 : ""
             }
+            width={500}
+            height={500}
+            alt=""
           />
         </div>
 

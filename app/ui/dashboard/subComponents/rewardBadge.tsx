@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import { RewardProgressData } from "@/app/types/rewardsData";
 import "@/app/ui/styles/scss/components/dashboard/sub-components/reward-badge.scss";
@@ -32,7 +33,7 @@ export default function RewardBadge({
             }-${badgeIndex}`}
             className="kst-dashboard-list-item-img-container"
           >
-            <img src={badgeData.badgeUrl} />
+            <Image src={badgeData.badgeUrl} width={500} height={500} alt="" />
           </div>
         ))}
       </div>

@@ -16,9 +16,9 @@ export const LoginButton: FC = () => {
   };
 
   return (
-    !user ?? (
+    !user && (
       <button onClick={handleLogin} style={{ color: "black" }}>
-        Log in with Auth0
+        Login
       </button>
     )
   );

@@ -21,7 +21,12 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "modern-hostels.imaginative-accumulation.com",
+        hostname: "*",
+        port: "",
+      },
+      {
+        protocol: "http",
+        hostname: "192.168.1.137",
         port: "",
       },
     ],

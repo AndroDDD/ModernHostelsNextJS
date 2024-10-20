@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
 import { PropertyData } from "@/app/types/propertyData";
 import "@/app/ui/styles/scss/components/property/sub-components/property-badge.scss";
@@ -39,7 +40,12 @@ export default ({
 
       <div className="kst-property-page-property-badge-image-and-available-date">
         <div className="kst-property-page-property-badge-image">
-          <img src={images[currentImageIndex]} />
+          <Image
+            src={images[currentImageIndex]}
+            width={500}
+            height={500}
+            alt=""
+          />
         </div>
 
         <div className="kst-property-page-property-badge-image-navigation">

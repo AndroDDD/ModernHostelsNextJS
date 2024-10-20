@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 import { CollageSectionData } from "@/app/types/collageSectionData";
 import "@/app/ui/styles/scss/components/home/sections/image-collage-section.scss";
@@ -23,15 +24,30 @@ export default (passedProp: {
 
       <div className="kst-home-image-collage-section-images">
         <div className="kst-home-image-collage-section-images-1">
-          <img src={collageSectionData.images[0]} width="100%" height="100%" />
+          <Image
+            src={collageSectionData.images[0]}
+            width={1000}
+            height={1000}
+            alt=""
+          />
         </div>
 
         <div className="kst-home-image-collage-section-images-2">
-          <img src={collageSectionData.images[1]} width="100%" height="100%" />
+          <Image
+            src={collageSectionData.images[1]}
+            width={500}
+            height={500}
+            alt=""
+          />
         </div>
 
         <div className="kst-home-image-collage-section-images-3">
-          <img src={collageSectionData.images[2]} width="100%" height="100%" />
+          <Image
+            src={collageSectionData.images[2]}
+            width={500}
+            height={500}
+            alt=""
+          />
         </div>
       </div>
     </section>

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import { PropertyData } from "@/app/types/propertyData";
 import "@/app/ui/styles/scss/components/shared-components/property-badge.scss";
@@ -21,7 +22,12 @@ export default ({ property }: TPropertyBadge) => {
             href={`/property/${property.pageSlug}`}
             className="kst-property-badge-image"
           >
-            <img src={property.images[selectedImageIndex]} />
+            <Image
+              src={property.images[selectedImageIndex]}
+              width={500}
+              height={500}
+              alt=""
+            />
           </Link>
         ) : (
           <></>

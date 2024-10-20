@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import Image from "next/image";
 
 import { BookingDataForCookie } from "@/app/types/bookingDataForCookie";
 import { retrieveBookingDataFromCookie } from "@/app/generalFunctions/retrieveBookingDataFromCookie";
@@ -37,7 +38,12 @@ export default function OrderReview() {
         <>
           <div className="kst-order-review-property-details">
             <div className="kst-order-review-property-image">
-              <img src={bookingData.propertyImageUrl} />
+              <Image
+                src={bookingData.propertyImageUrl}
+                width={500}
+                height={500}
+                alt=""
+              />
             </div>
 
             <div className="kst-order-review-property-stats">

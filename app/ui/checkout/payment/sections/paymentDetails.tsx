@@ -3,7 +3,7 @@
 import { CreditCard, PaymentForm } from "react-square-web-payments-sdk";
 import { useEffect, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import Image from "next/image";
 
 import { appId, locationId } from "@/app/constants/envReferences";
 import { BookingDataForCookie } from "@/app/types/bookingDataForCookie";
@@ -15,7 +15,6 @@ import {
 import "@/app/ui/styles/scss/components/checkout/payment/sections/payment-details.scss";
 
 export default function PaymentDetails() {
-  const { user } = useUser();
   const router = useRouter();
 
   const [bookingData, setBookingData] = useState<BookingDataForCookie>();
@@ -38,7 +37,12 @@ export default function PaymentDetails() {
         <>
           <div className="kst-order-review-property-details">
             <div className="kst-order-review-property-image">
-              <img src={bookingData.propertyImageUrl} />
+              <Image
+                src={bookingData.propertyImageUrl}
+                width={500}
+                height={500}
+                alt=""
+              />
             </div>
 
             <div className="kst-order-review-property-stats">

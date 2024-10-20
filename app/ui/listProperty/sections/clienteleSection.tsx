@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { ClienteleSection } from "@/app/types/listPropertyPageData";
 import "@/app/ui/styles/scss/components/list-property/sections/clientele-section.scss";
 
@@ -18,7 +20,7 @@ export default ({ title, statement, imgUrl, benefits }: ClienteleSection) => {
 
       <div className="kst-list-property-page-clientele-section-content">
         <div className="kst-list-property-page-clientele-section-image">
-          <img src={imgUrl} />
+          <Image src={imgUrl} width={1000} height={1000} alt="" />
         </div>
 
         <div className="kst-list-property-page-clientele-section-benefits">

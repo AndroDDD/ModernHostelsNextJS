@@ -1,8 +1,9 @@
+import Image from "next/image";
+
 import { OverviewSection } from "@/app/types/propertyPageData";
 import { fetchSVGIcon } from "@/app/generalFunctions/fetchSVGIcon";
 import SnapshotBadge from "@/app/ui/property/subComponents/snapshotBadge";
 import "@/app/ui/styles/scss/components/property/sub-components/overview-info-layout.scss";
-import overviewSection from "../sections/overviewSection";
 
 export default ({
   headerTitle,
@@ -83,7 +84,12 @@ export default ({
 
                           {display.img_url ? (
                             <div className="kst-property-page-overview-info-space-display-img">
-                              <img src={display.img_url} />
+                              <Image
+                                src={display.img_url}
+                                width={1250}
+                                height={1250}
+                                alt=""
+                              />
                             </div>
                           ) : (
                             <></>

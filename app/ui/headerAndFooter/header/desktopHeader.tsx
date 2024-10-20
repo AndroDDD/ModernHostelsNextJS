@@ -1,13 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+
 import Link from "next/link";
 
 import { DesktopHeaderParameters } from "@/app/types/desktopHeaderParameters";
 import { findValidClassnameInParentElements } from "@/app/generalFunctions/findValidClassnameInParentElements";
 import "@/app/ui/styles/scss/components/header-and-footer/header/desktop-header.scss";
-import { useUser } from "@auth0/nextjs-auth0/client";
-import { useRouter } from "next/navigation";
 
 export default ({ isScrolled, content, style }: DesktopHeaderParameters) => {
   const { user } = useUser();
@@ -53,11 +55,14 @@ export default ({ isScrolled, content, style }: DesktopHeaderParameters) => {
             href={`/`}
           >
             {content.homeButton.imgUrl.length > 0 ? (
-              <img
+              <Image
                 className={`kst-desktop-header-home-link-img ${
                   style ? style : ""
                 }`}
                 src={content.homeButton.imgUrl}
+                width={250}
+                height={250}
+                alt="homepage button"
               />
             ) : (
               content.homeButton.text

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { SingleItemSectionParameters } from "@/app/types/singleItemSectionParameters";
 import "@/app/ui/styles/scss/components/home/sections/single-item-section.scss";
@@ -22,10 +23,11 @@ export default ({
       }
     >
       <div className="kst-home-single-item-section-image">
-        <img
+        <Image
           src={itemData ? itemData.imageUrl : ""}
-          width={"auto"}
-          height={"auto"}
+          width={1000}
+          height={1000}
+          alt=""
         />
       </div>
 

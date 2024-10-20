@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 type ImagesHorizontalLayoutParameters = {
   imageUrls: string[];
@@ -26,7 +27,7 @@ const ImagesHorizontalLayout = ({
             key={`horizontal-layout-image-${i}`}
             className={classNames.section1Image}
           >
-            <img src={imageUrls[i]} />
+            <Image src={imageUrls[i]} width={750} height={750} alt="" />
           </div>
         ) : (
           <></>
@@ -40,7 +41,7 @@ const ImagesHorizontalLayout = ({
         >
           {imageUrls[i] ? (
             <div className={classNames.section2ImageFirst}>
-              <img src={imageUrls[i]} />
+              <Image src={imageUrls[i]} width={500} height={500} alt="" />
             </div>
           ) : (
             <></>
@@ -51,7 +52,7 @@ const ImagesHorizontalLayout = ({
               key={`horizontal-layout-images-2-${i}`}
               className={classNames.section2ImageSecond}
             >
-              <img src={imageUrls[i + 1]} />
+              <Image src={imageUrls[i + 1]} width={500} height={500} alt="" />
             </div>
           ) : (
             <></>

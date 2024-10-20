@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { SimpleInformationData } from "@/app/types/simpleInformationData";
 
 import "@/app/ui/styles/scss/components/home/sub-components/simple-information-badge.scss";
@@ -12,7 +14,12 @@ const SimpleInformationBadge: React.FC<TSimpleInformationBadge> = ({
   return (
     <div className="kst-simple-information-badge">
       <div className="kst-simple-information-badge-image-container">
-        <img src={simpleInformation.imageUrl} />
+        <Image
+          src={simpleInformation.imageUrl}
+          width={500}
+          height={500}
+          alt=""
+        />
       </div>
 
       <div className="kst-simple-information-badge-info">

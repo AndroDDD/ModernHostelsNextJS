@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
 import "@/app/ui/styles/scss/components/list-property/sections/properties-slide-section.scss";
 import { PropertiesSlideSection } from "@/app/types/listPropertyPageData";
@@ -19,7 +20,12 @@ export default ({ properties }: PropertiesSlideSection) => {
               </div>
 
               <div className="kst-list-property-page-properties-slide-section-content-image">
-                <img src={properties[currentPropertyIndex].imgUrl} />
+                <Image
+                  src={properties[currentPropertyIndex].imgUrl}
+                  width={500}
+                  height={500}
+                  alt=""
+                />
               </div>
 
               <div className="kst-list-property-page-properties-slide-section-content-stats">
@@ -52,7 +58,12 @@ export default ({ properties }: PropertiesSlideSection) => {
             </div>
 
             <div className="kst-list-property-page-properties-slide-section-content-image">
-              <img src={properties[currentPropertyIndex].imgUrl} />
+              <Image
+                src={properties[currentPropertyIndex].imgUrl}
+                width={500}
+                height={500}
+                alt=""
+              />
             </div>
           </div>
 
