@@ -63,7 +63,7 @@ export default () => {
               .find(
                 (locationData) => locationData.pageSlug === selectedLocation
               )
-              ?.listings.slice(0, 7)
+              ?.listings.slice(0, 6)
               .map((property) => {
                 return (
                   <div className="kst-home-listings-section-content-post">

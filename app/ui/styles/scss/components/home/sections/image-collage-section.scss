@@ -41,11 +41,6 @@
     height: 575px;
     flex-wrap: nowrap;
 
-    img {
-      box-shadow: 0 0 2px 3px whitesmoke;
-      border-radius: 5px;
-    }
-
     .kst-home-image-collage-section-images-1 {
       position: absolute;
       top: 5px;
@@ -53,6 +48,8 @@
       width: 783px;
       min-width: 783px;
       height: 448px;
+      box-shadow: 0 0 2px 3px whitesmoke;
+      border-radius: 5px;
       object-fit: contain;
       overflow: hidden;
     }
@@ -64,6 +61,8 @@
       width: 440px;
       min-width: 440px;
       height: 390px;
+      box-shadow: 0 0 2px 3px whitesmoke;
+      border-radius: 5px;
       object-fit: contain;
       overflow: hidden;
     }
@@ -74,7 +73,10 @@
       left: 972px;
       width: 296px;
       min-width: 296px;
-      height: 643px;
+      height: auto;
+      max-height: 643px;
+      box-shadow: 0 0 2px 3px whitesmoke;
+      border-radius: 5px;
       object-fit: contain;
       overflow: hidden;
     }
