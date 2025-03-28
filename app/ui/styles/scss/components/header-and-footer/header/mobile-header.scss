@@ -9,7 +9,7 @@
     width: 100%;
 
     .kst-mobile-header-menu-toggle-button {
-      width: 100px;
+      width: 75px;
       background-color: rgba(0, 0, 0, 0.789);
       cursor: pointer;
 
@@ -28,7 +28,12 @@
           align-items: center;
 
           i {
-            font-size: 90px;
+            font-size: 45px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2),
+              // Subtle black shadow for depth
+              0 0 6px rgba(218, 165, 32, 0.6),
+              // Gold glow around text
+              0 0 10px rgba(218, 165, 32, 0.4); // Softer extended glow
           }
         }
       }
@@ -38,13 +43,18 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: calc(100% - 100px);
+      width: calc(100% - 75px);
       background: rgba(29, 25, 25, 0.5);
       font-size: 30px;
       text-decoration: none;
-      color: gold;
+      color: #b8860b;
       letter-spacing: 2px;
       text-shadow: 1px 1px black;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5),
+        // Subtle black shadow for depth
+        0 0 6px rgba(218, 165, 32, 0.6),
+        // Gold glow around text
+        0 0 10px rgba(218, 165, 32, 0.4); // Softer extended glow
     }
   }
 
@@ -87,10 +97,10 @@
         align-items: center;
         padding: 7px;
         margin-bottom: 7px;
-        border: 2px solid gold;
+        border: 2px solid #fff8e1;
         border-radius: 5px;
         width: calc(100% - 25px);
-        color: gold;
+        color: #fff8e1;
         font-size: 25px;
         cursor: pointer;
       }
@@ -98,8 +108,9 @@
       .kst-mobile-header-menu-container-main-link-submenu {
         display: none;
         grid-template-columns: 1fr;
-        row-gap: 7px;
-        margin-top: 3px;
+        row-gap: 15px;
+        margin-top: 15px;
+        margin-bottom: 10px;
         padding-top: 3px;
         padding-bottom: 3px;
         border-top: 1px solid whitesmoke;
@@ -108,12 +119,13 @@
         .kst-mobile-header-menu-container-main-link-submenu-item {
           display: flex;
           justify-self: center;
-          color: darkcyan;
+          color: #b8860b;
           text-decoration: none;
           font-size: 20px;
           border-radius: 5px;
           border-bottom: 1px solid goldenrod;
           padding: 2px 5px;
+          letter-spacing: 0.5px;
         }
       }
     }
@@ -149,22 +161,25 @@
       }
 
       .kst-mobile-header-menu-container-login {
-        padding: 5px;
+        padding: 15px;
         background-color: black;
         border: 2px solid whitesmoke;
         border-radius: 5px;
         color: whitesmoke;
         font-size: 20px;
+        letter-spacing: 2px;
         cursor: pointer;
       }
 
       .kst-mobile-header-menu-container-signup {
-        padding: 5px;
+        padding: 15px;
         background: black;
         border: 2px solid darkcyan;
         border-radius: 5px;
-        color: darkcyan;
+        color: #b8860b;
         font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 2px;
         cursor: pointer;
       }
     }

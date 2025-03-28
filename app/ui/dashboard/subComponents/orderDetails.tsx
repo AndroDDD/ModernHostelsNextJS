@@ -115,17 +115,17 @@ export default function OrderDetails({
         </div>
 
         <div className={`kst-dashboard-compact-container-item`}>
-          <span>Order Date:</span> {order_date}
+          <span>Booked:</span> {order_date}
         </div>
       </div>
 
       <div className={`kst-dashboard-compact-container no-wrap`}>
         <div className={`kst-dashboard-compact-container-item`}>
-          <span>Start Date:</span> {start_date}
+          <span>Check In:</span> {start_date}
         </div>
 
         <div className={`kst-dashboard-compact-container-item`}>
-          <span>End Date:</span> {end_date}
+          <span>Check Out:</span> {end_date}
         </div>
       </div>
 
@@ -141,14 +141,20 @@ export default function OrderDetails({
                 const currentDisplay = ratings_container.style.display;
 
                 if (currentDisplay === "none" || currentDisplay === "") {
-                  ratings_container.style.display = "flex";
+                  ratings_container.style.display = "grid";
+                  (
+                    e.currentTarget.children[0] as HTMLDivElement
+                  ).style.transform = "rotate(90deg)";
                 } else {
                   ratings_container.style.display = "none";
+                  (
+                    e.currentTarget.children[0] as HTMLDivElement
+                  ).style.transform = "rotate(0deg)";
                 }
               }
             }}
           >
-            Rating:
+            Rating<div>{`>`}</div>
           </span>
 
           <div>

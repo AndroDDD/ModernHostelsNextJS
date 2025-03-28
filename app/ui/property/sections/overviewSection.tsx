@@ -15,13 +15,15 @@ export default (overviewInfo: OverviewSection & { isMobile: boolean }) => {
   );
 
   useEffect(() => {
-    window.addEventListener("resize", (event: any) => {
+    const detectScreenResize = (event: any) => {
       if (event.currentTarget.innerWidth <= 768) {
         setWindowWidth("mobile");
       } else {
         setWindowWidth("desktop");
       }
-    });
+    };
+
+    window.addEventListener("resize", detectScreenResize);
 
     const bookNowForm = bookNowFormContainerRef.current
       ?.firstChild as HTMLDivElement;
@@ -66,6 +68,10 @@ export default (overviewInfo: OverviewSection & { isMobile: boolean }) => {
         bookNowFormExpandFormContainerRef.current.style.display = "none";
       }
     }
+
+    return () => {
+      window.removeEventListener("resize", detectScreenResize);
+    };
   }, [windowWidth]);
 
   return (
@@ -109,7 +115,7 @@ export default (overviewInfo: OverviewSection & { isMobile: boolean }) => {
                     key={`kst-book-now-form-expand-form-container-avg-price-${index}`}
                     className="kst-book-now-form-expand-form-container-avg-price-number"
                   >
-                    {`${priceText}`}
+                    {`$${priceText}`}
                   </div>
                 )
             )}
@@ -124,8 +130,8 @@ export default (overviewInfo: OverviewSection & { isMobile: boolean }) => {
               if (bookNowFormContainerRef.current) {
                 bookNowFormContainerRef.current.style.background =
                   "rgba(0,0,0,.8)";
-                bookNowFormContainerRef.current.style.height =
-                  "calc(100% - 100px)";
+                bookNowFormContainerRef.current.style.height = "100%";
+                bookNowFormContainerRef.current.style.zIndex = "1000";
                 bookNowForm.style.display = "flex";
               }
 

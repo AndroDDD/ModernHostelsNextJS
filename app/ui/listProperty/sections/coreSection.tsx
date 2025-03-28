@@ -36,9 +36,7 @@ export default (
       {
         <InquiryForm
           {...formSendData}
-          title={"Find out how much more you can earn with Modern Hostels."}
-          buttonText="Let's Go"
-          backgroundImageUrl="https://cdn.sanity.io/images/c4hli7ss/production/f53aa12d417ddd3c9228b374fa04e23bb3666f72-8167x5447.jpg"
+          {...pageData.inquiryFormSection}
           setFormSendData={setFormSendData}
           emailServerUrl={pageData.emailServer}
           csrfToken={pageData.csrfToken}

@@ -1,151 +1,181 @@
 #kst-list-property-page-clientele-section {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: auto;
+  padding: 140px 125px 140px;
+  border-bottom: 1px solid hsla(26, 33%, 96%, 0.1);
+
+  @media only screen and (max-width: 768px) {
+    padding: 10% 3% 5%;
+  }
+
+  .kst-list-property-page-clientele-section-header {
     display: flex;
-    flex-flow: column;
+    justify-content: space-between;
     width: 100%;
-    height: auto;
-    padding: 140px 125px 140px;
-    border-bottom: 1px solid hsla(26, 33%, 96%, .1);
+    margin-bottom: 70px;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    color: #fff;
 
     @media only screen and (max-width: 768px) {
-        padding: 10% 3% 5%;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      font-size: 20px;
+      letter-spacing: 1.5px;
+      margin-bottom: 40px;
+      row-gap: 15px;
     }
 
-    .kst-list-property-page-clientele-section-header {
+    .kst-list-property-page-clientele-section-header-title {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      @media only screen and (max-width: 768px) {
+        color: #a09c9b;
+        margin-bottom: 0px;
+      }
+
+      span {
+        margin-right: 10px;
+        font-weight: 300;
+        font-size: 10px;
+        line-height: 18px;
         display: flex;
-        justify-content: space-between;
-        width: 100%;
-        margin-bottom: 70px;
-        font-weight: 400;
-        font-size: 30px;
-        line-height: 40px;
-        letter-spacing: 1px;
-        color: #fff;
+        align-items: center;
+        justify-content: center;
+        letter-spacing: 0.8px;
+        border-radius: 50%;
+        width: 24px;
+        min-width: 24px;
+        height: 24px;
+        background-color: #f8f4f1;
+        color: #1d1919;
 
         @media only screen and (max-width: 768px) {
-            flex-flow: column;
-            font-size: 15px;
-            line-height: 20px;
-            margin-bottom: 35px;
+          font-size: 16px;
+          font-weight: 500;
+          height: 35px;
+          width: 35px;
+          margin-right: 14px;
         }
-
-        .kst-list-property-page-clientele-section-header-title {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-
-            @media only screen and (max-width: 768px) {
-                color: #a09c9b;
-                margin-bottom: 15px;
-            }
-
-            span {
-                margin-right: 10px;
-                font-weight: 300;
-                font-size: 10px;
-                line-height: 18px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                letter-spacing: .8px;
-                border-radius: 50%;
-                width: 24px;
-                min-width: 24px;
-                height: 24px;
-                background-color: #f8f4f1;
-                color: #1d1919;
-            }
-        }
-
-        .kst-list-property-page-clientele-section-header-statement {
-            display: block;
-            max-width: 55%;
-        }
+      }
     }
 
-    .kst-list-property-page-clientele-section-content {
-        display: flex;
-        flex-wrap: nowrap;
+    .kst-list-property-page-clientele-section-header-statement {
+      display: block;
+      max-width: 55%;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 20px;
+        letter-spacing: 1.5px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  .kst-list-property-page-clientele-section-content {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: auto;
+
+    @media only screen and (max-width: 768px) {
+      flex-flow: column;
+    }
+
+    .kst-list-property-page-clientele-section-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 70px;
+      border-radius: 10px;
+      width: calc(100% - 244px);
+      height: 564px;
+      overflow: hidden;
+      object-fit: contain;
+
+      @media only screen and (max-width: 768px) {
         width: 100%;
         height: auto;
+        padding-bottom: 100%;
+      }
+
+      img {
+        width: auto;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 15px;
+        overflow: hidden;
 
         @media only screen and (max-width: 768px) {
-            flex-flow: column;
+          position: absolute;
+          top: 0px;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
-
-        .kst-list-property-page-clientele-section-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 70px;
-            border-radius: 10px;
-            width: calc(100% - 244px);
-            height: 564px;
-            overflow: hidden;
-            object-fit: contain;
-
-            @media only screen and (max-width: 768px) {
-                width: 100%;
-                height: auto;
-                padding-bottom: 100%;
-            }
-
-            img {
-                width: auto;
-                height: 100%;
-                object-fit: contain;
-
-                @media only screen and (max-width: 768px) {
-                    position: absolute;
-                    top: 0px;
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-            }
-        }
-
-        .kst-list-property-page-clientele-section-benefits {
-            display: flex;
-            flex-flow: column;
-            width: 244px;
-            height: auto;
-
-            @media only screen and (max-width: 768px) {
-                width: 100%;
-                margin-top: 40px;
-            }
-
-            .kst-list-property-page-clientele-section-benefit {
-                display: flex;
-                flex-flow: column;
-                width: 100%;
-                margin-bottom: 50px;
-
-                @media only screen and (max-width: 768px) {
-                    margin-bottom: 15px;
-                }
-
-                .kst-list-property-page-clientele-section-benefit-title {
-                    display: block;
-                    margin-bottom: 10px;
-                    width: 100%;
-                    color: #fff;
-                    font-weight: 400;
-                    font-size: 14px;
-                    letter-spacing: 1px;
-                    line-height: 16px;
-                }
-
-                .kst-list-property-page-clientele-section-benefit-statement {
-                    display: block;
-                    width: 100%;
-                    color: #a09c9b;
-                    font-weight: 400;
-                    font-size: 14px;
-                    letter-spacing: 1px;
-                    line-height: 16px;
-                }
-            }
-        }
+      }
     }
+
+    .kst-list-property-page-clientele-section-benefits {
+      display: flex;
+      flex-flow: column;
+      width: 244px;
+      height: auto;
+
+      @media only screen and (max-width: 768px) {
+        width: 100%;
+        margin-top: 40px;
+      }
+
+      .kst-list-property-page-clientele-section-benefit {
+        display: flex;
+        flex-flow: column;
+        width: 100%;
+        margin-bottom: 50px;
+
+        @media only screen and (max-width: 768px) {
+          margin-bottom: 30px;
+          row-gap: 10px;
+        }
+
+        .kst-list-property-page-clientele-section-benefit-title {
+          display: block;
+          margin-bottom: 10px;
+          width: 100%;
+          color: #fff;
+          font-weight: 400;
+          font-size: 14px;
+          letter-spacing: 1px;
+          line-height: 16px;
+
+          @media only screen and (max-width: 768px) {
+            font-size: 20px;
+            letter-spacing: 1.5px;
+          }
+        }
+
+        .kst-list-property-page-clientele-section-benefit-statement {
+          display: block;
+          width: 100%;
+          color: #a09c9b;
+          font-weight: 400;
+          font-size: 14px;
+          letter-spacing: 1px;
+          line-height: 16px;
+
+          @media only screen and (max-width: 768px) {
+            font-size: 20px;
+            letter-spacing: 1.5px;
+          }
+        }
+      }
+    }
+  }
 }

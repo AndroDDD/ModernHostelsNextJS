@@ -14,11 +14,11 @@ export default async ({
   const market = searchParams ? (searchParams["market"] as string) : undefined;
 
   return (
-    <section id="kst-map-page">
+    <main id="kst-map-page">
       <Header style="light-theme" isMobile={isMobile} />
       <CoreSection marketName={market} />
       <FooterSeparatorSection style="cream-theme" isMobile={isMobile} />
       <Footer style="light-theme" />
-    </section>
+    </main>
   );
 };

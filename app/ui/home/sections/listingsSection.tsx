@@ -14,25 +14,28 @@ export default () => {
   const [selectedLocation, setSelectedLocation] = useState<string>();
 
   useEffect(() => {
-    fetchListings((fetchedListings: Properties) => {
+    (async () => {
+      const fetchedListings = await fetchListings();
       setTimeout(() => {
         setListings(fetchedListings);
+        console.log({ fetchedListings });
         setSelectedLocation(() => {
           const locationName = Object.values(fetchedListings)[0].pageSlug;
 
           return locationName;
         });
       }, 1000);
-    });
+    })();
   }, []);
 
   return (
     <section id="kst-home-listings-section">
       <div className="kst-home-listings-section-header">
         {listings ? (
-          Object.entries(listings).map((location) => {
+          Object.entries(listings).map((location, index) => {
             return (
               <div
+                key={`kst-home-listings-item-element-${index}`}
                 className="kst-home-listings-section-header-button"
                 style={
                   location[1].pageSlug === selectedLocation

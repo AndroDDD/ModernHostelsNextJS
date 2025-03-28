@@ -37,6 +37,12 @@
     width: 100%;
     height: 728px;
 
+    @media only screen and (min-width: 769px) {
+      border: 2px solid #1d1919;
+      overflow: hidden;
+      border-top-right-radius: 15px;
+    }
+
     @media only screen and (max-width: 768px) {
       height: auto;
     }
@@ -76,6 +82,7 @@
         display: flex;
         width: 100%;
         margin: 0 0 9px 34px;
+        padding-top: 10px;
         text-wrap: wrap;
         font-weight: 500;
         font-size: 24px;
@@ -87,10 +94,12 @@
           justify-content: center;
           align-items: center;
           padding-top: 10px;
+          padding-bottom: 10px;
           margin: 0;
           background: #1d1919;
           color: #fff;
           text-align: center;
+          letter-spacing: 1px;
         }
       }
 
@@ -106,6 +115,10 @@
         color: #fff;
         overflow: auto;
 
+        @media only screen and (min-width: 769px) {
+          border-top-right-radius: 15px;
+        }
+
         p {
           width: 100%;
           height: auto;
@@ -114,6 +127,9 @@
 
           @media only screen and (max-width: 768px) {
             margin: 5% 10% 5%;
+            font-size: 18px;
+            letter-spacing: 1.5px;
+            line-height: 25px;
           }
         }
 
@@ -139,6 +155,7 @@
         justify-content: center;
         align-items: center;
         width: 100%;
+        color: black;
 
         @media only screen and (max-width: 768px) {
           display: none;
@@ -161,6 +178,7 @@
         stroke-width: 0.75px;
         fill: none;
         overflow: hidden;
+        background-color: white;
         cursor: pointer;
 
         @media only screen and (max-width: 768px) {
@@ -188,6 +206,7 @@
         stroke-width: 0.75px;
         fill: none;
         overflow: hidden;
+        background-color: white;
         cursor: pointer;
 
         @media only screen and (max-width: 768px) {

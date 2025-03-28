@@ -86,8 +86,8 @@ export default ({
                             <div className="kst-property-page-overview-info-space-display-img">
                               <Image
                                 src={display.img_url}
-                                width={1250}
-                                height={1250}
+                                width={1000}
+                                height={1000}
                                 alt=""
                               />
                             </div>

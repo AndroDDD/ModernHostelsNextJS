@@ -5,17 +5,25 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { PropertyData } from "@/app/types/propertyData";
+import {
+  convertHyphenDateToNamedDate,
+  convertNumberToDate,
+} from "@/app/generalFunctions/convertNumberToDate";
 import "@/app/ui/styles/scss/components/shared-components/property-badge.scss";
 
 type TPropertyBadge = {
   property: PropertyData;
 };
 
-export default ({ property }: TPropertyBadge) => {
+export default ({
+  property,
+  scaleOnHover = true,
+  abbreviateStats = false,
+}: TPropertyBadge & { scaleOnHover?: boolean; abbreviateStats?: boolean }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
   return (
-    <div className="kst-property-badge">
+    <div className={`kst-property-badge ${scaleOnHover ? "enable-scale" : ""}`}>
       <div className="kst-property-badge-images-container">
         {property.images ? (
           <Link
@@ -51,7 +59,7 @@ export default ({ property }: TPropertyBadge) => {
                   });
                 }}
               >
-                {"<"}
+                <i className="fa-solid fa-arrow-left" aria-hidden="true"></i>
               </div>
 
               <div
@@ -69,7 +77,7 @@ export default ({ property }: TPropertyBadge) => {
                   });
                 }}
               >
-                {">"}
+                <i className="fa-solid fa-arrow-right" aria-hidden="true"></i>
               </div>
             </>
           ) : (
@@ -95,7 +103,9 @@ export default ({ property }: TPropertyBadge) => {
         <div className="kst-property-badge-info-right">
           {property.numberOfBeds > 0 ? (
             <div className="kst-property-badge-info-beds">
-              <div className="kst-property-badge-info-beds-title">{"Beds"}</div>
+              <div className="kst-property-badge-info-beds-title">
+                {abbreviateStats ? "Bds" : "Beds"}
+              </div>
 
               <div className="kst-property-badge-info-beds-quantity">
                 {property.numberOfBeds}
@@ -108,7 +118,7 @@ export default ({ property }: TPropertyBadge) => {
           {property.numberOfBaths > 0 ? (
             <div className="kst-property-badge-info-baths">
               <div className="kst-property-badge-info-baths-title">
-                {"Baths"}
+                {abbreviateStats ? "Bth" : "Baths"}
               </div>
 
               <div className="kst-property-badge-info-baths-quantity">
@@ -122,7 +132,7 @@ export default ({ property }: TPropertyBadge) => {
           {property.numberOfOffices > 0 ? (
             <div className="kst-property-badge-info-offices">
               <div className="kst-property-badge-info-offices-title">
-                {"Offices"}
+                {abbreviateStats ? "Off" : "Offices"}
               </div>
 
               <div className="kst-property-badge-info-offices-quantity">
@@ -136,7 +146,11 @@ export default ({ property }: TPropertyBadge) => {
       </Link>
 
       <div className="kst-property-badge-available-date">
-        {`${property.dateLabel ?? "Available"} ${property.available}`}
+        {`${property.dateLabel ?? "Available"} ${
+          property.available && property.available.includes("-")
+            ? convertHyphenDateToNamedDate(property.available)
+            : convertNumberToDate(property.available)
+        }`}
       </div>
     </div>
   );

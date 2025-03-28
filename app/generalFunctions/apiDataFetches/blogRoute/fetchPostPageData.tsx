@@ -7,12 +7,16 @@ import {
   blogPostAdjacentPostsUrl,
 } from "@/app/constants/wpApiUrl";
 import { calculateReadTimeFromWPContent } from "@/app/generalFunctions/calculateReadTimeFromWPContent";
+import { fetchOriginHeader } from "../../devToPro/useDevOrigin";
 
 const he = require("he");
 
 export const fetchPostPageData = async (slug: string) => {
   try {
-    const response = await fetch(`${blogPostsUrl}?_embed&slug=${slug}`);
+    const response = await fetch(`${blogPostsUrl}?_embed&slug=${slug}`, {
+      method: "GET",
+      headers: { Origin: fetchOriginHeader },
+    });
     const responseHeader = response.headers;
     const data = (await response.json())[0];
     const postId = data.id;

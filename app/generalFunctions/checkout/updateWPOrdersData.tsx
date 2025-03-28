@@ -1,6 +1,7 @@
 "use server";
 
 import { checkoutSubmitOrderApiUrl } from "@/app/constants/wpApiUrl";
+import { fetchOriginHeader } from "../devToPro/useDevOrigin";
 
 type UpdateWPOrdersParameters = {
   user_id: string;
@@ -19,6 +20,7 @@ export async function updateWPOrdersData(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Origin: fetchOriginHeader,
     },
     body: JSON.stringify(completedOrderData),
   });

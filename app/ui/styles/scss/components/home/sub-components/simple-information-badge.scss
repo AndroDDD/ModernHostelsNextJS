@@ -1,85 +1,85 @@
 .kst-simple-information-badge {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: 100%;
+  transition: all 0.25s ease-in;
+
+  &:hover {
+    transform: translateY(-10px);
+
+    .kst-simple-information-badge-info
+      .kst-simple-information-badge-info-title {
+      background: whitesmoke;
+      color: black;
+    }
+  }
+
+  .kst-simple-information-badge-image-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 357px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    object-fit: contain;
+    overflow: hidden;
+
+    @media only screen and (max-width: 768px) {
+      height: 300px;
+    }
+
+    img {
+      min-width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .kst-simple-information-badge-info {
     display: flex;
     flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 30px 25px 15px 25px;
     width: 100%;
-    height: 100%;
-    transition: all 0.25s ease-in;
+    height: calc(100% - 357px);
+    background-color: rgb(76, 59, 34);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
 
-    &:hover {
-        transform: translateY(-10px);
-
-        .kst-simple-information-badge-info .kst-simple-information-badge-info-title {
-
-            background: whitesmoke;
-            color: black;
-        }
+    @media only screen and (max-width: 768px) {
+      height: calc(100% - 300px);
     }
 
-    .kst-simple-information-badge-image-container {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        width: 100%;
-        height: 357px;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        object-fit: contain;
-        overflow: hidden;
+    .kst-simple-information-badge-info-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 15px;
+      width: auto;
+      height: 26px;
+      padding: 0px 30px 0px 30px;
+      border: 1px solid black;
+      border-radius: 50px;
+      background: rgb(73, 65, 52);
+      color: whitesmoke;
+      font-size: 11px;
 
-        @media only screen and (max-width: 768px) {
-            height: 300px;
-        }
-
-        img {
-            min-width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+      @media only screen and (max-width: 768px) {
+        font-size: 15px;
+      }
     }
 
-    .kst-simple-information-badge-info {
-        display: flex;
-        flex-flow: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        padding: 30px 25px 0px 25px;
-        width: 100%;
-        height: calc(100% - 357px);
-        background-color: rgb(76, 59, 34);
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-        overflow: hidden;
-
-        @media only screen and (max-width: 768px) {
-            height: calc(100% - 300px);
-        }
-
-        .kst-simple-information-badge-info-title {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 15px;
-            width: auto;
-            height: 26px;
-            padding: 0px 30px 0px 30px;
-            border: 1px solid black;
-            border-radius: 50px;
-            background: rgb(73, 65, 52);
-            color: whitesmoke;
-            font-size: 11px;
-
-            @media only screen and (max-width: 768px) {
-                font-size: 15px;
-            }
-        }
-
-        .kst-simple-information-badge-info-content {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            color: whitesmoke;
-            font-size: 16px;
-            font-weight: 500;
-        }
+    .kst-simple-information-badge-info-content {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      color: whitesmoke;
+      font-size: 16px;
+      font-weight: 500;
     }
+  }
 }

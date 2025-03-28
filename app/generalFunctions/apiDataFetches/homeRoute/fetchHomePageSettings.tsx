@@ -1,6 +1,16 @@
+"use server";
+
+import { fetchOriginHeader } from "../../devToPro/useDevOrigin";
+import { wpAuthorizationHeaderValue } from "@/app/constants/wpFetchHeaders";
+
 export async function fetchHomePageSettings(restUrl: string) {
   try {
-    const restUrlResponse = await fetch(restUrl);
+    const restUrlResponse = await fetch(restUrl, {
+      headers: {
+        Origin: fetchOriginHeader,
+        Authorization: wpAuthorizationHeaderValue,
+      },
+    });
     const json = await restUrlResponse.json();
 
     const laxDataFetch = new Promise((resolve, reject) => {

@@ -149,14 +149,14 @@ export default async function Home() {
         introSectionData={introSectionData}
       />
       <ListingsSection key={"kst-home-listings-section"} />
-      {/* {isMobile ? (
+      {isMobile ? (
         <></>
       ) : (
         <VideoScrollSection
           key={"kst-home-scroll-video-section"}
           scrollVideo={scrollVideo}
         />
-      )} */}
+      )}
       <InformationCarouselSection
         simpleInformationArray={simpleInformationCarouselData}
         isMobile={isMobile}

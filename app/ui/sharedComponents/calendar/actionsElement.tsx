@@ -136,11 +136,6 @@ export default ({
                   },
                 };
 
-                console.log({
-                  filterBarDate: "",
-                  updatedData,
-                });
-
                 return updatedData;
               }
             });

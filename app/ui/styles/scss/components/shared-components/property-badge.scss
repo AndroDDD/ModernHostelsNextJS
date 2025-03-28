@@ -7,9 +7,23 @@
   height: 100%;
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 4px 6px rgba(218, 165, 32, 0.5),
+    // Gold shadow glow
+    0 2px 4px rgba(0, 0, 0, 0.2); // Subtle black shadow for depth
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  color: #b8860b; // Gold text color
 
   @media only screen and (max-width: 768px) {
     height: auto;
+  }
+
+  &:hover {
+    &.enable-scale {
+      transform: scale(1.05);
+    } // Slight pop-out effect on hover
+    box-shadow: 0 6px 8px rgba(218, 165, 32, 0.7),
+      // More prominent gold shadow
+      0 4px 6px rgba(0, 0, 0, 0.3); // Enhanced black shadow
   }
 
   .kst-property-badge-images-container {
@@ -61,6 +75,12 @@
       height: 29px;
       z-index: 1;
 
+      @media only screen and (max-width: 768px) {
+        width: 100%;
+        height: auto;
+        justify-content: space-between;
+      }
+
       .kst-property-badge-images-navigation-prev {
         display: flex;
         align-items: center;
@@ -68,13 +88,27 @@
         padding: 0;
         width: 45px;
         height: 29px;
-        background: hsla(26, 33%, 96%, 0.3);
+        background: black;
         border: none;
+        border-right: 1px solid darkgoldenrod;
+        font-size: 14px;
         transition: all 0.2s linear;
         cursor: pointer;
 
+        @media only screen and (max-width: 768px) {
+          border-right: unset;
+          width: 20%;
+          height: auto;
+          font-size: 22px;
+          padding: 10px 5px;
+          border-top-right-radius: 15px;
+          background: hsla(26, 33%, 96%, 0.7);
+          color: black;
+        }
+
         &:hover {
-          background: hsla(26, 33%, 96%, 0.5);
+          background: hsla(26, 33%, 96%, 0.75);
+          color: black;
         }
       }
 
@@ -85,13 +119,26 @@
         padding: 0;
         width: 45px;
         height: 29px;
-        background: hsla(26, 33%, 96%, 0.3);
+        background: black;
         border: none;
+        border-top-right-radius: 5px;
         transition: all 0.2s linear;
         cursor: pointer;
 
+        @media only screen and (max-width: 768px) {
+          width: 20%;
+          height: auto;
+          font-size: 22px;
+          padding: 10px 5px;
+          border-top-right-radius: unset;
+          border-top-left-radius: 15px;
+          background: hsla(26, 33%, 96%, 0.7);
+          color: black;
+        }
+
         &:hover {
           background: hsla(26, 33%, 96%, 0.5);
+          color: black;
         }
       }
     }
@@ -102,16 +149,20 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
     height: 25%;
     background-color: rgb(47, 42, 42);
-    color: whitesmoke;
+    color: #fff8e1; // Gold text color
     text-decoration: none !important;
     cursor: pointer;
 
     @media only screen and (max-width: 768px) {
+      padding-top: 10px;
       padding-bottom: 10px;
       height: auto;
       align-items: flex-start;
+      flex-flow: column;
     }
 
     .kst-property-badge-info-left {
@@ -120,32 +171,38 @@
       flex-flow: column;
       justify-content: space-between;
       align-items: flex-start;
-      padding-top: 9px;
+      padding-top: 0px;
       padding-left: 10px;
       width: 60%;
       height: 100%;
 
       @media only screen and (max-width: 768px) {
         height: auto;
+        width: 100%;
+        padding-right: 10px;
       }
 
       .kst-property-badge-info-left-name {
         display: -webkit-box;
         width: 100%;
-        height: 50%;
+        height: auto;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         white-space: normal;
         text-overflow: ellipsis;
         font-weight: 300;
-        font-size: 14px;
-        line-height: 16px;
+        font-size: 70%;
+        line-height: 14px;
+        letter-spacing: 1px;
         overflow: hidden;
 
         @media only screen and (max-width: 768px) {
-          font-size: 16px;
-          padding-bottom: 5px;
-          line-height: 18px;
+          font-size: 22px;
+          padding-bottom: 0px;
+          line-height: 26px;
+          letter-spacing: 1.75px;
+          font-weight: 500;
+          height: auto;
         }
       }
 
@@ -154,31 +211,55 @@
         justify-content: flex-start;
         align-items: center;
         width: 100%;
-        height: 50%;
+        height: auto;
         font-size: 10px;
+        letter-spacing: 0.5px;
+        box-sizing: border-box;
 
         @media only screen and (max-width: 768px) {
-          margin-top: 5px;
-          font-size: 14px;
+          margin: 5px 0 10px;
+          font-size: 18px;
+          letter-spacing: 1.5px;
+          box-shadow: 0 4px 6px rgba(218, 165, 32, 0.5);
+          border-radius: 5px;
+          padding: 5px 7px;
+          width: 100%;
+          height: 50%;
         }
       }
     }
 
     .kst-property-badge-info-right {
       box-sizing: border-box;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding-top: 9px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      justify-content: flex-start;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      padding: 0px 10px 0 4px;
       width: 40%;
       height: 100%;
-      font-size: 12px;
+      font-size: 8px;
+      letter-spacing: 0.5px;
+      border-left: 1px solid darkgoldenrod;
 
       @media only screen and (max-width: 768px) {
+        flex-wrap: nowrap;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
         height: auto;
         border-left: 2px solid black;
         border-bottom: 1px solid goldenrod;
+        border-bottom-left-radius: 10px;
         margin-left: 3px;
+        font-size: 12px;
+        padding: 0 15px 5px;
+        letter-spacing: 1.5px;
+        width: 100%;
+        justify-content: flex-start;
+        column-gap: 15px;
+        align-items: center;
       }
 
       .kst-property-badge-info-beds {
@@ -190,10 +271,25 @@
         align-items: center;
 
         .kst-property-badge-info-beds-title {
+          font-size: 150%;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+          text-decoration-color: darkgoldenrod;
+          text-decoration-thickness: 2px;
+
+          @media only screen and (max-width: 768px) {
+            font-size: 18px;
+            letter-spacing: 1.5px;
+          }
         }
 
         .kst-property-badge-info-beds-quantity {
           text-decoration: none;
+          font-size: 150%;
+
+          @media only screen and (max-width: 768px) {
+            font-size: 16px;
+          }
         }
       }
 
@@ -206,9 +302,22 @@
         align-items: center;
 
         .kst-property-badge-info-baths-title {
+          font-size: 150%;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+          text-decoration-color: darkgoldenrod;
+          text-decoration-thickness: 2px;
+          @media only screen and (max-width: 768px) {
+            font-size: 18px;
+            letter-spacing: 1.5px;
+          }
         }
 
         .kst-property-badge-info-baths-quantity {
+          font-size: 150%;
+          @media only screen and (max-width: 768px) {
+            font-size: 16px;
+          }
         }
       }
 
@@ -220,9 +329,22 @@
         align-items: center;
 
         .kst-property-badge-info-offices-title {
+          font-size: 150%;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+          text-decoration-color: darkgoldenrod;
+          text-decoration-thickness: 2px;
+          @media only screen and (max-width: 768px) {
+            font-size: 18px;
+            letter-spacing: 1.5px;
+          }
         }
 
         .kst-property-badge-info-offices-quantity {
+          font-size: 150%;
+          @media only screen and (max-width: 768px) {
+            font-size: 16px;
+          }
         }
       }
     }
@@ -239,13 +361,21 @@
     width: auto;
     height: 14px;
     border-radius: 50px;
-    color: black;
-    background: cadetblue;
+    color: #c5a880;
+    background: black;
     font-size: 10px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
 
     @media only screen and (max-width: 768px) {
-      top: 15px;
+      top: 5px;
+      bottom: calc(25% + 14px);
+      height: fit-content;
       right: 7px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 3px 6px 3px 6px;
     }
   }
 }

@@ -13,6 +13,7 @@ import {
   propertyUpdateRatingsApiUrl,
 } from "@/app/constants/wpApiUrl";
 import { RatingSendData } from "@/app/types/ratingsData";
+import { fetchOriginHeader } from "../../devToPro/useDevOrigin";
 
 export async function fetchCustomersData(
   params: {
@@ -25,7 +26,7 @@ export async function fetchCustomersData(
   } = {}
 ) {
   const response = await fetch(`${customersDataApiUrl}`, {
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", Origin: fetchOriginHeader },
     method: "POST",
     body: JSON.stringify(params),
   });
@@ -46,6 +47,7 @@ export async function updateCustomerData(params: {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Origin: fetchOriginHeader,
       },
       body: JSON.stringify(params),
     });
@@ -64,6 +66,7 @@ export async function fetchCustomerOrders(customerId: string) {
   const response = await fetch(`${customerOrdersApiUrl}`, {
     headers: {
       "Content-Type": "application/json",
+      Origin: fetchOriginHeader,
     },
     method: "POST",
     body: JSON.stringify({
@@ -73,7 +76,7 @@ export async function fetchCustomerOrders(customerId: string) {
 
   const data = await response.json();
 
-  console.log({ userOrdersData: data });
+  console.log({ userOrdersData: data["orders"][0] });
 
   return data;
 }
@@ -83,11 +86,15 @@ export async function fetchCustomerRewards(customerId: string) {
     `${customerRewardsTierApiUrl}`,
     {
       method: "GET",
+      headers: {
+        Origin: fetchOriginHeader,
+      },
     }
   );
   const customerRewardsResponse = await fetch(`${customerRewardsApiUrl}`, {
     headers: {
       "Content-Type": "application/json",
+      Origin: fetchOriginHeader,
     },
     method: "POST",
     body: JSON.stringify({
@@ -123,6 +130,10 @@ export async function fetchCustomerRewards(customerId: string) {
         typeof rewardData === "object" &&
         "dictionary_property" in rewardData
       ) {
+        if (!customerRewardsTierData[rewardData.dictionary_property]) {
+          return;
+        }
+
         const tierRewardData = customerRewardsTierData[
           rewardData.dictionary_property
         ].find((tierRewardsData: any) => {
@@ -173,28 +184,36 @@ export async function fetchCustomerRewards(customerId: string) {
     }
   );
 
-  console.log({ earnedRewards });
+  console.log({
+    customerRewardsTierData: customerRewardsTierData["3"],
+    earnedRewards,
+    progresses: customerRewardsData["rewards"]["progresses"],
+  });
 
   const rewardsProgresses = Object.entries(
     customerRewardsData["rewards"]["progresses"]
-  ).map((progressEntry: [any, any]) => {
-    console.log({
-      badgeUrlTest: customerRewardsTierData[progressEntry[0]][0].badge,
-    });
+  )
+    .filter((progressEntry: [any, any]) => {
+      return customerRewardsTierData[progressEntry[0]];
+    })
+    .map((progressEntry: [any, any]) => {
+      console.log({
+        badgeUrlTest: customerRewardsTierData[progressEntry[0]][0].badge,
+      });
 
-    return {
-      badges: customerRewardsTierData[progressEntry[0]].map(
-        (rewardsData: any) => {
-          return {
-            label: rewardsData.label,
-            badgeUrl: rewardsData.badge,
-          };
-        }
-      ),
-      bookedDaysTilReward:
-        Number(progressEntry[0]) - progressEntry[1].number_of_bookings,
-    };
-  });
+      return {
+        badges: customerRewardsTierData[progressEntry[0]].map(
+          (rewardsData: any) => {
+            return {
+              label: rewardsData.label,
+              badgeUrl: rewardsData.badge,
+            };
+          }
+        ),
+        bookedDaysTilReward:
+          Number(progressEntry[0]) - progressEntry[1].number_of_bookings,
+      };
+    });
 
   const compiledRewardsData = {
     earnedRewards,
@@ -212,6 +231,7 @@ export async function fetchUserChatConversation(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Origin: fetchOriginHeader,
     },
     body: JSON.stringify({
       user_id: userId,
@@ -231,6 +251,7 @@ export async function fetchUserChatConversationIds(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Origin: fetchOriginHeader,
     },
     body: JSON.stringify({
       user_id: userId,
@@ -279,6 +300,7 @@ export async function sendUserChatMessage(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Origin: fetchOriginHeader,
     },
     body: JSON.stringify(responseBody),
   });
@@ -321,6 +343,7 @@ export async function updatePropertyRatings(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Origin: fetchOriginHeader,
     },
     body: JSON.stringify(requestBody),
   });
@@ -347,6 +370,7 @@ export async function updateCustomerOrderReview(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Origin: fetchOriginHeader,
     },
     body: JSON.stringify(requestBody),
   });

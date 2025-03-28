@@ -1,14 +1,18 @@
+"use server";
+
+import { wpAuthorizationHeaderValue } from "@/app/constants/wpFetchHeaders";
 import { AmenitiesList, Properties } from "@/app/types/propertyData";
 import { wpApiUrl } from "@/app/constants/wpApiUrl";
 import { fetchPropertyLocations } from "@/app/generalFunctions/apiDataFetches/fetchPropertyLocations";
 import { formatSnakeCaseToCamelCase } from "@/app/generalFunctions/formatSnakeCaseToCamelCase";
+import { fetchOriginHeader } from "../devToPro/useDevOrigin";
 
 const he = require("he");
 
 export const fetchListings = async (callback?: Function) => {
   const finalResults = await fetchPropertyLocations()
     .then(
-      (
+      async (
         propertyLocations: {
           title: { rendered: string };
           meta: { properties_data: Number[] };
@@ -17,62 +21,73 @@ export const fetchListings = async (callback?: Function) => {
       ) => {
         let formattedLocationProperties: Properties = {};
 
-        propertyLocations.forEach(async (location) => {
-          formattedLocationProperties[location.title.rendered] = {
-            pageSlug: location.slug,
-            listings: [],
-          };
+        await Promise.all(
+          propertyLocations.map(async (location) => {
+            formattedLocationProperties[location.title.rendered] = {
+              pageSlug: location.slug,
+              listings: [],
+            };
 
-          if (location.meta.properties_data.length > 0) {
-            await Promise.all(
-              location.meta.properties_data.map((propertyID) =>
-                fetch(`${wpApiUrl}kstpm_properties/${propertyID}`).then(
-                  (response) => response.json()
+            if (location.meta.properties_data.length > 0) {
+              await Promise.all(
+                location.meta.properties_data.map((propertyID) =>
+                  fetch(`${wpApiUrl}kstpm_properties/${propertyID}`, {
+                    cache: "no-cache",
+                    method: "GET",
+                    headers: {
+                      Authorization: wpAuthorizationHeaderValue,
+                      Origin: fetchOriginHeader,
+                    },
+                  }).then((response) => response.json())
                 )
-              )
-            ).then(
-              (
-                fetchedProperties: {
-                  id: number;
-                  title: { rendered: string };
-                  meta: {
-                    location_data: {
-                      city: string;
-                      country: string;
-                      state: string;
-                      street: string;
-                      zip_code: string;
-                      lat_long: {
-                        lat: number;
-                        lng: number;
+              ).then(
+                (
+                  fetchedProperties: {
+                    id: number;
+                    status: string;
+                    title: { rendered: string };
+                    meta: {
+                      location_data: {
+                        city: string;
+                        country: string;
+                        state: string;
+                        street: string;
+                        zip_code: string;
+                        lat_long: {
+                          lat: number;
+                          lng: number;
+                        };
+                      };
+                      living_space_data: {
+                        number_of_bathrooms: number;
+                        number_of_beds: number;
+                        number_of_guestrooms: number;
+                        number_of_workstations: number;
+                        amenities: {
+                          list: string[];
+                        };
+                      };
+                      image_galleries_data: {
+                        featured_images: string[];
+                      };
+                      rental_length_data: {
+                        is_monthly: boolean;
+                        is_nightly: boolean;
+                      };
+                      price_data: {
+                        avg_price_per_night: number;
                       };
                     };
-                    living_space_data: {
-                      number_of_bathrooms: number;
-                      number_of_beds: number;
-                      number_of_guestrooms: number;
-                      number_of_workstations: number;
-                      amenities: {
-                        list: string[];
-                      };
-                    };
-                    image_galleries_data: {
-                      featured_images: string[];
-                    };
-                    rental_length_data: {
-                      is_monthly: boolean;
-                      is_nightly: boolean;
-                    };
-                    price_data: {
-                      avg_price_per_night: number;
-                    };
-                  };
-                  slug: string;
-                }[]
-              ) => {
-                formattedLocationProperties[location.title.rendered] = {
-                  ...formattedLocationProperties[location.title.rendered],
-                  listings: fetchedProperties.map((fetchedProperty) => {
+                    slug: string;
+                  }[]
+                ) => {
+                  let formattedListings: any[] = [];
+
+                  fetchedProperties.forEach((fetchedProperty) => {
+                    if (fetchedProperty.status !== "publish") {
+                      return;
+                    }
+
                     let amenities: AmenitiesList = {
                       ["kitchen"]: false,
                       ["airConditioning"]: false,
@@ -101,9 +116,7 @@ export const fetchListings = async (callback?: Function) => {
                       );
                     }
 
-                    console.log({ fetchedProperty });
-
-                    return {
+                    formattedListings.push({
                       propertyName: he.decode(
                         fetchedProperty.title.rendered ?? ""
                       ),
@@ -144,13 +157,18 @@ export const fetchListings = async (callback?: Function) => {
                         fetchedProperty.meta.rental_length_data.is_nightly ??
                         "false",
                       pageSlug: fetchedProperty.slug ?? "",
-                    };
-                  }),
-                };
-              }
-            );
-          }
-        });
+                    });
+                  });
+
+                  formattedLocationProperties[location.title.rendered] = {
+                    ...formattedLocationProperties[location.title.rendered],
+                    listings: formattedListings,
+                  };
+                }
+              );
+            }
+          })
+        );
 
         return formattedLocationProperties;
       }

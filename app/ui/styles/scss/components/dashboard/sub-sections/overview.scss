@@ -29,7 +29,17 @@
   .kst-dashboard-overview-rewards {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 100px calc(100% - 100px);
+    grid-template-rows: 75px calc(100% - 75px);
+    box-shadow: inset 0 0 2px 3px #c5a880;
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background-color: black;
+
+    @media only screen and (max-width: 768px) {
+      margin: 0 0 15px;
+      padding-top: 10px;
+    }
 
     .kst-dashboard-overview-rewards-header {
       display: flex;
@@ -39,14 +49,21 @@
       height: 100%;
       border-radius: 15px;
       background-color: black;
-      box-shadow: inset 0 0 2px 3px gold;
+      box-shadow: inset 0 0 2px 3px #c5a880;
       border: 1px solid black;
-      color: gold;
+      color: #c5a880;
       text-wrap: wrap;
       text-align: center;
-      font-size: 25px;
+      font-size: 22px;
       font-weight: 500;
       letter-spacing: 1px;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 28px;
+        font-weight: 700;
+        color: #c5a880;
+        letter-spacing: 1.5px;
+      }
     }
 
     .kst-dashboard-overview-rewards-list {
@@ -54,6 +71,7 @@
       flex-flow: column;
       width: 100%;
       height: 100%;
+      overflow-y: auto;
 
       @media only screen and (max-width: 768px) {
         align-items: center;
@@ -83,7 +101,18 @@
   .kst-dashboard-overview-order {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 100px calc(100% - 100px);
+    grid-template-rows: 75px calc(100% - 75px);
+    box-shadow: inset 0 0 2px 3px #c5a880;
+    border-radius: 15px;
+    background-color: black;
+    padding: 5px 10px 10px;
+    box-sizing: border-box;
+
+    @media only screen and (max-width: 768px) {
+      grid-template-rows: 100px calc(100% - 100px);
+      margin: 0 0 0;
+      padding: 10px 10px 15px;
+    }
 
     .kst-dashboard-overview-order-header {
       display: flex;
@@ -93,19 +122,24 @@
       height: 100%;
       border-radius: 15px;
       background-color: black;
-      box-shadow: inset 0 0 2px 3px gold;
+      box-shadow: inset 0 0 2px 3px #c5a880;
       border: 1px solid black;
-      color: gold;
-      padding: 0 15px;
-      margin-left: 15px;
+      color: #c5a880;
+      text-wrap: wrap;
+      text-align: center;
       font-size: 25px;
       font-weight: 500;
       letter-spacing: 1px;
+      padding: 0 15px;
 
       @media only screen and (max-width: 768px) {
         justify-content: center;
         width: 100%;
-        margin-left: 0px;
+        font-size: 28px;
+        font-weight: 700;
+        color: #c5a880;
+        letter-spacing: 1.5px;
+        padding: unset;
       }
     }
 
@@ -115,35 +149,30 @@
       width: 100%;
       height: 100%;
       margin-top: 5px;
-      background: linear-gradient(
-        45deg,
-        rgb(28, 28, 46),
-        rgb(59, 59, 119),
-        rgb(29, 29, 102),
-        rgb(12, 12, 128),
-        darkblue
-      );
+      background: black;
       background-size: 400% 400%;
       animation: sheen 5s ease infinite;
       padding: 15px;
       border-radius: 5px;
-      box-shadow: inset 0 0 2px 3px lightgrey;
-      border: 1px solid black;
+      column-gap: 10px;
 
       @media only screen and (max-width: 768px) {
         grid-template-columns: 100%;
         row-gap: 10px;
+        column-gap: unset;
+        border-radius: 15px;
       }
 
       .kst-dashboard-overview-order-list-item {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 300px;
+        width: 100%;
+        max-width: 300px;
         height: 100%;
         border-radius: 17px;
         border: 2px solid black;
-        box-shadow: inset 0 0 2px 3px #1d1919;
+        box-shadow: 0 0 3px 2px darkgoldenrod;
         background: linear-gradient(135deg, #d4af37, #f5c71a, #c79810);
         padding: 6px;
         overflow: hidden;
@@ -153,6 +182,7 @@
           align-self: center;
           justify-self: center;
           width: calc(100% - 10px);
+          max-width: unset;
           height: auto;
           margin-bottom: 5px;
           padding: 0;

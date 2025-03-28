@@ -1,7 +1,7 @@
 "use server";
 
 import { useHttpProtocol } from "../devToPro/useHttpProtocol";
-import { useNextJSPort } from "../devToPro/useDevOrigin";
+import { fetchOriginHeader, useNextJSPort } from "../devToPro/useDevOrigin";
 
 export const assessFormRisk = async (
   recaptchaToken: string,
@@ -13,6 +13,7 @@ export const assessFormRisk = async (
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Origin: fetchOriginHeader,
       },
       body: JSON.stringify({
         recaptchaToken,

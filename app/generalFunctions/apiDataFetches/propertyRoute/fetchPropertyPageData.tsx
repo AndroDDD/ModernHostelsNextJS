@@ -1,9 +1,13 @@
+"use server";
+
+import { wpAuthorizationHeaderValue } from "@/app/constants/wpFetchHeaders";
 import { PropertyPageData } from "@/app/types/propertyPageData";
 import { RatingData } from "@/app/types/ratingsData";
 import { wpApiUrl } from "@/app/constants/wpApiUrl";
 import { formatSnakeCaseToCamelCase } from "@/app/generalFunctions/formatSnakeCaseToCamelCase";
 import { generatePropertyPageAmenitiesList } from "@/app/generalFunctions/generatePropertyPageAmenitiesList";
 import { calculateAverageRating } from "../../calculateRatings";
+import { fetchOriginHeader } from "../../devToPro/useDevOrigin";
 
 var he = require("he");
 
@@ -12,6 +16,10 @@ export const fetchPropertyPageData = async (propertyPageSlug: string) => {
     `${wpApiUrl}kstpm_properties?_embed&slug=${propertyPageSlug}`,
     {
       method: "GET",
+      headers: {
+        Authoriztion: wpAuthorizationHeaderValue,
+        Origin: fetchOriginHeader,
+      },
     }
   );
   const fetchedProperty = (await propertyResponse.json())[0];

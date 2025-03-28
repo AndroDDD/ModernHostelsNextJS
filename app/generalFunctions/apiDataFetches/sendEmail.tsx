@@ -1,5 +1,6 @@
 "use server";
 
+import { fetchOriginHeader } from "../devToPro/useDevOrigin";
 import { emailServerUrl } from "@/app/constants/wpApiUrl";
 
 export async function sendEmail({
@@ -23,6 +24,7 @@ export async function sendEmail({
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Origin: fetchOriginHeader,
     },
     body: JSON.stringify(requestData),
   });

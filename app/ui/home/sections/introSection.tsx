@@ -100,9 +100,9 @@ export default (passedProp: { introSectionData: IntroSectionData }) => {
             </div>
           </div>
 
-          <div className="kst-home-intro-section-navigation-arrow">
+          {/* <div className="kst-home-intro-section-navigation-arrow">
             <i className="fa-solid fa-chevron-down"></i>
-          </div>
+          </div> */}
         </section>
       ) : (
         <></>

@@ -81,6 +81,7 @@ export default function Bookings({ customerId }: BookingsInterface) {
             </div>
             <div className="kst-dashboard-bookings-section-order-property-badge">
               <PropertyBadge
+                scaleOnHover={false}
                 property={{
                   propertyName: orderData.property?.name ?? "",
                   price: orderData.price_totals?.total_due

@@ -1,6 +1,7 @@
 "use server";
 
 import { wpPropertyCalendarApiUrl } from "@/app/constants/wpApiUrl";
+import { fetchOriginHeader } from "../devToPro/useDevOrigin";
 
 export async function updateWPCalendarData(
   propertySlug: string,
@@ -14,6 +15,7 @@ export async function updateWPCalendarData(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Origin: fetchOriginHeader,
     },
     body: JSON.stringify({
       start_date: startDate,

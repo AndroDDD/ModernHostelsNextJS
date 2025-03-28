@@ -297,7 +297,7 @@ export default function OrderReview() {
               }
             }}
           >
-            {"SECURED PAYMENT"}
+            {"COMPLETE PAYMENT"}
           </div>
         </>
       ) : (

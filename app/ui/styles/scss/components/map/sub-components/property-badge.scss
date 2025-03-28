@@ -64,6 +64,12 @@
       font-weight: 500;
       font-size: 10px;
       line-height: 10px;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 18px;
+        padding: 0 10px;
+        height: 24px;
+      }
     }
 
     .kst-map-page-properties-section-list-item-image-navigation {
@@ -75,6 +81,10 @@
       width: max-content;
       height: 29px;
       z-index: 0;
+
+      @media only screen and (max-width: 768px) {
+        height: 55px;
+      }
 
       .kst-map-page-properties-section-list-item-image-navigation-prev {
         display: flex;
@@ -90,6 +100,13 @@
 
         &:hover {
           background: hsla(26, 33%, 96%, 0.5);
+        }
+
+        @media only screen and (max-width: 768px) {
+          width: 90px;
+          height: 100%;
+          font-size: 25px;
+          font-weight: 500;
         }
       }
 
@@ -108,6 +125,13 @@
         &:hover {
           background: hsla(26, 33%, 96%, 0.5);
         }
+
+        @media only screen and (max-width: 768px) {
+          width: 90px;
+          height: 100%;
+          font-size: 25px;
+          font-weight: 500;
+        }
       }
     }
   }
@@ -122,14 +146,22 @@
     @media only screen and (max-width: 768px) {
       width: 100%;
       height: auto;
+      row-gap: 4px;
     }
 
     .kst-map-page-properties-section-list-item-name {
       display: block;
       font-size: 16px;
-      line-height: 16px;
+      line-height: 20px;
       text-align: left;
       margin: 8px 0;
+      width: 65%;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 20px;
+        line-height: 22px;
+        width: 100%;
+      }
     }
 
     .kst-map-page-properties-section-list-item-location {
@@ -137,6 +169,11 @@
       font-size: 12px;
       line-height: 14px;
       text-align: left;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 16px;
+        line-height: 16px;
+      }
     }
 
     .kst-map-page-properties-section-list-item-rating {
@@ -159,6 +196,9 @@
         position: static;
         margin-top: 10px;
         height: auto;
+        display: grid;
+        grid-template-columns: auto auto;
+        row-gap: 8px;
       }
 
       .kst-map-page-properties-section-list-item-spec {
@@ -170,12 +210,20 @@
         height: 100%;
         padding-right: 12px;
 
+        @media only screen and (max-width: 768px) {
+          row-gap: 8px;
+        }
+
         .kst-map-page-properties-section-list-item-spec-name {
           display: flex;
           font-size: 9px;
           line-height: 9px;
           color: #aaa;
           padding-right: 13px;
+
+          @media only screen and (max-width: 768px) {
+            font-size: 18px;
+          }
         }
 
         .kst-map-page-properties-section-list-item-spec-number {
@@ -187,6 +235,11 @@
           line-height: 9px;
           padding: 8px 0;
           border-right: 1px solid #b7b7b7;
+
+          @media only screen and (max-width: 768px) {
+            width: auto;
+            font-size: 20px;
+          }
         }
       }
 
@@ -199,6 +252,7 @@
 
         @media only screen and (max-width: 768px) {
           margin-right: 5px;
+          bottom: 50%;
         }
 
         .kst-map-page-properties-section-list-item-price-header {
@@ -211,7 +265,8 @@
 
           @media only screen and (max-width: 768px) {
             margin-bottom: 4px;
-            line-height: 10px;
+            line-height: 16px;
+            font-size: 16px;
           }
         }
 

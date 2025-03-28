@@ -56,8 +56,6 @@ export default ({
   const calendarElementRef = useRef<HTMLDivElement>(null);
   const bookNowFormElementRef = useRef<HTMLDivElement>(null);
 
-  console.log({ calendarSpaces, calendarSpaceId });
-
   useEffect(() => {
     const handleAutomaticDisplayToggleOfElements = (event: Event) => {
       const excludedClassnames = [
@@ -68,6 +66,19 @@ export default ({
       const eventTriggerElement = event.target as HTMLDivElement;
 
       let eventTriggerElementClass = eventTriggerElement.classList[0];
+
+      const roomSelectionsElement = document.getElementsByClassName(
+        "kst-book-now-form-spaces-selections"
+      )[0] as HTMLDivElement;
+
+      if (
+        !eventTriggerElement.classList.contains(
+          `kst-book-now-form-spaces-selection-selected`
+        ) &&
+        roomSelectionsElement.style.display === "flex"
+      ) {
+        roomSelectionsElement.style.display = "none";
+      }
 
       if (
         eventTriggerElementClass &&
@@ -101,15 +112,6 @@ export default ({
   }, []);
 
   useEffect(() => {
-    if (
-      "checkIn" in formSendData.dates &&
-      formSendData.dates.checkIn.length < 1 &&
-      "checkOut" in formSendData.dates &&
-      formSendData.dates.checkOut.length < 1
-    ) {
-      return;
-    }
-
     let updatedDateDisplayText = {
       checkIn: "Choose date",
       checkOut: "Choose date",
@@ -125,6 +127,47 @@ export default ({
       ?.children[7] as HTMLDivElement;
     let submitButtonElement = bookNowFormElementRef.current
       ?.children[8] as HTMLButtonElement;
+
+    const resetBookFormDisplay = () => {
+      headerElement.style.display = "block";
+      discountElement.style.display = "block";
+      avgNightlyPriceElement.style.display = "none";
+
+      if (totalsElement) {
+        totalsElement.style.display = "none";
+      }
+
+      setTotalsDisplay({
+        totalDue: "",
+        subTotal: "",
+        taxes: "",
+        fees: {
+          pet: "",
+          cleaning: "",
+          service: "",
+        },
+        taxesFeesCombined: "",
+        avgNight: "",
+      });
+
+      submitButtonElement.classList.remove("enabled");
+    };
+
+    if (
+      "checkIn" in formSendData.dates &&
+      formSendData.dates.checkIn.length < 1 &&
+      "checkOut" in formSendData.dates &&
+      formSendData.dates.checkOut.length < 1
+    ) {
+      setFormattedDateDisplayText({
+        checkIn: "Choose date",
+        checkOut: "Choose date",
+      });
+
+      resetBookFormDisplay();
+
+      return;
+    }
 
     if ("checkIn" in formSendData.dates) {
       const checkInDate = formSendData.dates.checkIn.split("-");
@@ -150,111 +193,96 @@ export default ({
             formSendData.dates.checkOut,
             calendarSpaceId
           );
-        const propertyPriceData = await fetchPropertyPriceData(
-          propertyPageSlug
-        );
-        const propertyTaxPercentage = Number(
-          propertyPriceData["tax_percentage"]
-        );
-        const propertyCleaningFee = Number(propertyPriceData["cleaning_fee"]);
-        const propertyPetFee = Number(propertyPriceData["pet_fee"]);
-        const propertyServiceFee = Number(propertyPriceData["service_fee"]);
+        if (calendarDataByDateRange && calendarDataByDateRange.length > 0) {
+          const propertyPriceData = await fetchPropertyPriceData(
+            propertyPageSlug
+          );
+          const propertyTaxPercentage = Number(
+            propertyPriceData["tax_percentage"]
+          );
+          const propertyCleaningFee = Number(propertyPriceData["cleaning_fee"]);
+          const propertyPetFee = Number(propertyPriceData["pet_fee"]);
+          const propertyServiceFee = Number(propertyPriceData["service_fee"]);
 
-        let subTotal = 0;
-        let calculatedPetFee = 0;
-        let calculatedCleaningFee = 0;
+          let subTotal = 0;
+          let calculatedPetFee = 0;
+          let calculatedCleaningFee = 0;
 
-        for (let i = 0; i < calendarDataByDateRange.length; i++) {
-          subTotal += Number(calendarDataByDateRange[i].price);
+          for (let i = 0; i < calendarDataByDateRange.length; i++) {
+            subTotal += Number(calendarDataByDateRange[i].price);
 
-          if (calendarDataByDateRange[i].petFee) {
-            calculatedPetFee += Number(calendarDataByDateRange[i].petFee);
-          } else if (!Number.isNaN(propertyPetFee)) {
-            calculatedPetFee += propertyPetFee;
+            if (calendarDataByDateRange[i].petFee) {
+              calculatedPetFee += Number(calendarDataByDateRange[i].petFee);
+            } else if (!Number.isNaN(propertyPetFee)) {
+              calculatedPetFee += propertyPetFee;
+            }
+
+            if (calendarDataByDateRange[i].cleaningFee) {
+              calculatedCleaningFee += Number(
+                calendarDataByDateRange[i].cleaningFee
+              );
+            } else if (!Number.isNaN(propertyCleaningFee)) {
+              calculatedCleaningFee += propertyCleaningFee;
+            }
           }
 
-          if (calendarDataByDateRange[i].cleaningFee) {
-            calculatedCleaningFee += Number(
-              calendarDataByDateRange[i].cleaningFee
-            );
-          } else if (!Number.isNaN(propertyCleaningFee)) {
-            calculatedCleaningFee += propertyCleaningFee;
-          }
+          calculatedPetFee = calculatedPetFee / calendarDataByDateRange.length;
+          calculatedCleaningFee =
+            calculatedCleaningFee / calendarDataByDateRange.length;
+
+          const avgNightPrice = subTotal / calendarDataByDateRange.length;
+          const fees = {
+            pet: includePetFee
+              ? !Number.isNaN(calculatedPetFee)
+                ? calculatedPetFee
+                : 0
+              : 0,
+            cleaning: !Number.isNaN(calculatedCleaningFee)
+              ? calculatedCleaningFee
+              : 0,
+            service:
+              (subTotal +
+                (!Number.isNaN(propertyPetFee) ? propertyPetFee : 0) +
+                (!Number.isNaN(propertyCleaningFee)
+                  ? propertyCleaningFee
+                  : 0)) *
+              ((!Number.isNaN(propertyServiceFee) ? propertyServiceFee : 1) /
+                100),
+          };
+          const totalDueExcludingTaxes =
+            subTotal + fees.pet + fees.cleaning + fees.service;
+          const taxes =
+            (totalDueExcludingTaxes * Number(propertyTaxPercentage)) / 100;
+          const totalDueIncludingTaxes = totalDueExcludingTaxes + taxes;
+          const taxesFeesCombined =
+            taxes + fees.pet + fees.cleaning + fees.service;
+
+          const updatedTotalsDisplay = {
+            totalDue: formatPriceText(`${totalDueIncludingTaxes}`),
+            subTotal: formatPriceText(`${subTotal}`),
+            taxes: formatPriceText(`${taxes}`),
+            fees: {
+              pet: includePetFee ? formatPriceText(`${fees.pet}`) : null,
+              cleaning: formatPriceText(`${fees.cleaning}`),
+              service: formatPriceText(`${fees.service}`),
+            },
+            taxesFeesCombined: formatPriceText(`${taxesFeesCombined}`),
+            avgNight: formatPriceText(`${avgNightPrice}`),
+          };
+
+          setTotalsDisplay(updatedTotalsDisplay);
+
+          headerElement.style.display = "none";
+          discountElement.style.display = "none";
+          avgNightlyPriceElement.style.display = "flex";
+          totalsElement.style.display = "flex";
+
+          submitButtonElement.classList.add("enabled");
+        } else {
+          resetBookFormDisplay();
         }
-
-        calculatedPetFee = calculatedPetFee / calendarDataByDateRange.length;
-        calculatedCleaningFee =
-          calculatedCleaningFee / calendarDataByDateRange.length;
-
-        const avgNightPrice = subTotal / calendarDataByDateRange.length;
-        const fees = {
-          pet: includePetFee
-            ? !Number.isNaN(calculatedPetFee)
-              ? calculatedPetFee
-              : 0
-            : 0,
-          cleaning: !Number.isNaN(calculatedCleaningFee)
-            ? calculatedCleaningFee
-            : 0,
-          service:
-            (subTotal +
-              (!Number.isNaN(propertyPetFee) ? propertyPetFee : 0) +
-              (!Number.isNaN(propertyCleaningFee) ? propertyCleaningFee : 0)) *
-            ((!Number.isNaN(propertyServiceFee) ? propertyServiceFee : 1) /
-              100),
-        };
-        const totalDueExcludingTaxes =
-          subTotal + fees.pet + fees.cleaning + fees.service;
-        const taxes =
-          (totalDueExcludingTaxes * Number(propertyTaxPercentage)) / 100;
-        const totalDueIncludingTaxes = totalDueExcludingTaxes + taxes;
-        const taxesFeesCombined =
-          taxes + fees.pet + fees.cleaning + fees.service;
-
-        const updatedTotalsDisplay = {
-          totalDue: formatPriceText(`${totalDueIncludingTaxes}`),
-          subTotal: formatPriceText(`${subTotal}`),
-          taxes: formatPriceText(`${taxes}`),
-          fees: {
-            pet: includePetFee ? formatPriceText(`${fees.pet}`) : null,
-            cleaning: formatPriceText(`${fees.cleaning}`),
-            service: formatPriceText(`${fees.service}`),
-          },
-          taxesFeesCombined: formatPriceText(`${taxesFeesCombined}`),
-          avgNight: formatPriceText(`${avgNightPrice}`),
-        };
-
-        setTotalsDisplay(updatedTotalsDisplay);
-
-        headerElement.style.display = "none";
-        discountElement.style.display = "none";
-        avgNightlyPriceElement.style.display = "flex";
-        totalsElement.style.display = "flex";
-
-        submitButtonElement.classList.add("enabled");
       } else {
-        headerElement.style.display = "block";
-        discountElement.style.display = "block";
-        avgNightlyPriceElement.style.display = "none";
-
-        if (totalsElement) {
-          totalsElement.style.display = "none";
-        }
-
-        setTotalsDisplay({
-          totalDue: "",
-          subTotal: "",
-          taxes: "",
-          fees: {
-            pet: "",
-            cleaning: "",
-            service: "",
-          },
-          taxesFeesCombined: "",
-          avgNight: "",
-        });
-
-        submitButtonElement.classList.remove("enabled");
+        resetBookFormDisplay();
       }
     })();
 

@@ -35,12 +35,5 @@ export const generateDayElementConditionalStyling = (
     conditionalStyling.priceDisplay.dynamic.display = "flex";
   }
 
-  console.log({
-    thisDayEpochTime,
-    checkInDateEpochTime,
-    checkOutDateEpochTime,
-    conditionalStyling,
-  });
-
   return conditionalStyling;
 };

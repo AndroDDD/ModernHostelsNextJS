@@ -52,7 +52,7 @@ export default ({ properties }: PropertiesSlideSection) => {
                 </div>
 
                 <div className="kst-list-property-page-properties-slide-section-content-review-from-date">
-                  {`${properties[currentPropertyIndex].review.from} - ${properties[currentPropertyIndex].review.date} Stay`}
+                  {`${properties[currentPropertyIndex].review.from} - ${properties[currentPropertyIndex].review.date}`}
                 </div>
               </div>
             </div>

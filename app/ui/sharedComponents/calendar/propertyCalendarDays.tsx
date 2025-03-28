@@ -55,25 +55,27 @@ export default ({
   }
 
   for (let i = 0; i < lastDayOfMonth; i++) {
+    const currentDateEpochTime = new Date().getTime();
     let dayFormatted = (i + 1).toString();
     dayFormatted = dayFormatted.length < 2 ? `0${dayFormatted}` : dayFormatted;
 
     const dateFormatted = `${year}-${month}-${dayFormatted}`;
+    const dateFormattedEpochTime = new Date(
+      `${dateFormatted}T00:00:00`
+    ).getTime();
     const foundDateData =
       dates &&
       dates[currentDateIndexToCheck] &&
       dateFormatted === dates[currentDateIndexToCheck].date;
+    const isFutureDate = dateFormattedEpochTime > currentDateEpochTime;
 
-    if (foundDateData) {
+    if (isFutureDate && foundDateData) {
       const dateData = dates[currentDateIndexToCheck];
       const isBooked = dates[currentDateIndexToCheck].isBooked;
       const priceText = isBooked
         ? "-"
         : `$${dates[currentDateIndexToCheck].price}`;
       const daysMinimumStay = dates[currentDateIndexToCheck].minimumDaysStay;
-      const dateFormattedEpochTime = new Date(
-        `${dateFormatted}T00:00:00`
-      ).getTime();
 
       let conditionalStyling = generateDayElementConditionalStyling(
         dateFormattedEpochTime,
@@ -115,6 +117,10 @@ export default ({
       );
 
       dayElementsArray.push(calendarDayElement);
+
+      if (foundDateData && !isFutureDate) {
+        currentDateIndexToCheck++;
+      }
     }
   }
 

@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 import "@/app/ui/styles/scss/components/checkout/thank-you/sections/thank-you-section.scss";
 
-export default async function ThankYouSection() {
+export default function ThankYouSection() {
   useEffect(() => {
     document.cookie = `thankYouData=; path=/; domain=${window.location.hostname}; expires = Thu, 01 Jan 1970 00:00:00 GMT`;
   });

@@ -69,7 +69,7 @@ export default ({ isScrolled, content, style }: DesktopHeaderParameters) => {
             )}
           </Link>
 
-          <div
+          <nav
             className={`kst-desktop-header-navigation ${
               isScrolled ? "isScrolled" : ""
             } ${style ? style : ""}`}
@@ -278,7 +278,7 @@ export default ({ isScrolled, content, style }: DesktopHeaderParameters) => {
                 </a>
               </div>
             </div>
-          </div>
+          </nav>
 
           <div
             className={`kst-desktop-header-login-signup ${style ? style : ""}`}

@@ -31,6 +31,11 @@
       color: whitesmoke;
       margin-block-start: 1em;
       margin-block-end: 1em;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 18px;
+        letter-spacing: 1px;
+      }
     }
 
     .kst-other-properties-link {
@@ -49,6 +54,10 @@
       border: 1px solid #000;
       cursor: pointer;
       margin-bottom: 10px;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 18px;
+      }
     }
 
     .kst-other-properties-link:hover {

@@ -2,27 +2,29 @@
   box-sizing: border-box;
   display: flex;
   flex-flow: column;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   justify-content: center;
   align-items: flex-start;
   color: #1d1919;
   background-repeat: no-repeat;
   background-size: 100vw auto;
-  padding: 241px 5vw 185px;
+  padding: 100px 5vw 50px;
 
   @media only screen and (max-width: 768px) {
+    min-height: unset;
     height: auto;
     width: 100%;
     max-width: 100%;
     overflow: hidden;
     background-size: auto 100%;
-    padding: 120px 5vw 40px;
+    padding: 100px 5vw 50px;
   }
 
   .kst-blog-header-section-title {
     box-sizing: border-box;
     display: flex;
-    font-size: 22px;
+    font-size: 18px;
     line-height: 22px;
     font-weight: 600;
     padding-left: 5px;
@@ -42,7 +44,7 @@
   .kst-blog-header-section-subtext {
     box-sizing: border-box;
     display: flex;
-    font-size: 70px;
+    font-size: 60px;
     line-height: 80px;
     max-width: 80%;
     min-width: 532px;

@@ -1,9 +1,18 @@
+"use server";
+
 import { ListPropertyPageData } from "@/app/types/listPropertyPageData";
 import { wpLocationsApiUrl } from "@/app/constants/wpApiUrl";
+import { fetchOriginHeader } from "../../devToPro/useDevOrigin";
 
 export const fetchListPropertyPageData = async (locationSlug: string) => {
   const generatedListPropertyPageData = await fetch(
-    `${wpLocationsApiUrl}list-property-page-data/${locationSlug}`
+    `${wpLocationsApiUrl}list-property-page-data/${locationSlug}`,
+    {
+      method: "GET",
+      headers: {
+        Origin: fetchOriginHeader,
+      },
+    }
   )
     .then((response) => response.json())
     .then((data) => {
@@ -93,6 +102,11 @@ const generateListPropertyPageData = (data: {
       question: string;
       answer: string;
     }[];
+  };
+  inquiry_form_section: {
+    background_img_url: string;
+    caption: string;
+    button_text: string;
   };
 }) => {
   const formattedHowItWorksSectionSteps: {
@@ -261,6 +275,22 @@ const generateListPropertyPageData = (data: {
         data.faqs_section && data.faqs_section.faqs
           ? data.faqs_section.faqs
           : [],
+    },
+
+    inquiryFormSection: {
+      title:
+        data.inquiry_form_section && data.inquiry_form_section.caption
+          ? data.inquiry_form_section.caption
+          : "",
+      buttonText:
+        data.inquiry_form_section && data.inquiry_form_section.button_text
+          ? data.inquiry_form_section.button_text
+          : "",
+      backgroundImageUrl:
+        data.inquiry_form_section &&
+        data.inquiry_form_section.background_img_url
+          ? data.inquiry_form_section.background_img_url
+          : "",
     },
   };
 

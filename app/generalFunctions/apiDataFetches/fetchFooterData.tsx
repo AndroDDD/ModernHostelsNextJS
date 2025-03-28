@@ -1,3 +1,6 @@
+"use server";
+
+import { fetchOriginHeader } from "../devToPro/useDevOrigin";
 import { FooterData } from "@/app/types/footerData";
 import { LinkData } from "@/app/types/linkData";
 import { socialCommunicationsUrl } from "@/app/constants/wpApiUrl";
@@ -5,7 +8,12 @@ import { fetchPropertyLocations } from "@/app/generalFunctions/apiDataFetches/fe
 
 export const fetchFooterData = async () => {
   const footerData = await fetchPropertyLocations().then(async (data) => {
-    const social_communications_res = await fetch(socialCommunicationsUrl);
+    const social_communications_res = await fetch(socialCommunicationsUrl, {
+      method: "GET",
+      headers: {
+        Origin: fetchOriginHeader,
+      },
+    });
     const social_communications_json = await social_communications_res.json();
 
     const frontendEmail = social_communications_json.frontendEmail;

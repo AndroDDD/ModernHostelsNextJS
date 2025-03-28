@@ -1,12 +1,20 @@
+"use server";
+
 import { stripHtml } from "string-strip-html";
 
 import { blogPostsUrl } from "@/app/constants/wpApiUrl";
 import { calculateReadTimeFromWPContent } from "@/app/generalFunctions/calculateReadTimeFromWPContent";
+import { fetchOriginHeader } from "../../devToPro/useDevOrigin";
 
 const he = require("he");
 
 export async function fetchBlogPagePosts() {
-  const response = await fetch(`${blogPostsUrl}?_embed`);
+  const response = await fetch(`${blogPostsUrl}?_embed`, {
+    method: "GET",
+    headers: {
+      Origin: fetchOriginHeader,
+    },
+  });
   const data = await response.json();
   const featuredPost = data[0];
   const featuredPostReadTime = calculateReadTimeFromWPContent(

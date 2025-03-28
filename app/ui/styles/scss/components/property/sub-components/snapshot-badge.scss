@@ -6,6 +6,7 @@
 
   @media only screen and (max-width: 768px) {
     margin-left: 15px;
+    align-items: center;
   }
 
   .kst-snapshot-badge-icon {
@@ -18,6 +19,12 @@
     font-size: 28px;
     object-fit: contain;
     overflow: hidden;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 38px;
+      width: 42px;
+      height: 42px;
+    }
   }
 
   .kst-snapshot-badge-title-summary {
@@ -36,6 +43,11 @@
       font-weight: 500;
       font-size: 20px;
       line-height: 28px;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 20px;
+        letter-spacing: 0.5px;
+      }
     }
 
     .kst-snapshot-badge-summary {
@@ -46,6 +58,11 @@
       font-weight: 300;
       font-size: 12px;
       line-height: 20px;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 16px;
+        letter-spacing: 1.5px;
+      }
     }
   }
 }

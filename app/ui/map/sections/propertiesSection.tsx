@@ -64,7 +64,7 @@ const PropertiesSection: React.FC<PropertiesSectionParameters> = ({
 
   // Handle sorting and filtering of properties when market location changes
   useEffect(() => {
-    console.log({properties})
+    console.log({ properties });
     if (properties && filterBarData && "maxPrice" in filterBarData) {
       const { filteredProperties } = filterProperties(
         properties,
@@ -227,7 +227,35 @@ const PropertiesSection: React.FC<PropertiesSectionParameters> = ({
                   e: React.MouseEvent<HTMLDivElement, MouseEvent>
                 ) => {
                   e.preventDefault();
+                  console.log({ eTest: e });
+
+                  if (
+                    (e.target as HTMLElement).classList.contains(
+                      "kst-map-page-properties-section-list-item-image-navigation-next"
+                    ) ||
+                    (e.target as HTMLElement).classList.contains(
+                      "kst-map-page-properties-section-list-item-image-navigation-prev"
+                    )
+                  ) {
+                    return;
+                  }
+
+                  const filterBarElement = document.getElementById(
+                    "kst-map-page-filter-bar-section"
+                  );
+                  const mapElement = document.getElementsByClassName(
+                    "kst-map-page-properties-section-map"
+                  )[0] as HTMLDivElement;
+                  const listAndMapToggleButton =
+                    document.getElementsByClassName(
+                      "kst-map-page-properties-section-toggle-map-and-list"
+                    )[0] as HTMLDivElement;
+
                   setSelectedProperty(index);
+
+                  filterBarElement?.classList.remove("open");
+                  mapElement?.classList.add("open");
+                  listAndMapToggleButton.innerText = "View List";
                 }}
                 viewPropertyOnClick={(
                   e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -257,8 +285,6 @@ const PropertiesSection: React.FC<PropertiesSectionParameters> = ({
         <div
           className="kst-map-page-properties-section-toggle-map-and-list"
           onClick={(event) => {
-            const reactEntryElement =
-              document.getElementById("main-react-entry");
             const filterBarElement = document.getElementById(
               "kst-map-page-filter-bar-section"
             );
@@ -266,28 +292,17 @@ const PropertiesSection: React.FC<PropertiesSectionParameters> = ({
               event.currentTarget.parentElement?.parentElement?.children[0];
             const mapElement =
               event.currentTarget.parentElement?.parentElement?.children[1];
-            const isPropertiesElementOpen =
-              propertiesElement?.classList.contains("open");
             const isMapElementOpen = mapElement?.classList.contains("open");
 
-            if (isPropertiesElementOpen) {
-              propertiesElement?.classList.remove("open");
-              filterBarElement?.classList.remove("open");
-              mapElement?.classList.add("open");
-              event.currentTarget.innerText = "View List";
-              reactEntryElement?.scroll({
-                top: -reactEntryElement.scrollTop,
-                behavior: "smooth",
-              });
-            } else if (isMapElementOpen) {
+            if (isMapElementOpen) {
               propertiesElement?.classList.add("open");
               filterBarElement?.classList.add("open");
               mapElement?.classList.remove("open");
               event.currentTarget.innerText = "View Map";
-              reactEntryElement?.scroll({
-                top: -reactEntryElement.scrollTop,
-                behavior: "smooth",
-              });
+            } else {
+              filterBarElement?.classList.remove("open");
+              mapElement?.classList.add("open");
+              event.currentTarget.innerText = "View List";
             }
           }}
         >
@@ -321,7 +336,7 @@ const checkIsPropertyFiltered = (
   property: PropertyData,
   filterBarData: FilterBarData
 ) => {
-  console.log({filteringProperty: property})
+  console.log({ filteringProperty: property });
   const filteredStartDate = new Date(
     `${filterBarData.dates.start}T00:00:00`
   ).getTime();
@@ -424,8 +439,8 @@ const checkIsPropertyFiltered = (
     isWasherAndDryerIncluded,
     isHeatingIncluded,
     isCableIncluded,
-    isComputerMonitorIncluded
-  })
+    isComputerMonitorIncluded,
+  });
 
   return (
     isPropertyInFilteredDateRange &&

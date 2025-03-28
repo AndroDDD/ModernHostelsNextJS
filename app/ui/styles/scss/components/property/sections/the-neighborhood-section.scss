@@ -28,6 +28,7 @@
       @media only screen and (max-width: 768px) {
         font-size: 30px;
         line-height: 30px;
+        letter-spacing: 1px;
       }
     }
 
@@ -54,7 +55,8 @@
         cursor: pointer;
 
         @media only screen and (max-width: 768px) {
-          font-size: 15px;
+          font-size: 20px;
+          margin-right: 10px;
         }
 
         &:hover {
@@ -92,6 +94,8 @@
           height: 180px;
           object-fit: contain;
           overflow: hidden;
+          background-color: black;
+          border: 2px solid black;
 
           @media only screen and (max-width: 768px) {
             height: auto;
@@ -121,6 +125,13 @@
           font-size: 16px;
           line-height: 20px;
           color: whitesmoke;
+
+          @media only screen and (max-width: 768px) {
+            font-size: 22px;
+            line-height: 22px;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+          }
         }
       }
 
@@ -128,6 +139,12 @@
         font-size: 14px;
         font-weight: 500;
         color: #70c5c1;
+
+        @media only screen and (max-width: 768px) {
+          font-size: 18px;
+          line-height: 20px;
+          letter-spacing: 1px;
+        }
       }
     }
   }
@@ -136,6 +153,7 @@
     display: flex;
     width: 50%;
     background: limegreen;
+    border: 2px solid black;
 
     @media only screen and (max-width: 768px) {
       width: 100%;

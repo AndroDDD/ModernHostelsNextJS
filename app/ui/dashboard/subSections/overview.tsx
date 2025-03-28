@@ -21,23 +21,25 @@ export default function Overview() {
     if (!isLoading) {
       const userId = user?.sub ?? "";
 
-      fetchCustomerRewards(userId).then((data) => {
-        console.log({ rewardsData: data });
+      (async () => {
+        const fetchedCustomerRewards = await fetchCustomerRewards(userId);
+        console.log({ fetchedCustomerRewards });
         setRewardsData({
-          earnedRewards: data.earnedRewards,
+          earnedRewards: fetchedCustomerRewards.earnedRewards,
           rewardsProgresses:
-            data.rewardsProgresses && data.rewardsProgresses.length > 0
-              ? data.rewardsProgresses.splice(0, 1)
+            fetchedCustomerRewards.rewardsProgresses &&
+            fetchedCustomerRewards.rewardsProgresses.length > 0
+              ? fetchedCustomerRewards.rewardsProgresses.splice(0, 1)
               : [],
         });
-      });
-      fetchCustomerOrders(userId).then((data) => {
+        const fetchedCustomerOrders = await fetchCustomerOrders(userId);
         setOrdersData(
-          data["orders"] && data["orders"].length > 0
-            ? data["orders"].splice(0, 3)
+          fetchedCustomerOrders["orders"] &&
+            fetchedCustomerOrders["orders"].length > 0
+            ? fetchedCustomerOrders["orders"].splice(0, 3)
             : []
         );
-      });
+      })();
     }
   }, [isLoading]);
 
@@ -77,6 +79,7 @@ export default function Overview() {
                 className="kst-dashboard-overview-order-list-item"
               >
                 <PropertyBadge
+                  abbreviateStats={true}
                   property={{
                     propertyName: orderData.property?.name ?? "",
                     price: orderData.price_totals?.total_due
@@ -107,7 +110,7 @@ export default function Overview() {
                       orderData.property?.rental_length_data?.is_nightly ??
                       false,
                     latLong: orderData.property?.location_data?.lat_long,
-                    available: orderData.order_date,
+                    available: orderData.start_date,
                     amenities: {},
                     dateLabel: "Booked:",
                   }}

@@ -34,9 +34,11 @@ export default ({
       true
     );
 
-    fetchHeaderData().then((fetchedHeaderData) => {
+    (async () => {
+      const fetchedHeaderData = await fetchHeaderData();
+      console.log({ fetchedHeaderData });
       setHeaderContent(fetchedHeaderData);
-    });
+    })();
   }, []);
 
   useEffect(() => {

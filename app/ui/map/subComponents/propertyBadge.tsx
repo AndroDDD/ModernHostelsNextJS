@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 import { PropertyData } from "@/app/types/propertyData";
+import { convertNumberToDate } from "@/app/generalFunctions/convertNumberToDate";
 import { formatAvgPriceText } from "@/app/generalFunctions/formatAvgPriceText";
 import { determineItemIsMonthlyIsNightlyVisibility } from "@/app/generalFunctions/determineItemIsMonthlyIsNightlyVisibility";
 import ReviewStars from "@/app/ui/sharedComponents/reviewStars";
@@ -41,7 +42,9 @@ const PropertyBadge: React.FC<{
           alt=""
         />
 
-        <div className="kst-map-page-properties-section-list-item-date">{`Available ${property.available}`}</div>
+        <div className="kst-map-page-properties-section-list-item-date">{`Available ${convertNumberToDate(
+          property.available
+        )}`}</div>
 
         <div className="kst-map-page-properties-section-list-item-image-navigation">
           <div

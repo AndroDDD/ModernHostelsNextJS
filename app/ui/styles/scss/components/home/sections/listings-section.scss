@@ -20,7 +20,7 @@
     width: 100%;
 
     @media only screen and (max-width: 768px) {
-      padding: 0 3%;
+      padding: 0 3% 15px;
       overflow-x: auto;
 
       &::-webkit-scrollbar {
@@ -41,11 +41,21 @@
       margin-right: 40px;
       justify-content: center;
       align-items: center;
-      color: whitesmoke;
+      color: #b8860b; // Gold text color
       text-align: center;
       text-wrap: nowrap;
       font-size: 16px;
       cursor: pointer;
+      transition: all ease-in-out 0.2s;
+
+      @media only screen and (max-width: 768px) {
+        letter-spacing: 1.5px;
+        font-size: 24px;
+      }
+
+      &:hover {
+        color: #fff8e1;
+      }
     }
   }
 
@@ -53,11 +63,15 @@
     box-sizing: border-box;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 3vw;
+    column-gap: 2vw;
+    row-gap: 3vh;
     justify-content: space-between;
+    padding-top: 15px;
+    padding-bottom: 15px;
     margin-bottom: 60px;
     width: 100%;
     overflow-x: auto;
+    overflow-y: hidden;
 
     @media only screen and (max-width: 768px) {
       padding: 5px 3%;

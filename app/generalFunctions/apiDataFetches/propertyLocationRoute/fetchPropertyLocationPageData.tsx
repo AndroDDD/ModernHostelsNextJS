@@ -1,8 +1,12 @@
+"use server";
+
+import { wpAuthorizationHeaderValue } from "@/app/constants/wpFetchHeaders";
 import { LocationPageData } from "@/app/types/locationPageData";
 import { fetchPropertyLocations } from "@/app/generalFunctions/apiDataFetches/fetchPropertyLocations";
 import { wpApiUrl } from "@/app/constants/wpApiUrl";
 import { AmenitiesList } from "@/app/types/propertyData";
 import { formatSnakeCaseToCamelCase } from "@/app/generalFunctions/formatSnakeCaseToCamelCase";
+import { fetchOriginHeader } from "../../devToPro/useDevOrigin";
 
 var he = require("he");
 
@@ -159,69 +163,80 @@ export const fetchPropertyLocationPageData = async (location: string) => {
   if (fetchedLocation && fetchedLocation.meta.properties_data.length > 0) {
     const fetchedProperties = await Promise.all(
       fetchedLocation.meta.properties_data.map((propertyID) =>
-        fetch(`${wpApiUrl}kstpm_properties/${propertyID}`).then((response) =>
-          response.json()
-        )
+        fetch(`${wpApiUrl}kstpm_properties/${propertyID}`, {
+          cache: "no-cache",
+          method: "GET",
+          headers: {
+            Authorization: wpAuthorizationHeaderValue,
+            Origin: fetchOriginHeader,
+          },
+        }).then((response) => response.json())
       )
     );
 
-    const formattedLocationProperties = fetchedProperties.map(
-      (fetchedProperty) => {
-        let amenities: AmenitiesList = {
-          ["kitchen"]: false,
-          ["airConditioning"]: false,
-          ["television"]: false,
-          ["washerAndDryer"]: false,
-          ["heating"]: false,
-          ["cable"]: false,
-          ["computerMonitor"]: false,
-          ["bedding"]: false,
-          ["cookware"]: false,
-          ["tableware"]: false,
-          ["iron"]: false,
-          ["pool"]: false,
-          ["linens"]: false,
-          ["wifi"]: false,
-        };
-
-        if (fetchedProperty.meta.living_space_data.amenities.list) {
-          fetchedProperty.meta.living_space_data.amenities.list.forEach(
-            (fetchedAmenity: string) => {
-              const formattedAmenityName =
-                formatSnakeCaseToCamelCase(fetchedAmenity);
-
-              amenities[formattedAmenityName] = true;
-            }
-          );
-        }
-
-        return {
-          propertyName: he.decode(fetchedProperty.title.rendered),
-          price: `$${fetchedProperty.meta.price_data.avg_price_per_night} / night`,
-          rating: 5,
-          location: `${fetchedProperty.meta.location_data.city ?? ""}, ${
-            fetchedProperty.meta.location_data.state ?? ""
-          }`,
-          latLong: {
-            lat: fetchedProperty.meta.location_data.lat_long,
-            lng: fetchedProperty.meta.location_data.lat_long,
-          },
-          available: Date.now().toString(),
-          numberOfGuests:
-            fetchedProperty.meta.living_space_data.number_of_guestrooms,
-          numberOfBeds: fetchedProperty.meta.living_space_data.number_of_beds,
-          numberOfBaths:
-            fetchedProperty.meta.living_space_data.number_of_bathrooms,
-          numberOfOffices:
-            fetchedProperty.meta.living_space_data.number_of_workstations,
-          amenities,
-          images: fetchedProperty.meta.image_galleries_data.featured_images,
-          isMonthly: fetchedProperty.meta.rental_length_data.is_monthly,
-          isNightly: fetchedProperty.meta.rental_length_data.is_nightly,
-          pageSlug: fetchedProperty.slug,
-        };
+    let formattedLocationProperties: any[] = [];
+    for (let i = 0; i < fetchedProperties.length; i++) {
+      const fetchedProperty = fetchedProperties[i];
+      if (fetchedProperty.status !== "publish") {
+        continue;
       }
-    );
+
+      let amenities: AmenitiesList = {
+        ["kitchen"]: false,
+        ["airConditioning"]: false,
+        ["television"]: false,
+        ["washerAndDryer"]: false,
+        ["heating"]: false,
+        ["cable"]: false,
+        ["computerMonitor"]: false,
+        ["bedding"]: false,
+        ["cookware"]: false,
+        ["tableware"]: false,
+        ["iron"]: false,
+        ["pool"]: false,
+        ["linens"]: false,
+        ["wifi"]: false,
+      };
+
+      console.log({ fetchedProperty });
+
+      if (fetchedProperty.meta.living_space_data.amenities.list) {
+        fetchedProperty.meta.living_space_data.amenities.list.forEach(
+          (fetchedAmenity: string) => {
+            const formattedAmenityName =
+              formatSnakeCaseToCamelCase(fetchedAmenity);
+
+            amenities[formattedAmenityName] = true;
+          }
+        );
+      }
+
+      formattedLocationProperties.push({
+        propertyName: he.decode(fetchedProperty.title.rendered),
+        price: `$${fetchedProperty.meta.price_data.avg_price_per_night} / night`,
+        rating: 5,
+        location: `${fetchedProperty.meta.location_data.city ?? ""}, ${
+          fetchedProperty.meta.location_data.state ?? ""
+        }`,
+        latLong: {
+          lat: fetchedProperty.meta.location_data.lat_long,
+          lng: fetchedProperty.meta.location_data.lat_long,
+        },
+        available: Date.now().toString(),
+        numberOfGuests:
+          fetchedProperty.meta.living_space_data.number_of_guestrooms,
+        numberOfBeds: fetchedProperty.meta.living_space_data.number_of_beds,
+        numberOfBaths:
+          fetchedProperty.meta.living_space_data.number_of_bathrooms,
+        numberOfOffices:
+          fetchedProperty.meta.living_space_data.number_of_workstations,
+        amenities,
+        images: fetchedProperty.meta.image_galleries_data.featured_images,
+        isMonthly: fetchedProperty.meta.rental_length_data.is_monthly,
+        isNightly: fetchedProperty.meta.rental_length_data.is_nightly,
+        pageSlug: fetchedProperty.slug,
+      });
+    }
 
     formattedLocationPageData.propertiesSection.properties =
       formattedLocationProperties;

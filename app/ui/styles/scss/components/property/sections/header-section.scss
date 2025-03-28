@@ -93,8 +93,8 @@
         letter-spacing: 1px;
 
         @media only screen and (max-width: 768px) {
-          font-size: 12px;
-          line-height: 12px;
+          font-size: 18px;
+          line-height: 18px;
           margin-left: 0;
           margin-right: 0;
         }
@@ -112,12 +112,12 @@
         letter-spacing: 1px;
 
         @media only screen and (max-width: 768px) {
-          padding-bottom: 3px;
+          padding-bottom: 6px;
           padding-right: 0;
           color: #aaa;
           border-right: none;
-          font-size: 12px;
-          line-height: 12px;
+          font-size: 16px;
+          line-height: 16px;
         }
       }
     }

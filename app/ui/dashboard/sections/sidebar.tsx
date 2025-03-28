@@ -42,7 +42,19 @@ export default function Sidebar({ setCurrentView }: SidebarInterface) {
             const sidebarLinksEl = document.getElementsByClassName(
               "kst-dashboard-sidebar-links"
             )[0] as HTMLDivElement;
+            const currentToggleIcon = e.currentTarget.innerHTML;
+
+            console.log({ currentToggleIcon });
+
             sidebarLinksEl.classList.toggle("active");
+
+            if (currentToggleIcon === "+") {
+              e.currentTarget.innerHTML = "-";
+              e.currentTarget.classList.add("expanded");
+            } else {
+              e.currentTarget.innerHTML = "+";
+              e.currentTarget.classList.remove("expanded");
+            }
           }}
         >
           +

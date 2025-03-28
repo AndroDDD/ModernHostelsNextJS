@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { Metadata } from "next";
 import { getSession } from "@auth0/nextjs-auth0";
 import { redirect } from "next/navigation";
 
@@ -9,6 +10,12 @@ import { updateWPOrdersData } from "@/app/generalFunctions/checkout/updateWPOrde
 import HeaderSection from "@/app/ui/checkout/thankYou/sections/headerSection";
 import ThankYouSection from "@/app/ui/checkout/thankYou/sections/thankYouSection";
 import "@/app/ui/styles/scss/route-pages/checkout/thank-you/thank-you.scss";
+
+export const metadata: Metadata = {
+  title: "Modern Hostel's Dashboard",
+  description: "Dashboard for Modern Hostel's Guests",
+  robots: "noindex",
+};
 
 export default async function Page() {
   const session = await getSession();

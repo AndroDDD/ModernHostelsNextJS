@@ -5,6 +5,7 @@ import {
   PropertyCalendarItemData,
 } from "@/app/types/propertyCalendarData";
 import { wpPropertyCalendarApiUrl } from "@/app/constants/wpApiUrl";
+import { fetchOriginHeader } from "../devToPro/useDevOrigin";
 
 export const fetchPropertyCalenderDataByDateRange = async (
   propertyPageSlug: string,
@@ -17,6 +18,7 @@ export const fetchPropertyCalenderDataByDateRange = async (
     {
       headers: {
         "Content-Type": "application/json",
+        Origin: fetchOriginHeader,
       },
       method: "POST",
       body: JSON.stringify({
@@ -38,6 +40,8 @@ export const fetchPropertyCalenderDataByDateRange = async (
       };
     };
 
+  console.log({ propertyCalendarData });
+
   if (!propertyCalendarData) {
     return [];
   }
@@ -56,7 +60,8 @@ export const fetchPropertyCalenderDataByDateRange = async (
   let calendarData: PropertyCalendarItemData[] = [];
 
   if (checkInDateYear === checkOutDateYear) {
-    if (checkInDateMonth === checkOutDateMonth) {
+    if (!propertyCalendarData[checkInDateYear]) {
+    } else if (checkInDateMonth === checkOutDateMonth) {
       const calendarMonthData = Object.values(
         propertyCalendarData[checkInDateYear][checkInDateMonth]
       );
@@ -208,12 +213,12 @@ export const fetchPropertyCalenderMonthData = async (
   month: string,
   calendarSpaceId: string | null = null
 ): Promise<PropertyCalendarItemData[]> => {
-  console.log({ tryFetchCalendarSpaceId: calendarSpaceId });
   const propertyCalendarDataResponse = await fetch(
     `${wpPropertyCalendarApiUrl}get/${propertyPageSlug}`,
     {
       headers: {
         "Content-Type": "application/json",
+        Origin: fetchOriginHeader,
       },
       method: "POST",
       body: JSON.stringify({
@@ -223,8 +228,6 @@ export const fetchPropertyCalenderMonthData = async (
   );
 
   const propertyCalendarData = await propertyCalendarDataResponse.json();
-
-  console.log({ propertyCalendarData });
 
   if (
     !propertyCalendarData ||
@@ -249,8 +252,6 @@ export const fetchPropertyCalenderMonthData = async (
     return new Date(a.date).getTime() - new Date(b.date).getTime();
   });
 
-  console.log({ propertyCalendarMonthData });
-
   return propertyCalendarMonthData;
 };
 
@@ -263,6 +264,7 @@ export const fetchPropertyCalenderData = async (
     {
       headers: {
         "Content-Type": "application/json",
+        Origin: fetchOriginHeader,
       },
       method: "POST",
       body: JSON.stringify({

@@ -1,6 +1,7 @@
 "use server";
 
 import { newsletterApiUrl } from "../constants/wpApiUrl";
+import { fetchOriginHeader } from "./devToPro/useDevOrigin";
 
 export const subscribeEmailToNewsletter = async (
   email: string,
@@ -12,6 +13,7 @@ export const subscribeEmailToNewsletter = async (
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Origin: fetchOriginHeader,
       },
       body: JSON.stringify({
         email,

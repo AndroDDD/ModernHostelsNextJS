@@ -18,6 +18,8 @@ export type ListPropertyPageData = {
   slidingImagesSection: SlidingImagesSection;
 
   faqsSection: FAQsSection;
+
+  inquiryFormSection: InquiryFormSection;
 };
 
 export type IntroSection = {
@@ -98,4 +100,10 @@ export type FAQsSection = {
     question: string;
     answer: string;
   }[];
+};
+
+export type InquiryFormSection = {
+  title: string;
+  buttonText: string;
+  backgroundImageUrl: string;
 };

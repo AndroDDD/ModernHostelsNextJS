@@ -1,3 +1,5 @@
+"use server";
+
 import { cookies } from "next/headers";
 
 const retrieveOrderDataFromServerCookie = (): any | null => {

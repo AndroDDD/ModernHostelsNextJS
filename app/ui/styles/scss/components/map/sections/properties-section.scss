@@ -5,6 +5,7 @@
   padding-top: 15px;
 
   @media only screen and (max-width: 768px) {
+    position: relative;
     flex-wrap: wrap;
     height: auto;
     padding-top: 0px;
@@ -119,6 +120,11 @@
             font-weight: 300;
             font-size: 12px;
             line-height: 14px;
+
+            @media only screen and (max-width: 768px) {
+              font-size: 20px;
+              line-height: 23px;
+            }
           }
 
           .kst-map-page-properties-section-list-header-sort-menu-toggle-icon {
@@ -156,6 +162,11 @@
             &:hover {
               background: rgba(102, 205, 171, 0.5);
             }
+
+            @media only screen and (max-width: 768px) {
+              font-size: 20px;
+              letter-spacing: 1px;
+            }
           }
         }
       }
@@ -186,10 +197,14 @@
     @media only screen and (max-width: 768px) {
       display: none;
       width: 100%;
-      height: calc(100vh - 100px);
+      height: calc(100vh - 75px);
+      min-height: calc(100vh - 75px);
 
       &.open {
         display: block;
+        position: fixed;
+        top: 75px;
+        left: 0px;
       }
     }
   }
