@@ -16,14 +16,12 @@ import Footer from "@/app/ui/headerAndFooter/footer/footer";
 import "@/app/ui/styles/scss/route-pages/property/property-page.scss";
 
 type MetadataProps = {
-  params: { ["property-slug"]: string };
-  searchParams: { [key: string]: string };
+  params: Promise<{ ["property-slug"]: string }>;
+  searchParams: Promise<{ [key: string]: string }>;
 };
 
-export async function generateMetadata(
-  { params, searchParams }: MetadataProps,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(props: MetadataProps, parent: ResolvingMetadata): Promise<Metadata> {
+  const params = await props.params;
   const property = params["property-slug"];
 
   const reformattedLocationString = reformatLocationString(property);
@@ -33,11 +31,12 @@ export async function generateMetadata(
   };
 }
 
-export default async function Page({
-  params,
-}: {
-  params: { ["property-slug"]: string };
-}) {
+export default async function Page(
+  props: {
+    params: Promise<{ ["property-slug"]: string }>;
+  }
+) {
+  const params = await props.params;
   const isMobile = await isMobileDevice();
   const propertyPageSlug = params["property-slug"];
 

@@ -14,14 +14,12 @@ import Footer from "@/app/ui/headerAndFooter/footer/footer";
 import "@/app/ui/styles/scss/route-pages/property-location/property-location-page.scss";
 
 type MetadataProps = {
-  params: { ["location-slug"]: string };
-  searchParams: { [key: string]: string };
+  params: Promise<{ ["location-slug"]: string }>;
+  searchParams: Promise<{ [key: string]: string }>;
 };
 
-export async function generateMetadata(
-  { params, searchParams }: MetadataProps,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(props: MetadataProps, parent: ResolvingMetadata): Promise<Metadata> {
+  const params = await props.params;
   const location = params["location-slug"];
 
   const reformattedLocationString = reformatLocationString(location);
@@ -30,11 +28,12 @@ export async function generateMetadata(
     title: `Modern Hostels: ${reformattedLocationString}`,
   };
 }
-export default async function Page({
-  params,
-}: {
-  params: { ["location-slug"]: string };
-}) {
+export default async function Page(
+  props: {
+    params: Promise<{ ["location-slug"]: string }>;
+  }
+) {
+  const params = await props.params;
   const isMobile = await isMobileDevice();
   const location = params["location-slug"];
   const pageData = await fetchPropertyLocationPageData(location);

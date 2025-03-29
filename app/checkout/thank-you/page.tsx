@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default async function Page() {
   const session = await getSession();
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const thankYouCookie = cookieStore.get("thankYouData");
   console.log({ thankYouCookie });
 

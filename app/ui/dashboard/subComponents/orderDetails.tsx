@@ -1,5 +1,6 @@
 "use client";
 
+import { JSX } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import {
@@ -118,7 +119,6 @@ export default function OrderDetails({
           <span>Booked:</span> {order_date}
         </div>
       </div>
-
       <div className={`kst-dashboard-compact-container no-wrap`}>
         <div className={`kst-dashboard-compact-container-item`}>
           <span>Check In:</span> {start_date}
@@ -128,7 +128,6 @@ export default function OrderDetails({
           <span>Check Out:</span> {end_date}
         </div>
       </div>
-
       <div className={`kst-dashboard-compact-container`}>
         <div className={`kst-dashboard-compact-container-item`}>
           <span

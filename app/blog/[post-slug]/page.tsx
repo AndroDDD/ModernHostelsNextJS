@@ -11,14 +11,12 @@ import Footer from "@/app/ui/headerAndFooter/footer/footer";
 import "@/app/ui/styles/scss/route-pages/blog/[post-slug]/post-page.scss";
 
 type MetadataProps = {
-  params: { ["post-slug"]: string };
-  searchParams: { [key: string]: string };
+  params: Promise<{ ["post-slug"]: string }>;
+  searchParams: Promise<{ [key: string]: string }>;
 };
 
-export async function generateMetadata(
-  { params, searchParams }: MetadataProps,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(props: MetadataProps, parent: ResolvingMetadata): Promise<Metadata> {
+  const params = await props.params;
   const postSlug = params["post-slug"];
 
   const reformattedLocationString = reformatLocationString(postSlug);
@@ -28,11 +26,12 @@ export async function generateMetadata(
   };
 }
 
-export default async function Page({
-  params,
-}: {
-  params: { ["post-slug"]: string };
-}) {
+export default async function Page(
+  props: {
+    params: Promise<{ ["post-slug"]: string }>;
+  }
+) {
+  const params = await props.params;
   const postSlug = params["post-slug"];
   const isMobile = await isMobileDevice();
   const postPageData = await fetchPostPageData(postSlug);

@@ -108,6 +108,7 @@ export async function fetchCustomerRewards(customerId: string) {
         label: string;
         reward: string;
         badge: string;
+        id: string;
       }[];
     };
   const customerRewardsData = await customerRewardsResponse.json();
@@ -123,7 +124,11 @@ export async function fetchCustomerRewards(customerId: string) {
   customerRewardsData["rewards"]["earned_rewards"].forEach(
     (
       rewardData:
-        | { dictionary_property: string | number; reward: string }
+        | {
+            dictionary_property: string | number;
+            reward: string;
+            reward_id: string;
+          }
         | string
     ) => {
       if (
@@ -136,51 +141,63 @@ export async function fetchCustomerRewards(customerId: string) {
 
         const tierRewardData = customerRewardsTierData[
           rewardData.dictionary_property
-        ].find((tierRewardsData: any) => {
-          return tierRewardsData.reward === rewardData.reward;
-        });
+        ].find(
+          (tierRewardsData: {
+            label: string;
+            reward: string;
+            badge: string;
+            id: string;
+          }) => {
+            return (
+              tierRewardsData.id &&
+              rewardData.reward_id &&
+              tierRewardsData.id === rewardData.reward_id
+            );
+          }
+        );
 
-        if (!earnedRewards[rewardData.reward]) {
-          earnedRewards[rewardData.reward] = {
+        if (!earnedRewards[rewardData.reward_id]) {
+          earnedRewards[rewardData.reward_id] = {
             quantity: 1,
             badgeUrl: tierRewardData?.badge ?? "",
             label: tierRewardData?.label ?? "",
           };
         } else {
-          earnedRewards[rewardData.reward].quantity++;
-        }
-      } else if (typeof rewardData === "string") {
-        const rewardTiersFlattened = Object.entries(customerRewardsTierData);
-
-        for (let k = 0; k < rewardTiersFlattened.length; k++) {
-          const rewardTier = rewardTiersFlattened[k];
-
-          let foundReward = false;
-
-          for (let i = 0; i < rewardTier[1].length; i++) {
-            const tierReward = rewardTier[1][i];
-
-            if (tierReward.reward === rewardData) {
-              if (!earnedRewards[tierReward.reward]) {
-                earnedRewards[tierReward.reward] = {
-                  quantity: 1,
-                  badgeUrl: tierReward.badge,
-                  label: tierReward.label,
-                };
-              } else {
-                earnedRewards[tierReward.reward].quantity++;
-              }
-
-              foundReward = true;
-              break;
-            }
-          }
-
-          if (foundReward) {
-            break;
-          }
+          earnedRewards[rewardData.reward_id].quantity++;
         }
       }
+      // else if (typeof rewardData === "string") {
+      //   const rewardTiersFlattened = Object.entries(customerRewardsTierData);
+
+      //   for (let k = 0; k < rewardTiersFlattened.length; k++) {
+      //     const rewardTier = rewardTiersFlattened[k];
+
+      //     let foundReward = false;
+
+      //     for (let i = 0; i < rewardTier[1].length; i++) {
+      //       const tierReward = rewardTier[1][i];
+
+      //       if (tierReward.reward === rewardData) {
+      //         if (!earnedRewards[tierReward.reward]) {
+      //           earnedRewards[tierReward.reward] = {
+      //             quantity: 1,
+      //             badgeUrl: tierReward.badge,
+      //             label: tierReward.label,
+      //           };
+      //         } else {
+      //           earnedRewards[tierReward.reward].quantity++;
+      //         }
+
+      //         foundReward = true;
+      //         break;
+      //       }
+      //     }
+
+      //     if (foundReward) {
+      //       break;
+      //     }
+      //   }
+      // }
     }
   );
 

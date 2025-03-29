@@ -5,11 +5,12 @@ import FooterSeparatorSection from "@/app/ui/sharedComponents/footerSeperatorSec
 import Footer from "@/app/ui/headerAndFooter/footer/footer";
 import "@/app/ui/styles/scss/route-pages/map/map-page.scss";
 
-export default async ({
-  searchParams,
-}: {
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) => {
+export default async (
+  props: {
+    searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+  }
+) => {
+  const searchParams = await props.searchParams;
   const isMobile = await isMobileDevice();
   const market = searchParams ? (searchParams["market"] as string) : undefined;
 

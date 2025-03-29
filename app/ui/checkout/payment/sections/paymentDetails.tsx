@@ -26,7 +26,7 @@ export default function PaymentDetails() {
       redirect(`/`);
     }
 
-    console.log(bookingData);
+    console.log({ bookingData, PaymentForm });
 
     setBookingData(bookingData);
   }, []);

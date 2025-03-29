@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { blogPostsUrl, wpApiUrl } from "@/app/constants/wpApiUrl";
+import { blogPostsUrl } from "@/app/constants/wpApiUrl";
 import { wpAuthorizationHeaderValue } from "@/app/constants/wpFetchHeaders";
 import { fetchOriginHeader } from "../generalFunctions/devToPro/useDevOrigin";
 import { useHttpProtocol } from "../generalFunctions/devToPro/useHttpProtocol";

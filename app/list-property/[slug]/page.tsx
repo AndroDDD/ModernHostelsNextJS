@@ -12,14 +12,12 @@ import { reformatLocationString } from "@/app/generalFunctions/reformatLocationS
 import { headers } from "next/headers";
 
 type MetadataProps = {
-  params: { ["slug"]: string };
-  searchParams: { [key: string]: string };
+  params: Promise<{ ["slug"]: string }>;
+  searchParams: Promise<{ [key: string]: string }>;
 };
 
-export async function generateMetadata(
-  { params, searchParams }: MetadataProps,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(props: MetadataProps, parent: ResolvingMetadata): Promise<Metadata> {
+  const params = await props.params;
   const location = params["slug"];
 
   const reformattedLocationString = reformatLocationString(location);
@@ -29,10 +27,11 @@ export async function generateMetadata(
   };
 }
 
-export default async ({ params }: { params: { slug: string } }) => {
+export default async (props: { params: Promise<{ slug: string }> }) => {
+  const params = await props.params;
   const isMobile = await isMobileDevice();
   const slug = params.slug;
-  const csrfToken = headers().get("X-CSRF-Token") || "no_token";
+  const csrfToken = (await headers()).get("X-CSRF-Token") || "no_token";
 
   const pageData = await fetchListPropertyPageData(slug);
   console.log({ emailServerUrl, csrfToken });
