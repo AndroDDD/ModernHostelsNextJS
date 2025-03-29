@@ -1,5 +1,6 @@
 "use client";
 
+import { JSX } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import {

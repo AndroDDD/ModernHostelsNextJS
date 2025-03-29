@@ -1,4 +1,4 @@
-export const useDev = true;
+export const useDev = false;
 
 export const useDevOrigin = useDev
   ? "192.168.1.137/"
