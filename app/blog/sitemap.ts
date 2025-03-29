@@ -18,6 +18,7 @@ export default async function sitemap({
       Authorization: wpAuthorizationHeaderValue,
     },
   });
+
   const posts = await postsFetchResponse.json();
 
   const sitemapURLs = posts.map(

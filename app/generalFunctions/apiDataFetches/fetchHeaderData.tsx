@@ -8,22 +8,23 @@ import { fetchOriginHeader } from "../devToPro/useDevOrigin";
 
 export const fetchHeaderData = async () => {
   const fetchedPropertyLocations = await fetchPropertyLocations();
-  const rentals: LinkData[] = [
-    ...fetchedPropertyLocations
-      .splice(0, 5)
-      .map((location: { title: { rendered: string }; slug: string }) => ({
-        text: location.title.rendered,
-        color: "whitesmoke",
-        href: `/location/${location.slug}`,
-      })),
-    {
-      text: "View all on map",
-      href: `/map`,
-      color: "cyan",
-    },
-  ];
+  
+  let rentals: LinkData[] = [...fetchedPropertyLocations]
+    .splice(0, 5)
+    .map((location: { title: { rendered: string }; slug: string }) => ({
+      text: location.title.rendered,
+      color: "whitesmoke",
+      href: `/location/${location.slug}`,
+    }));
+  rentals.push({
+    text: "View all on map",
+    href: `/map`,
+    color: "cyan",
+  });
 
-  let listWithMH: LinkData[] = fetchedPropertyLocations
+  console.log({rentals, fetchedPropertyLocations, test: [...fetchedPropertyLocations]})
+
+  let listWithMH: LinkData[] = [...fetchedPropertyLocations]
     .filter(
       (location: { meta: { services_data: { management: string } } }) =>
         location.meta.services_data.management === "true"
