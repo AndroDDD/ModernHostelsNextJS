@@ -135,7 +135,7 @@ export async function fetchCustomerRewards(customerId: string) {
         typeof rewardData === "object" &&
         "dictionary_property" in rewardData
       ) {
-        if (!customerRewardsTierData[rewardData.dictionary_property]) {
+        if (!rewardData.reward_id || !customerRewardsTierData[rewardData.dictionary_property]) {
           return;
         }
 
@@ -150,7 +150,6 @@ export async function fetchCustomerRewards(customerId: string) {
           }) => {
             return (
               tierRewardsData.id &&
-              rewardData.reward_id &&
               tierRewardsData.id === rewardData.reward_id
             );
           }
