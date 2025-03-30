@@ -29,10 +29,6 @@ export default ({
       process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITEKEY ||
       "no_recaptcha_site_key";
 
-    console.log({
-      siteKey,
-    });
-
     grecaptcha.enterprise.ready(async () => {
       const recaptchaToken = await grecaptcha.enterprise.execute(siteKey, {
         action: "INQUIRY",
@@ -44,14 +40,11 @@ export default ({
       }
 
       const csrf_token = formData.get("_csrf");
-      console.log({ csrf_token });
 
       const isFormSubmissionSafe = await assessFormRisk(
         recaptchaToken,
         siteKey
       );
-
-      console.log({ isFormSubmissionSafe });
 
       if (!isFormSubmissionSafe) {
         console.log({ notSafe: "Please respect the website:)" });

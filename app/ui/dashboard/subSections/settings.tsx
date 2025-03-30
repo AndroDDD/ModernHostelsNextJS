@@ -11,6 +11,8 @@ export default function Settings() {
   const chatName = user?.chatName as string | undefined;
   const email = user?.email as string | undefined;
 
+  console.log({ user });
+
   return (
     <div id="kst-dashboard-settings-section">
       {user ? (

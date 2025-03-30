@@ -1,5 +1,7 @@
 "use server";
 
+import { getSession, updateSession } from "@auth0/nextjs-auth0";
+
 import {
   updateCustomerApiUrl,
   updateCustomerOrderReviewApiUrl,
@@ -43,6 +45,12 @@ export async function updateCustomerData(params: {
   email?: string;
 }) {
   try {
+    const session = await getSession();
+
+    if (!session) {
+      return;
+    }
+
     const updatedCustomerResponse = await fetch(`${updateCustomerApiUrl}`, {
       method: "POST",
       headers: {
@@ -53,7 +61,16 @@ export async function updateCustomerData(params: {
     });
 
     const updatedCustomerJson = await updatedCustomerResponse.json();
-    console.log({ updatedCustomerJson });
+
+    await updateSession({
+      ...session,
+      user: {
+        ...session.user,
+        name: params.username,
+        chatName: params.chat_name,
+        email: params.email,
+      },
+    });
 
     return updatedCustomerJson;
   } catch (e: any) {
@@ -75,8 +92,6 @@ export async function fetchCustomerOrders(customerId: string) {
   });
 
   const data = await response.json();
-
-  console.log({ userOrdersData: data["orders"][0] });
 
   return data;
 }
@@ -135,7 +150,10 @@ export async function fetchCustomerRewards(customerId: string) {
         typeof rewardData === "object" &&
         "dictionary_property" in rewardData
       ) {
-        if (!rewardData.reward_id || !customerRewardsTierData[rewardData.dictionary_property]) {
+        if (
+          !rewardData.reward_id ||
+          !customerRewardsTierData[rewardData.dictionary_property]
+        ) {
           return;
         }
 
@@ -149,8 +167,7 @@ export async function fetchCustomerRewards(customerId: string) {
             id: string;
           }) => {
             return (
-              tierRewardsData.id &&
-              tierRewardsData.id === rewardData.reward_id
+              tierRewardsData.id && tierRewardsData.id === rewardData.reward_id
             );
           }
         );
@@ -200,12 +217,6 @@ export async function fetchCustomerRewards(customerId: string) {
     }
   );
 
-  console.log({
-    customerRewardsTierData: customerRewardsTierData["3"],
-    earnedRewards,
-    progresses: customerRewardsData["rewards"]["progresses"],
-  });
-
   const rewardsProgresses = Object.entries(
     customerRewardsData["rewards"]["progresses"]
   )
@@ -213,10 +224,6 @@ export async function fetchCustomerRewards(customerId: string) {
       return customerRewardsTierData[progressEntry[0]];
     })
     .map((progressEntry: [any, any]) => {
-      console.log({
-        badgeUrlTest: customerRewardsTierData[progressEntry[0]][0].badge,
-      });
-
       return {
         badges: customerRewardsTierData[progressEntry[0]].map(
           (rewardsData: any) => {

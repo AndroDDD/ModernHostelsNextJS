@@ -8,7 +8,7 @@ import { fetchOriginHeader } from "../devToPro/useDevOrigin";
 
 export const fetchHeaderData = async () => {
   const fetchedPropertyLocations = await fetchPropertyLocations();
-  
+
   let rentals: LinkData[] = [...fetchedPropertyLocations]
     .splice(0, 5)
     .map((location: { title: { rendered: string }; slug: string }) => ({
@@ -21,8 +21,6 @@ export const fetchHeaderData = async () => {
     href: `/map`,
     color: "cyan",
   });
-
-  console.log({rentals, fetchedPropertyLocations, test: [...fetchedPropertyLocations]})
 
   let listWithMH: LinkData[] = [...fetchedPropertyLocations]
     .filter(

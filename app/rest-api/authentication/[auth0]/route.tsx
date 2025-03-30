@@ -1,8 +1,13 @@
+"use server";
+
 import { handleAuth, handleCallback, handleLogin } from "@auth0/nextjs-auth0";
 
 import { createCustomerApiUrl } from "@/app/constants/wpApiUrl";
+import { fetchOriginHeader } from "@/app/generalFunctions/devToPro/useDevOrigin";
+import { wpAuthorizationHeaderValue } from "@/app/constants/wpFetchHeaders";
 
 const afterCallback = async (req: any, session: any, state: any) => {
+  console.log({ afterCallback: "is executing" });
   const { user } = session;
   const userId = user.sub;
   const email = user.email;
@@ -18,6 +23,8 @@ const afterCallback = async (req: any, session: any, state: any) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Origin: fetchOriginHeader,
+        Authorization: wpAuthorizationHeaderValue,
       },
       body: JSON.stringify({
         id: userId,
@@ -28,7 +35,6 @@ const afterCallback = async (req: any, session: any, state: any) => {
     });
 
     const customerWPDataJson = await customerWPDataResponse.json();
-    console.dir({ customerWPDataJson });
 
     if (
       customerWPDataJson["customer_data"] &&

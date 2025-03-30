@@ -16,7 +16,10 @@ type MetadataProps = {
   searchParams: Promise<{ [key: string]: string }>;
 };
 
-export async function generateMetadata(props: MetadataProps, parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata(
+  props: MetadataProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const params = await props.params;
   const location = params["slug"];
 
@@ -38,7 +41,9 @@ export default async (props: { params: Promise<{ slug: string }> }) => {
 
   return (
     <section id="kst-list-property-page">
-      <Header isMobile={isMobile} />
+      <div style={{ width: "100%" }}>
+        <Header isMobile={isMobile} />
+      </div>
       <CoreSection
         key={`kst-list-property-core-section-${slug}`}
         {...pageData}
