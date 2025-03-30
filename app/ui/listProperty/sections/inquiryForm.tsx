@@ -58,7 +58,7 @@ export default ({
         address: (formData.get("address") as string) ?? "",
       };
 
-      const emailServer = 0;
+      const emailServer = 3;
 
       const emailSentSuccessfully = await sendEmail({
         data: emailData,
