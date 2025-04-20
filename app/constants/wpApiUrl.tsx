@@ -11,6 +11,7 @@ const emailServerUrl = `${fullWPURL}wp-json/kst/sendContactForm/`;
 const getLogoUrl = `${fullWPURL}wp-json/kst/get-logo-url/`;
 const newsletterApiUrl = `${fullWPURL}wp-json/kst/v1/newsletter/`;
 const homepageSettingsApiUrl = `${fullWPURL}wp-json/kst/homepage-settings`;
+const footerSeparatorImageApiUrl = `${fullWPURL}wp-json/kst/footer/separator-image`;
 const socialCommunicationsUrl = `${fullWPURL}wp-json/kst/social-communications/`;
 const checkoutSubmitOrderApiUrl = `${fullWPURL}wp-json/kstecm/v1/orders/submit`;
 const createCustomerApiUrl = `${fullWPURL}wp-json/kstecm/v1/customer/create`;
@@ -37,6 +38,7 @@ export {
   getLogoUrl,
   newsletterApiUrl,
   homepageSettingsApiUrl,
+  footerSeparatorImageApiUrl,
   socialCommunicationsUrl,
   checkoutSubmitOrderApiUrl,
   createCustomerApiUrl,

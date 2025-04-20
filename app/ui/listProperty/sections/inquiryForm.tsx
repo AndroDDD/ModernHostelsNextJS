@@ -117,20 +117,22 @@ export default ({
           : {}
       }
     >
-      <input type="hidden" name="_csrf" value={csrfToken} />
+      {csrfToken && <input type="hidden" name="_csrf" value={csrfToken} />}
       <div
         className={`kst-list-property-page-inquiry-form-background-support ${
           style ? style : ""
         }`}
       ></div>
 
-      <div
-        className={`kst-list-property-page-inquiry-form-title ${
-          style ? style : ""
-        }`}
-      >
-        {title}
-      </div>
+      {title && (
+        <div
+          className={`kst-list-property-page-inquiry-form-title ${
+            style ? style : ""
+          }`}
+        >
+          {title}
+        </div>
+      )}
 
       <input
         name="full_name"
@@ -139,7 +141,7 @@ export default ({
           style ? style : ""
         }`}
         placeholder="Full Name"
-        value={fullName}
+        value={fullName ? fullName : ""}
         onChange={(event) => {
           event.preventDefault();
 
@@ -161,7 +163,7 @@ export default ({
           style ? style : ""
         }`}
         placeholder="Email"
-        value={email}
+        value={email ? email : ""}
         onChange={(event) => {
           event.preventDefault();
 
@@ -183,7 +185,7 @@ export default ({
           style ? style : ""
         }`}
         placeholder="Phone Number"
-        value={phoneNumber}
+        value={phoneNumber ? phoneNumber : ""}
         onChange={(event) => {
           event.preventDefault();
 
@@ -205,7 +207,7 @@ export default ({
           style ? style : ""
         }`}
         placeholder="Property Address"
-        value={propertyAddress}
+        value={propertyAddress ? propertyAddress : ""}
         onChange={(event) => {
           event.preventDefault();
 
@@ -225,7 +227,7 @@ export default ({
         className={`kst-list-property-page-inquiry-form-submit-button ${
           style ? style : ""
         }`}
-        value={buttonText}
+        value={buttonText ? buttonText : "SEND"}
       ></input>
     </form>
   );

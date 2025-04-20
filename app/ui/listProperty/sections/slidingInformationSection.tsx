@@ -5,28 +5,44 @@ import "@/app/ui/styles/scss/components/list-property/sections/sliding-informati
 
 export default ({ title, statement, info }: SlidingInformationSection) => {
   return (
-    <section id="kst-list-property-page-sliding-information-section">
-      <div className="kst-list-property-page-sliding-information-section-header">
-        <div className="kst-list-property-page-sliding-information-section-header-title">
-          <span>{"02"}</span>
+    (title || statement || (info && info.length > 0)) && (
+      <section id="kst-list-property-page-sliding-information-section">
+        <div className="kst-list-property-page-sliding-information-section-header">
+          {title && (
+            <div className="kst-list-property-page-sliding-information-section-header-title">
+              <span>{"02"}</span>
 
-          {title}
+              {title}
+            </div>
+          )}
+
+          {statement && (
+            <div className="kst-list-property-page-sliding-information-section-header-statement">
+              {statement}
+            </div>
+          )}
         </div>
 
-        <div className="kst-list-property-page-sliding-information-section-header-statement">
-          {statement}
-        </div>
-      </div>
-
-      <SimpleInformationCarousel
-        slides={info}
-        classnames={{
-          container:
-            "kst-list-property-page-sliding-information-section-slider",
-          slide: "kst-list-property-page-sliding-information-section-slide",
-        }}
-        SlideComponent={SlideComponent}
-      />
-    </section>
+        {info && (
+          <SimpleInformationCarousel
+            slides={info}
+            classnames={{
+              container:
+                "kst-list-property-page-sliding-information-section-slider",
+              slide: "kst-list-property-page-sliding-information-section-slide",
+            }}
+            SlideComponent={SlideComponent}
+          />
+        )}
+      </section>
+    )
   );
+};
+
+export const isSlidingInformationSectionRendered = ({
+  title,
+  statement,
+  info,
+}: SlidingInformationSection) => {
+  return title || statement || (info && info.length > 0);
 };
