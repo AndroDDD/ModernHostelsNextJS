@@ -43,11 +43,11 @@ export default (
       ) : (
         <></>
       )}
-      {pageData && pageData.earningsSection ? (
+      {/* {pageData && pageData.earningsSection ? (
         <EarningsSection {...pageData.earningsSection} />
       ) : (
         <></>
-      )}
+      )} */}
       {pageData && pageData.slidingInformationSection ? (
         <SlidingInformationSection {...pageData.slidingInformationSection} />
       ) : (
@@ -55,7 +55,7 @@ export default (
       )}
       {!(
         isIntroSectionRendered(pageData.introSection) ||
-        isEarningsSectionRendered(pageData.earningsSection) ||
+        // isEarningsSectionRendered(pageData.earningsSection) ||
         isSlidingInformationSectionRendered(pageData.slidingInformationSection)
       ) && <div style={{ height: "150px" }}></div>}
       {pageData && pageData.inquiryFormSection ? (
@@ -69,11 +69,11 @@ export default (
       ) : (
         <></>
       )}
-      {pageData && pageData.clienteleSection ? (
+      {/* {pageData && pageData.clienteleSection ? (
         <ClienteleSection {...pageData.clienteleSection} />
       ) : (
         <></>
-      )}
+      )} */}
       {pageData && pageData.propertiesSlideSection ? (
         <PropertiesSlideSection {...pageData.propertiesSlideSection} />
       ) : (
@@ -101,8 +101,8 @@ export default (
       )}
       {pageData &&
       pageData.inquiryFormSection &&
-      (isClienteleSectionRendered(pageData.clienteleSection) ||
-        isPropertiesSlideSectionRendered(pageData.propertiesSlideSection) ||
+      // isClienteleSectionRendered(pageData.clienteleSection) ||
+      (isPropertiesSlideSectionRendered(pageData.propertiesSlideSection) ||
         isSingleReviewSectionRendered(pageData.singleReviewSection) ||
         isHowItWorksSectionRendered(pageData.howItWorksSection) ||
         isSlidingImagesSectionRendered(pageData.slidingImagesSection) ||
